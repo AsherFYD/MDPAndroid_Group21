@@ -71,7 +71,7 @@
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="956dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
@@ -256,26 +256,26 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp">
+                    android:layout_height="wrap_content">
 
                     <Button
                         android:id="@+id/leftBtn"
-                        android:layout_width="50dp"
+                        android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="start"
-                        android:layout_marginStart="5dp"
+                        android:layout_marginStart="70dp"
                         android:layout_marginLeft="5dp"
                         android:background="#00FFFFFF"
                         android:foreground="@drawable/outline_arrow_back_24" />
 
                     <Button
                         android:id="@+id/rightBtn"
-                        android:layout_width="50dp"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginStart="36dp"
-                        android:layout_marginLeft="36dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginRight="4dp"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginEnd="60dp"
+                        android:layout_marginRight="5dp"
                         android:layout_weight="1"
                         android:background="#00FFFFFF"
                         android:foreground="@drawable/outline_arrow_forward_24" />
@@ -287,7 +287,6 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="0dp"
                     android:background="#00FFFFFF"
                     android:foreground="@drawable/outline_arrow_downward_24" />
 
@@ -297,16 +296,16 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
-            android:layout_width="match_parent"
+            android:layout_width="405dp"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?attr/colorPrimary"
-                app:tabGravity="fill"/>
+                app:tabGravity="fill" />
 
         </androidx.viewpager.widget.ViewPager>
 

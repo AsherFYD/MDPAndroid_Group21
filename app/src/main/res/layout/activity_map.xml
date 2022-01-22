@@ -27,7 +27,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="center_horizontal" />
 
     <ImageButton
         android:id="@+id/exploredImageBtn"
@@ -49,9 +50,9 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
+        android:tint="@color/colorBlack"
         app:layout_constraintStart_toEndOf="@+id/obstacleImageBtn"
         app:layout_constraintTop_toBottomOf="@+id/updateButton"
-        android:tint="@color/colorBlack"
         app:srcCompat="@drawable/directionpic" />
 
     <ImageButton
@@ -92,7 +93,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetMapBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/resetMapBtn"
+        android:gravity="center_horizontal" />
 
     <ToggleButton
         android:id="@+id/setWaypointToggleBtn"
@@ -109,7 +111,8 @@
         app:layout_constraintHorizontal_bias="0.982"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setStartPointToggleBtn"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:gravity="center_horizontal" />
 
     <Button
         android:id="@+id/resetMapBtn"
@@ -136,7 +139,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/manualAutoToggleBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/manualAutoToggleBtn"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/tv_imageID"

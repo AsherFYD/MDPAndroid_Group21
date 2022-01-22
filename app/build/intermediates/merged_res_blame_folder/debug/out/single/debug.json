@@ -28,12 +28,12 @@
         "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_left.png.flat",
-        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_left.png"
-    },
-    {
         "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_toolbar_layout.xml.flat",
         "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/toolbar_layout.xml"
+    },
+    {
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_left.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_left.png"
     },
     {
         "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_right.png.flat",
