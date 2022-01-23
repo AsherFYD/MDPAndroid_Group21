@@ -1251,7 +1251,6 @@ id adjust_width
 id alertTitle
 id all
 id always
-id appBarLayout
 id async
 id auto
 id autoManualSwitch
@@ -1285,10 +1284,10 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id color
-id configureButton
 id connStatusTextView
 id connectBtn
 id constraintLayout
+id constraintLayout2
 id container
 id content
 id contentPanel
@@ -1331,8 +1330,6 @@ id exploreTimeTextView2
 id exploreToggleBtn
 id exploreToggleBtn2
 id exploredImageBtn
-id f1ActionButton
-id f2ActionButton
 id fastestResetImageBtn
 id fastestResetImageBtn2
 id fastestTextView

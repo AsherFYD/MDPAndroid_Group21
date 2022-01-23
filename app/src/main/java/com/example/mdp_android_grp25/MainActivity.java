@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("connStatus", "Disconnected");
         editor.commit();
 
-        // Toolbar, keep this
+        //Bluetooth Button KEEP
         Button bluetoothButton = (Button) findViewById(R.id.bluetoothButton);
         bluetoothButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,9 +95,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Bluetooth Status
+        // Bluetooth Status KEEP
         bluetoothStatus = findViewById(R.id.bluetoothStatus);
         bluetoothDevice = findViewById(R.id.bluetoothConnectedDevice);
+
+        // Robot Status KEEP
+        robotStatusTextView = findViewById(R.id.robotStatus);
 
         // Map
         gridMap = new GridMap(this);
@@ -122,9 +125,6 @@ public class MainActivity extends AppCompatActivity {
         downBtn = findViewById(R.id.downBtn);
         leftBtn = findViewById(R.id.leftBtn);
         rightBtn = findViewById(R.id.rightBtn);
-
-        // Robot Status
-        robotStatusTextView = findViewById(R.id.robotStatus);
 
         myDialog = new ProgressDialog(MainActivity.this);
         myDialog.setMessage("Waiting for other device to reconnect...");
@@ -152,8 +152,8 @@ public class MainActivity extends AppCompatActivity {
     public static Button getLeftBtn() { return leftBtn; }
     public static Button getRightBtn() { return rightBtn; }
 
-    public static TextView getBluetoothStatus() { return bluetoothStatus; }
-    public static TextView getConnectedDevice() { return bluetoothDevice; }
+    public static TextView getBluetoothStatus() { return bluetoothStatus; } //KEEP
+    public static TextView getConnectedDevice() { return bluetoothDevice; } //KEEP
 
     public static void sharedPreferences() {
         sharedPreferences = MainActivity.getSharedPreferences(MainActivity.context);

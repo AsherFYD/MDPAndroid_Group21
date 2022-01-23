@@ -202,9 +202,9 @@ public class BluetoothConnectionService {
             LocalBroadcastManager.getInstance(mContext).sendBroadcast(connectionStatus);
             BluetoothConnectionStatus = true;
 
-            //for mainactivity bluetooth connection status
+            //for bluetooth connection status in main activity
             TextView status = MainActivity.getBluetoothStatus();
-            status.setText("Connected");
+            status.setText("Connected to");
             status.setTextColor(Color.GREEN);
             TextView device = MainActivity.getConnectedDevice();
             device.setText(mDevice.getName());
@@ -243,6 +243,8 @@ public class BluetoothConnectionService {
                 } catch (IOException e) {
                     Log.e(TAG, "Error reading input stream. "+e.getMessage());
 
+
+                    //when connection lost, change the connection status at main activity
                     connectionStatus = new Intent("ConnectionStatus");
                     connectionStatus.putExtra("Status", "disconnected");
                     TextView status = MainActivity.getBluetoothStatus();

@@ -8,12 +8,12 @@
         "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_send.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_send.png"
-    },
-    {
         "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_right.png.flat",
         "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_right.png"
+    },
+    {
+        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_send.png.flat",
+        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_send.png"
     },
     {
         "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_bluetooth_pop_up_window.xml.flat",
