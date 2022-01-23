@@ -47,8 +47,8 @@
             android:id="@+id/bluetoothStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="24dp"
             android:gravity="center"
             android:text="@string/bluetooth_connection"
@@ -76,17 +76,201 @@
             app:layout_constraintStart_toEndOf="@+id/bluetoothStatus"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/robotStatusLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="41dp"
+            android:background="#FAFAFA"
+            android:gravity="center"
+            android:text="Robot Status:"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+        <TextView
+            android:id="@+id/robotStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="372dp"
+            android:layout_marginRight="372dp"
+            android:gravity="center"
+            android:text="Ready to Start"
+            android:textAlignment="center"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/robotStatusLabel"
+            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+        <Button
+            android:id="@+id/upBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="408dp"
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/outline_arrow_upward_24"
+            app:layout_constraintEnd_toStartOf="@+id/rightBtn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/mapView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/downBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="72dp"
+            android:layout_marginLeft="72dp"
+            android:layout_marginTop="50dp"
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/outline_arrow_downward_24"
+            app:layout_constraintEnd_toStartOf="@+id/rightBtn"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/upBtn" />
+
+        <Button
+            android:id="@+id/rightBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/outline_arrow_forward_24"
+            app:layout_constraintBottom_toTopOf="@+id/downBtn"
+            app:layout_constraintStart_toEndOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/upBtn"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/leftBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:background="#00FFFFFF"
+            android:foreground="@drawable/outline_arrow_back_24"
+            app:layout_constraintStart_toEndOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/upBtn" />
+
+        <TextView
+            android:id="@+id/directionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="Direction:"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/robotStatusLabel" />
+
+        <TextView
+            android:id="@+id/directionAxisTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="None"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/directionLabel"
+            app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
+
+        <TextView
+            android:id="@+id/robotX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="X:"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/directionLabel" />
+
+        <TextView
+            android:id="@+id/xAxisTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/robotX"
+            app:layout_constraintTop_toBottomOf="@+id/directionLabel" />
+
+        <TextView
+            android:id="@+id/robotY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Y:"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/xAxisTextView"
+            app:layout_constraintTop_toBottomOf="@+id/directionAxisTextView" />
+
+        <TextView
+            android:id="@+id/yAxisTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:text="0"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/robotY"
+            app:layout_constraintTop_toBottomOf="@+id/directionAxisTextView" />
+
+        <view
+            android:id="@+id/mapView"
+            class="com.example.mdp_android_grp25.ui.main.GridMap"
+            android:layout_width="380dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="602dp"
-            android:layout_height="362dp"
+            android:layout_height="330dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
@@ -96,198 +280,6 @@
                 app:tabGravity="fill" />
 
         </androidx.viewpager.widget.ViewPager>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="532dp"
-            android:layout_marginTop="50dp"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bluetoothStatus">
-
-            <view
-                android:id="@+id/mapView"
-                class="com.example.mdp_android_grp25.ui.main.GridMap"
-                android:layout_width="355dp"
-                android:layout_height="match_parent" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/robotStatusLabel"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#82B1FF"
-                    android:gravity="center"
-                    android:text="Robot Status"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/robotStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:gravity="center"
-                    android:text="Ready to Start"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/robotStatusLabel" />
-
-                <TextView
-                    android:id="@+id/directionLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="45dp"
-                    android:layout_marginLeft="45dp"
-                    android:layout_weight="1"
-                    android:text="Direction:"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26px"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
-
-                <TextView
-                    android:id="@+id/directionAxisTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="3dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_weight="1"
-                    android:text="None"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26px"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/directionLabel"
-                    app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
-
-                <TextView
-                    android:id="@+id/robotX"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="53dp"
-                    android:layout_marginLeft="53dp"
-                    android:layout_marginEnd="1dp"
-                    android:layout_marginRight="1dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="X:"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26px"
-                    app:layout_constraintBottom_toTopOf="@+id/upBtn"
-                    app:layout_constraintEnd_toStartOf="@+id/xAxisTextView"
-                    app:layout_constraintStart_toStartOf="parent" />
-
-                <TextView
-                    android:id="@+id/xAxisTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="60dp"
-                    android:layout_marginRight="60dp"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26px"
-                    app:layout_constraintBottom_toTopOf="@+id/upBtn"
-                    app:layout_constraintEnd_toStartOf="@+id/robotY"
-                    app:layout_constraintStart_toEndOf="@+id/robotX" />
-
-                <TextView
-                    android:id="@+id/robotY"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Y:"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26px"
-                    app:layout_constraintBottom_toTopOf="@+id/upBtn"
-                    app:layout_constraintEnd_toStartOf="@+id/yAxisTextView" />
-
-                <TextView
-                    android:id="@+id/yAxisTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:layout_weight="1"
-                    android:text="0"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26px"
-                    app:layout_constraintBottom_toTopOf="@+id/upBtn"
-                    app:layout_constraintStart_toEndOf="@+id/robotY" />
-
-                <Button
-                    android:id="@+id/upBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="100dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@drawable/outline_arrow_upward_24"
-                    app:layout_constraintEnd_toStartOf="@+id/rightBtn"
-                    app:layout_constraintStart_toEndOf="@+id/leftBtn"
-                    app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
-
-                <Button
-                    android:id="@+id/leftBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="36dp"
-                    android:layout_marginLeft="36dp"
-                    android:layout_marginEnd="50dp"
-                    android:layout_marginRight="50dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@drawable/outline_arrow_back_24"
-                    app:layout_constraintEnd_toStartOf="@+id/rightBtn"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/upBtn" />
-
-                <Button
-                    android:id="@+id/rightBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="39dp"
-                    android:layout_marginRight="39dp"
-                    android:layout_weight="1"
-                    android:background="#00FFFFFF"
-                    android:foreground="@drawable/outline_arrow_forward_24"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/upBtn" />
-
-                <Button
-                    android:id="@+id/downBtn"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="50dp"
-                    android:background="#00FFFFFF"
-                    android:foreground="@drawable/outline_arrow_downward_24"
-                    app:layout_constraintEnd_toStartOf="@+id/rightBtn"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/leftBtn"
-                    app:layout_constraintTop_toBottomOf="@+id/upBtn" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
