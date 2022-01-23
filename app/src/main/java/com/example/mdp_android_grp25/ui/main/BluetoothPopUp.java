@@ -299,10 +299,10 @@ public class BluetoothPopUp extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String text = intent.getStringExtra("receivedMessage");
             Log.d(TAG, "Message received in activity: "  + text);
+            receivedMsgTextView.setText(text); //set the text to the textview
 
             //if(text != null){
             //messages.append(text + "\n"); //build the message
-            //receivedMsgTextView.setText(messages); //set the text to the textview
 
         }
     };
