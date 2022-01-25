@@ -6,271 +6,250 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-        <Button
-            android:id="@+id/bluetoothButton"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
-            android:foreground="@drawable/baseline_bluetooth_24"
-            android:foregroundTint="@color/colorBlack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/bluetoothConnection"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
-            android:layout_marginLeft="140dp"
-            android:layout_marginTop="24dp"
-            android:background="@color/colorWhite"
-            android:gravity="center"
-            android:text=" Bluetooth Status:"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/bluetoothStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/bluetoothButton"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="580dp"
+                android:layout_marginLeft="10dp"
+                android:foreground="@drawable/baseline_bluetooth_24"
+                android:foregroundTint="@color/colorBlack" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="532dp"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:text="@string/bluetooth_connection"
-            android:textAlignment="center"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/bluetoothConnection"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/bluetoothConnectedDevice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/bluetoothButton"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/bluetoothStatus"
-            app:layout_constraintTop_toTopOf="parent" />
+            <LinearLayout
+                android:layout_width="412.5dp"
+                android:layout_height="508dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/robotStatusLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="41dp"
-            android:background="#FAFAFA"
-            android:gravity="center"
-            android:text="Robot Status:"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+                <view
+                    android:id="@+id/mapView"
+                    class="com.example.mdp_android_grp25.ui.main.GridMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="527dp" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/robotStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="3dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="41dp"
-            android:layout_marginEnd="372dp"
-            android:layout_marginRight="372dp"
-            android:gravity="center"
-            android:text="Ready to Start"
-            android:textAlignment="center"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/robotStatusLabel"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/upBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="408dp"
-            android:background="#00FFFFFF"
-            android:foreground="@drawable/outline_arrow_upward_24"
-            app:layout_constraintEnd_toStartOf="@+id/rightBtn"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/mapView"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/bluetoothConnection"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#82B1FF"
+                    android:gravity="center"
+                    android:text="Bluetooth"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack" />
 
-        <Button
-            android:id="@+id/downBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="72dp"
-            android:layout_marginLeft="72dp"
-            android:layout_marginTop="50dp"
-            android:background="#00FFFFFF"
-            android:foreground="@drawable/outline_arrow_downward_24"
-            app:layout_constraintEnd_toStartOf="@+id/rightBtn"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/mapView"
-            app:layout_constraintTop_toBottomOf="@+id/upBtn" />
+                <TextView
+                    android:id="@+id/bluetoothStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:text="@string/bluetooth_connection"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_red_dark" />
 
-        <Button
-            android:id="@+id/rightBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginLeft="120dp"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:foreground="@drawable/outline_arrow_forward_24"
-            app:layout_constraintBottom_toTopOf="@+id/downBtn"
-            app:layout_constraintStart_toEndOf="@+id/mapView"
-            app:layout_constraintTop_toBottomOf="@+id/upBtn"
-            app:layout_constraintVertical_bias="1.0" />
+                <TextView
+                    android:id="@+id/bluetoothConnectedDevice"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack" />
 
-        <Button
-            android:id="@+id/leftBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="start"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:background="#00FFFFFF"
-            android:foreground="@drawable/outline_arrow_back_24"
-            app:layout_constraintStart_toEndOf="@+id/mapView"
-            app:layout_constraintTop_toBottomOf="@+id/upBtn" />
+                <TextView
+                    android:id="@+id/robotStatusLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#82B1FF"
+                    android:gravity="center"
+                    android:text="Robot Status"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack" />
 
-        <TextView
-            android:id="@+id/directionLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="Direction:"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/robotStatusLabel" />
+                <TextView
+                    android:id="@+id/robotStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="Ready to Start"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorBlack" />
 
-        <TextView
-            android:id="@+id/directionAxisTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="None"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/directionLabel"
-            app:layout_constraintTop_toBottomOf="@+id/robotStatus" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/robotX"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="X:"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/directionLabel" />
+                    <TextView
+                        android:id="@+id/directionLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_weight="1"
+                        android:text="Direction:"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26px" />
 
-        <TextView
-            android:id="@+id/xAxisTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="0"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/robotX"
-            app:layout_constraintTop_toBottomOf="@+id/directionLabel" />
+                    <TextView
+                        android:id="@+id/directionAxisTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26px" />
+                </LinearLayout>
 
-        <TextView
-            android:id="@+id/robotY"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Y:"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/xAxisTextView"
-            app:layout_constraintTop_toBottomOf="@+id/directionAxisTextView" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/yAxisTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="1"
-            android:text="0"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/robotY"
-            app:layout_constraintTop_toBottomOf="@+id/directionAxisTextView" />
+                    <TextView
+                        android:id="@+id/robotX"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="X:"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26px" />
 
-        <view
-            android:id="@+id/mapView"
-            class="com.example.mdp_android_grp25.ui.main.GridMap"
-            android:layout_width="380dp"
-            android:layout_height="370dp"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.072"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/xAxisTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:id="@+id/robotY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Y:"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:id="@+id/yAxisTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26px" />
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="0"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/leftBtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="start"
+                        android:background="#00FFFFFF"
+                        android:foreground="@drawable/outline_arrow_back_24"
+                        app:layout_constraintBottom_toTopOf="@+id/downBtn"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/upBtn" />
+
+                    <Button
+                        android:id="@+id/rightBtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="50dp"
+                        android:layout_marginRight="50dp"
+                        android:background="#00FFFFFF"
+                        android:foreground="@drawable/outline_arrow_forward_24"
+                        app:layout_constraintBottom_toTopOf="@+id/downBtn"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/upBtn" />
+
+                    <Button
+                        android:id="@+id/upBtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:background="#00FFFFFF"
+                        android:foreground="@drawable/outline_arrow_upward_24"
+                        app:layout_constraintEnd_toStartOf="@+id/rightBtn"
+                        app:layout_constraintStart_toEndOf="@+id/leftBtn"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/downBtn"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="28dp"
+                        android:background="#00FFFFFF"
+                        android:foreground="@drawable/outline_arrow_downward_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/rightBtn"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/leftBtn" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
-            android:layout_width="765dp"
-            android:layout_height="353dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabs"
@@ -281,6 +260,6 @@
 
         </androidx.viewpager.widget.ViewPager>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
