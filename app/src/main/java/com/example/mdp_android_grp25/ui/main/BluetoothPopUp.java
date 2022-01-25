@@ -68,7 +68,7 @@ public class BluetoothPopUp extends AppCompatActivity {
     ParcelUuid[] mDeviceUUIDs;
 
     BluetoothConnectionService mBluetoothConnection;
-    public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
     public static BluetoothDevice mBTDevice;
 
     boolean retryConnection = false;
@@ -233,6 +233,7 @@ public class BluetoothPopUp extends AppCompatActivity {
         Button backBtn = findViewById(R.id.backBtn);
 
         connStatusTextView = (TextView) findViewById(R.id.connStatusTextView);
+
         connStatus ="Disconnected";
         sharedPreferences = getApplicationContext().getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
         if (sharedPreferences.contains("connStatus"))
@@ -427,6 +428,7 @@ public class BluetoothPopUp extends AppCompatActivity {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 Log.d(TAG, "onReceive: "+ device.getName() +" : " + device.getAddress());
 
+                //only add devices that are not paired to the available list
                 if(device.getBondState() != BluetoothDevice.BOND_BONDED){
                     mNewBTDevices.add(device);
                     mNewDevlceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mNewBTDevices);
@@ -535,7 +537,7 @@ public class BluetoothPopUp extends AppCompatActivity {
             unregisterReceiver(mBroadcastReceiver2);
             unregisterReceiver(mBroadcastReceiver3);
             unregisterReceiver(mBroadcastReceiver4);
-            //unregisterReceiver(mReceiver);
+            unregisterReceiver(mReceiver);
             LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver5);
         } catch(IllegalArgumentException e){
             e.printStackTrace();
@@ -551,7 +553,7 @@ public class BluetoothPopUp extends AppCompatActivity {
             unregisterReceiver(mBroadcastReceiver2);
             unregisterReceiver(mBroadcastReceiver3);
             unregisterReceiver(mBroadcastReceiver4);
-            //unregisterReceiver(mReceiver);
+            unregisterReceiver(mReceiver);
             LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver5);
         } catch(IllegalArgumentException e){
             e.printStackTrace();

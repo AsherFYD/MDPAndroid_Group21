@@ -102,6 +102,78 @@ public class MainActivity extends AppCompatActivity {
         // Robot Status KEEP
         robotStatusTextView = findViewById(R.id.robotStatus);
 
+        if(BluetoothConnectionService.BluetoothConnectionStatus == true){
+            showLog("Update robotstatusTextView ready to move");
+            robotStatusTextView.setText("Ready to Move");
+        }else{
+            showLog("Update robotstatusTextView disconnected");
+            robotStatusTextView.setText("Disconnected");
+        }
+
+        // Controller, on click listeners for controller
+        /**
+         * Need to include situations when robot is not on the map in the app,
+         * and stop movement if the intended movement will send robot out of bounds
+         */
+        upBtn = findViewById(R.id.upBtn);
+        downBtn = findViewById(R.id.downBtn);
+        leftBtn = findViewById(R.id.leftBtn);
+        rightBtn = findViewById(R.id.rightBtn);
+
+        //if robot is not on map --> notify user to put robot on map --> don't send message
+        //if movement will make robot out of bound --> notify user that robot is unable to make the movement --> don't send message
+        upBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Up Button pressed");
+                printMessage("f");
+            }
+        });
+
+        downBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Down Button pressed");
+                printMessage("b");
+            }
+        });
+
+        leftBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Left Button pressed");
+                printMessage("tl");
+            }
+        });
+
+        rightBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Right Button pressed");
+                printMessage("tr");
+            }
+        });
+
+
+        myDialog = new ProgressDialog(MainActivity.this);
+        myDialog.setMessage("Waiting for other device to reconnect...");
+        myDialog.setCancelable(false);
+        myDialog.setButton(
+            DialogInterface.BUTTON_NEGATIVE,
+            "Cancel",
+            new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            }
+        );
+
+
+
+        /**
+         * Have not understand the below items
+         */
         // Map
         gridMap = new GridMap(this);
         gridMap = findViewById(R.id.mapView);
@@ -119,26 +191,6 @@ public class MainActivity extends AppCompatActivity {
                 gridMap.imageBearings.get(i)[j] = "";
             }
         }
-
-        // Controller
-        upBtn = findViewById(R.id.upBtn);
-        downBtn = findViewById(R.id.downBtn);
-        leftBtn = findViewById(R.id.leftBtn);
-        rightBtn = findViewById(R.id.rightBtn);
-
-        myDialog = new ProgressDialog(MainActivity.this);
-        myDialog.setMessage("Waiting for other device to reconnect...");
-        myDialog.setCancelable(false);
-        myDialog.setButton(
-            DialogInterface.BUTTON_NEGATIVE,
-            "Cancel",
-            new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                }
-            }
-        );
     }
 
     public static GridMap getGridMap() {
@@ -147,10 +199,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static TextView getRobotStatusTextView() {  return robotStatusTextView; }
 
-    public static Button getUpBtn() { return upBtn; }
-    public static Button getDownBtn() { return downBtn; }
-    public static Button getLeftBtn() { return leftBtn; }
-    public static Button getRightBtn() { return rightBtn; }
+    //public static Button getUpBtn() { return upBtn; }
+    //public static Button getDownBtn() { return downBtn; }
+    //public static Button getLeftBtn() { return leftBtn; }
+    //public static Button getRightBtn() { return rightBtn; }
 
     public static TextView getBluetoothStatus() { return bluetoothStatus; } //KEEP
     public static TextView getConnectedDevice() { return bluetoothDevice; } //KEEP
@@ -160,21 +212,24 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPreferences.edit();
     }
 
-    // Send message to bluetooth
+    // Use this method to send message through bluetooth to robot
     public static void printMessage(String message) {
         showLog("Entering printMessage");
-        editor = sharedPreferences.edit();
+        //editor = sharedPreferences.edit();
 
         if (BluetoothConnectionService.BluetoothConnectionStatus == true) {
             byte[] bytes = message.getBytes(Charset.defaultCharset());
             BluetoothConnectionService.write(bytes);
         }
+
+        showLog("Exiting printMessage");
+        /**
         showLog(message);
         editor.putString("message",
             BluetoothChatFragment.getMessageReceivedTextView().getText() + "\n" + message);
         editor.commit();
         refreshMessageReceived();
-        showLog("Exiting printMessage");
+         **/
     }
 
     // Store received message into string
@@ -259,6 +314,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Device now connected to "
                         + mDevice.getName(), Toast.LENGTH_LONG).show();
                 editor.putString("connStatus", "Connected to " + mDevice.getName());
+                robotStatusTextView.setText("Ready to move");
             }
             else if(status.equals("disconnected")){
                 Log.d(TAG, "mBroadcastReceiver5: Disconnected from "+mDevice.getName());
@@ -266,6 +322,7 @@ public class MainActivity extends AppCompatActivity {
                         + mDevice.getName(), Toast.LENGTH_LONG).show();
 
                 editor.putString("connStatus", "Disconnected");
+                robotStatusTextView.setText("Disconnected");
 
                 myDialog.show();
             }
@@ -282,6 +339,15 @@ public class MainActivity extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String message = intent.getStringExtra("receivedMessage");
             showLog("receivedMessage: message --- " + message);
+
+            //for robot status
+            if(message.contains(":")){
+                String[] cmd = message.split(":");
+                if (cmd[0].equals("status")){
+                    showLog("Updating robot status");
+                    robotStatusTextView.setText(cmd[1]);
+                }
+            }
 
             if(message.contains(",")) {
                 String[] cmd = message.split(",");

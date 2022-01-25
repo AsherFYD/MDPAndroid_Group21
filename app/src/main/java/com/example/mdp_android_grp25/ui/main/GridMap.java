@@ -1176,6 +1176,7 @@ public class GridMap extends View {
     }
 
 
+    //method to update various information regarding map
     public void updateMapInformation() throws JSONException {
         showLog("Entering updateMapInformation");
         JSONObject mapInformation = this.getReceivedJsonObject();
@@ -1308,7 +1309,7 @@ public class GridMap extends View {
                     break;
                 case "status":
                     String msg = mapInformation.getString("status");
-                    printRobotStatus(msg);
+                    //printRobotStatus(msg);
                     message = "status: " + msg;
                     break;
                 default:
@@ -1578,10 +1579,12 @@ public class GridMap extends View {
         return false;   // false means no obstacles
     }
 
+    /**
     public void printRobotStatus(String message) {
         TextView robotStatusTextView = ((Activity)this.getContext()).findViewById(R.id.robotStatus);
         robotStatusTextView.setText(message);
     }
+     **/
 
     public static void setPublicMDFExploration(String msg) {
         publicMDFExploration = msg;

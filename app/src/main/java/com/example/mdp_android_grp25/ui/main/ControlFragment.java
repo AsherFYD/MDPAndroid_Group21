@@ -107,10 +107,10 @@ public class ControlFragment extends Fragment {
                 Context.MODE_PRIVATE);
 
         // variable initialization
-        moveForwardImageBtn = MainActivity.getUpBtn();
-        turnRightImageBtn = MainActivity.getRightBtn();
-        moveBackImageBtn = MainActivity.getDownBtn();
-        turnLeftImageBtn = MainActivity.getLeftBtn();
+        //moveForwardImageBtn = MainActivity.getUpBtn();
+        //turnRightImageBtn = MainActivity.getRightBtn();
+        //moveBackImageBtn = MainActivity.getDownBtn();
+        //turnLeftImageBtn = MainActivity.getLeftBtn();
         exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
         fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
         exploreButton = root.findViewById(R.id.exploreToggleBtn2);
@@ -123,6 +123,7 @@ public class ControlFragment extends Fragment {
 
         gridMap = MainActivity.getGridMap();
 
+        /**
         // Button Listener
         moveForwardImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +138,7 @@ public class ControlFragment extends Fragment {
                         updateStatus("moving forward");
                     else
                         updateStatus("Unable to move forward");
-                    MainActivity.printMessage("STM|b \n");
+                    MainActivity.printMessage("f");
                 }
                 else
                     updateStatus("Please press 'STARTING POINT'");
@@ -154,7 +155,7 @@ public class ControlFragment extends Fragment {
                 else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
                     gridMap.moveRobot("right");
                     MainActivity.refreshLabel();
-                    MainActivity.printMessage("STM|j  / \n");
+                    MainActivity.printMessage("sr");
                 }
                 else
                     updateStatus("Please press 'STARTING POINT'");
@@ -175,7 +176,7 @@ public class ControlFragment extends Fragment {
                         updateStatus("moving backward");
                     else
                         updateStatus("Unable to move backward");
-                    MainActivity.printMessage("STM|f \n");
+                    MainActivity.printMessage("b");
                 }
                 else
                     updateStatus("Please press 'STARTING POINT'");
@@ -193,13 +194,14 @@ public class ControlFragment extends Fragment {
                     gridMap.moveRobot("left");
                     MainActivity.refreshLabel();
                     updateStatus("turning left");
-                    MainActivity.printMessage("STM|i \n");
+                    MainActivity.printMessage("sl");
                 }
                 else
                     updateStatus("Please press 'STARTING POINT'");
                 showLog("Exiting turnLeftImageBtn");
             }
         });
+         **/
 
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,14 +209,14 @@ public class ControlFragment extends Fragment {
                 showLog("Clicked exploreToggleBtn");
                 ToggleButton exploreToggleBtn = (ToggleButton) v;
 
-                if (exploreToggleBtn.getText().equals("WK8 START")) {
+                if (exploreToggleBtn.getText().equals("WK8 START")) { //press stop
                     showToast("Auto Movement/ImageRecog timer stop!");
                     robotStatusTextView.setText("Auto Movement Stopped");
                     timerHandler.removeCallbacks(timerRunnableExplore);
                 }
-                else if (exploreToggleBtn.getText().equals("STOP")) {
+                else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
                     String msg = gridMap.getObstacles();
-                    MainActivity.printMessage(msg);
+                    MainActivity.printMessage(msg); //send obstacles to robot
                     MainActivity.stopTimerFlag = false;
                     showToast("Auto Movement/ImageRecog timer start!");
                     robotStatusTextView.setText("Auto Movement Started");
@@ -233,15 +235,15 @@ public class ControlFragment extends Fragment {
             public void onClick(View v) {
                 showLog("Clicked fastestToggleBtn");
                 ToggleButton fastestToggleBtn = (ToggleButton) v;
-                if (fastestToggleBtn.getText().equals("WK9 START")) {
+                if (fastestToggleBtn.getText().equals("WK9 START")) { //press stop for wk9 start
                     showToast("Fastest car timer stop!");
                     robotStatusTextView.setText("Fastest Car Stopped");
                     timerHandler.removeCallbacks(timerRunnableFastest);
                 }
-                else if (fastestToggleBtn.getText().equals("STOP")) {
+                else if (fastestToggleBtn.getText().equals("STOP")) { //press start wk 9
                     showToast("Fastest car timer start!");
                     try {
-                        MainActivity.printMessage("STM|G");
+                        MainActivity.printMessage("STM|G"); //send message for fastest path
                     } catch (Exception e) {
                         showLog(e.getMessage());
                     }
@@ -286,9 +288,11 @@ public class ControlFragment extends Fragment {
         super.onDestroy();
     }
 
+    /**
     private void updateStatus(String message) {
         Toast toast = Toast.makeText(getContext(), message, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP,0, 0);
         toast.show();
     }
+     **/
 }

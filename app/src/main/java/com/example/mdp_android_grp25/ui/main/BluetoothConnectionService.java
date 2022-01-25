@@ -31,7 +31,7 @@ public class BluetoothConnectionService {
 
     private static final String appName = "MDP_Group_25";
 
-    public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
+    public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
 
     private final BluetoothAdapter mBluetoothAdapter;
     Context mContext;
@@ -209,6 +209,10 @@ public class BluetoothConnectionService {
             TextView device = MainActivity.getConnectedDevice();
             device.setText(mDevice.getName());
 
+            //update robot status after gaining connection
+            TextView robotStatus = MainActivity.getRobotStatusTextView();
+            robotStatus.setText("Ready to Move");
+
 
             this.mSocket = socket;
             InputStream tmpIn = null;
@@ -243,8 +247,7 @@ public class BluetoothConnectionService {
                 } catch (IOException e) {
                     Log.e(TAG, "Error reading input stream. "+e.getMessage());
 
-
-                    //when connection lost, change the connection status at main activity
+                    //when connection lost, change the connection status at main activity & at bluetooth page
                     connectionStatus = new Intent("ConnectionStatus");
                     connectionStatus.putExtra("Status", "disconnected");
                     TextView status = MainActivity.getBluetoothStatus();
@@ -253,6 +256,9 @@ public class BluetoothConnectionService {
                     connectionStatus.putExtra("Device", mDevice);
                     LocalBroadcastManager.getInstance(mContext).sendBroadcast(connectionStatus);
                     BluetoothConnectionStatus = false;
+
+                    TextView robotStatus = MainActivity.getRobotStatusTextView();
+                    robotStatus.setText("Disconnected");
 
                     break;
                 }
