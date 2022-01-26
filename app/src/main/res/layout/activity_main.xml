@@ -24,7 +24,7 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
-                android:layout_gravity="start"
+                android:layout_gravity="end"
                 android:layout_marginStart="580dp"
                 android:layout_marginLeft="10dp"
                 android:foreground="@drawable/baseline_bluetooth_24"

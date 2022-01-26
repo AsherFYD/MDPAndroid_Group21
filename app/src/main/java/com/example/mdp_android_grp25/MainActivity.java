@@ -126,15 +126,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showLog("Up Button pressed");
-                printMessage("f");
+                //printMessage("f");
+                if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                    gridMap.moveRobot("forward");
+                    refreshLabel();
+                    if (gridMap.getValidPosition()){
+                        Toast.makeText(MainActivity.this, "Moving forward", Toast.LENGTH_SHORT).show();
+                        printMessage("f");
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Unable to move forward", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
+                }
+                showLog("Exiting moving Forward");
+
             }
         });
 
         downBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showLog("Down Button pressed");
-                printMessage("b");
+                showLog("Back Button pressed");
+                //printMessage("b");
+                if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                    gridMap.moveRobot("back");
+                    refreshLabel();
+                    if (gridMap.getValidPosition()){
+                        Toast.makeText(MainActivity.this, "Moving backward", Toast.LENGTH_SHORT).show();
+                        printMessage("b");
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Unable to move backward", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
+                }
+                showLog("Exiting moving backwards");
             }
         });
 
@@ -142,7 +173,37 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showLog("Left Button pressed");
-                printMessage("tl");
+                //printMessage("tl");
+
+                if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                    gridMap.moveRobot("left");
+                    refreshLabel();
+                    if (gridMap.getValidPosition()){
+                        Toast.makeText(MainActivity.this, "Turning left", Toast.LENGTH_SHORT).show();
+                        printMessage("tl");
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Unable to turn left", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
+                }
+
+
+                /**
+                if (gridMap.getAutoUpdate())
+                    Toast.makeText(MainActivity.this, "Press Manual", Toast.LENGTH_SHORT).show(); //what is thisss
+                else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                    gridMap.moveRobot("left");
+                    MainActivity.refreshLabel();
+                    Toast.makeText(MainActivity.this, "Turning left", Toast.LENGTH_SHORT).show();
+                    MainActivity.printMessage("sl");
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
+                 **/
+                showLog("Exiting left button pressed");
             }
         });
 
@@ -150,7 +211,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showLog("Right Button pressed");
-                printMessage("tr");
+                //printMessage("tr");
+
+                if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                    gridMap.moveRobot("right");
+                    refreshLabel();
+                    if (gridMap.getValidPosition()){
+                        Toast.makeText(MainActivity.this, "Turning right", Toast.LENGTH_SHORT).show();
+                        printMessage("tr");
+                    }
+                    else{
+                        Toast.makeText(MainActivity.this, "Unable to turn right", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
+                }
+
+                /**
+                if (gridMap.getAutoUpdate())
+                    Toast.makeText(MainActivity.this, "Press Manual", Toast.LENGTH_SHORT).show(); //what is thisss
+                else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                    gridMap.moveRobot("right");
+                    MainActivity.refreshLabel();
+                    Toast.makeText(MainActivity.this, "Turning right", Toast.LENGTH_SHORT).show();
+                    MainActivity.printMessage("sr");
+                }
+                else
+                    Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
+                 **/
+                showLog("Exiting right button pressed");
             }
         });
 
@@ -288,14 +378,6 @@ public class MainActivity extends AppCompatActivity {
         showLog("Exiting receiveMessage");
     }
 
-    private static void showLog(String message) {
-        Log.d(TAG, message);
-    }
-
-    private static SharedPreferences getSharedPreferences(Context context) {
-        return context.getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
-    }
-
     private BroadcastReceiver mBroadcastReceiver5 = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -424,6 +506,23 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+
+
+
+
+
+
+
+
+
+    private static SharedPreferences getSharedPreferences(Context context) {
+        return context.getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
+    }
+
+    private static void showLog(String message) {
+        Log.d(TAG, message);
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){

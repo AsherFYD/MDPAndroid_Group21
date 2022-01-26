@@ -111,6 +111,8 @@ public class ControlFragment extends Fragment {
         //turnRightImageBtn = MainActivity.getRightBtn();
         //moveBackImageBtn = MainActivity.getDownBtn();
         //turnLeftImageBtn = MainActivity.getLeftBtn();
+
+
         exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
         fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
         exploreButton = root.findViewById(R.id.exploreToggleBtn2);
