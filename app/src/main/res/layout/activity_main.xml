@@ -7,15 +7,16 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-        <androidx.appcompat.widget.Toolbar
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:background="#FFFFFF"
             android:orientation="horizontal">
 
@@ -25,12 +26,64 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="end"
-                android:layout_marginStart="580dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="10dp"
                 android:foreground="@drawable/baseline_bluetooth_24"
-                android:foregroundTint="@color/colorBlack" />
+                android:foregroundTint="@color/colorBlack"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.appcompat.widget.Toolbar>
+            <TextView
+                android:id="@+id/bluetoothConnection"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="119dp"
+                android:layout_marginLeft="119dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="9dp"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:text="Bluetooth Status:"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bluetoothStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="9dp"
+                android:gravity="center"
+                android:text="@string/bluetooth_connection"
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_red_dark"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bluetoothConnection"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bluetoothConnectedDevice"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="11dp"
+                android:layout_marginBottom="9dp"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bluetoothStatus"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -65,37 +118,10 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/bluetoothConnection"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="#82B1FF"
-                    android:gravity="center"
-                    android:text="Bluetooth"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack" />
-
-                <TextView
-                    android:id="@+id/bluetoothStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:text="@string/bluetooth_connection"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_dark" />
-
-                <TextView
-                    android:id="@+id/bluetoothConnectedDevice"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:gravity="center"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorBlack" />
-
-                <TextView
                     android:id="@+id/robotStatusLabel"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="0dp"
                     android:background="#82B1FF"
                     android:gravity="center"
                     android:text="Robot Status"
@@ -105,7 +131,7 @@
                 <TextView
                     android:id="@+id/robotStatus"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="30dp"
                     android:gravity="center"
                     android:text="Ready to Start"
                     android:textAlignment="center"
@@ -120,21 +146,23 @@
                         android:id="@+id/directionLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="Direction:"
                         android:textColor="@color/colorBlack"
-                        android:textSize="26px" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/directionAxisTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:text="None"
                         android:textColor="@color/colorBlack"
-                        android:textSize="26px" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -146,49 +174,49 @@
                         android:id="@+id/robotX"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="X:"
                         android:textColor="@color/colorBlack"
-                        android:textSize="26px" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/xAxisTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:layout_weight="1"
                         android:text="0"
                         android:textColor="@color/colorBlack"
-                        android:textSize="26px" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/robotY"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:layout_weight="1"
                         android:gravity="center"
                         android:text="Y:"
                         android:textColor="@color/colorBlack"
-                        android:textSize="26px" />
+                        android:textSize="14sp" />
 
                     <TextView
                         android:id="@+id/yAxisTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="0dp"
                         android:layout_weight="1"
                         android:text="0"
                         android:textColor="@color/colorBlack"
-                        android:textSize="26px" />
+                        android:textSize="14sp" />
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="200dp"
                     android:layout_weight="0"
                     android:orientation="horizontal">
 

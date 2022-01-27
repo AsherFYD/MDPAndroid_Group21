@@ -202,14 +202,34 @@ public class BluetoothConnectionService {
             LocalBroadcastManager.getInstance(mContext).sendBroadcast(connectionStatus);
             BluetoothConnectionStatus = true;
 
-            //for bluetooth connection status in main activity
+            /**
+             * When connected, set the textviews in mainactivity to show status
+             */
+
+            BluetoothPopUp mBluetoothPopUpActivity = (BluetoothPopUp) mContext;
+            mBluetoothPopUpActivity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    TextView status = MainActivity.getBluetoothStatus();
+                    status.setText("Connected to");
+                    status.setTextColor(Color.GREEN);
+                    TextView device = MainActivity.getConnectedDevice();
+                    device.setText(mDevice.getName());
+                }
+            });
+
+            /**
             TextView status = MainActivity.getBluetoothStatus();
             status.setText("Connected to");
             status.setTextColor(Color.GREEN);
             TextView device = MainActivity.getConnectedDevice();
             device.setText(mDevice.getName());
+             **/
 
-            //update robot status after gaining connection
+
+            /**
+             * When connected, set the textview in mainactivity to show robot status
+             */
             TextView robotStatus = MainActivity.getRobotStatusTextView();
             robotStatus.setText("Ready to Move");
 
@@ -246,17 +266,40 @@ public class BluetoothConnectionService {
 
                 } catch (IOException e) {
                     Log.e(TAG, "Error reading input stream. "+e.getMessage());
-
-                    //when connection lost, change the connection status at main activity & at bluetooth page
                     connectionStatus = new Intent("ConnectionStatus");
                     connectionStatus.putExtra("Status", "disconnected");
+                    connectionStatus.putExtra("Device", mDevice);
+                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(connectionStatus);
+
+                    BluetoothConnectionStatus = false;
+
+
+                    /**
+                     * When disconnected, set textviews in main activity to show connection status at main activity
+                     */
+                    BluetoothPopUp mBluetoothPopUpActivity = (BluetoothPopUp) mContext;
+                    mBluetoothPopUpActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextView status = MainActivity.getBluetoothStatus();
+                            status.setText("Disconnected");
+                            status.setTextColor(Color.RED);
+                            TextView device = MainActivity.getConnectedDevice();
+                            device.setText("");
+                        }
+                    });
+
+
+                    /**
                     TextView status = MainActivity.getBluetoothStatus();
                     status.setText("Disconnected");
                     status.setTextColor(Color.RED);
-                    connectionStatus.putExtra("Device", mDevice);
-                    LocalBroadcastManager.getInstance(mContext).sendBroadcast(connectionStatus);
-                    BluetoothConnectionStatus = false;
+                     **/
 
+
+                    /**
+                     * When disconnected, set textview in main activity to show robot status
+                     */
                     TextView robotStatus = MainActivity.getRobotStatusTextView();
                     robotStatus.setText("Disconnected");
 

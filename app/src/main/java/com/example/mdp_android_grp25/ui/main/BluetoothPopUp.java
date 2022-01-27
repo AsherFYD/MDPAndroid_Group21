@@ -235,6 +235,7 @@ public class BluetoothPopUp extends AppCompatActivity {
         connStatusTextView = (TextView) findViewById(R.id.connStatusTextView);
 
         connStatus ="Disconnected";
+
         sharedPreferences = getApplicationContext().getSharedPreferences("Shared Preferences", Context.MODE_PRIVATE);
         if (sharedPreferences.contains("connStatus"))
             connStatus = sharedPreferences.getString("connStatus", "");
@@ -390,6 +391,9 @@ public class BluetoothPopUp extends AppCompatActivity {
         }
     };
 
+    /**
+     * for scanning mode
+     */
     private final BroadcastReceiver mBroadcastReceiver2 = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
@@ -417,6 +421,9 @@ public class BluetoothPopUp extends AppCompatActivity {
         }
     };
 
+    /**
+     * for finding available devices
+     */
     private BroadcastReceiver mBroadcastReceiver3 = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -447,6 +454,10 @@ public class BluetoothPopUp extends AppCompatActivity {
         }
     };
 
+
+    /**
+     * for detecting bond states(Paired devices)
+     */
     private BroadcastReceiver mBroadcastReceiver4 = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -469,6 +480,10 @@ public class BluetoothPopUp extends AppCompatActivity {
         }
     };
 
+
+    /**
+     * To listen for connection status --> Connected/disconnected
+     */
     private BroadcastReceiver mBroadcastReceiver5 = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
