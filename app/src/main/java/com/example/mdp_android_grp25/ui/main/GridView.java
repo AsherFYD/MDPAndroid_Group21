@@ -1,3 +1,4 @@
+/**
 package com.example.mdp_android_grp25.ui.main;
 
 import android.content.Context;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+
 
 public class GridView extends View {
 
@@ -387,3 +389,4 @@ public class GridView extends View {
         Log.d(TAG, message);
     }
 }
+ **/

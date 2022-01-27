@@ -205,7 +205,6 @@ public class BluetoothConnectionService {
             /**
              * When connected, set the textviews in mainactivity to show status
              */
-
             BluetoothPopUp mBluetoothPopUpActivity = (BluetoothPopUp) mContext;
             mBluetoothPopUpActivity.runOnUiThread(new Runnable() {
                 @Override

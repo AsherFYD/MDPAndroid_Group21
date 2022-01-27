@@ -1,3 +1,4 @@
+/**
 package com.example.mdp_android_grp25.ui.main;
 
 import android.content.Context;
@@ -6,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -75,3 +77,4 @@ public class MapInformation extends AppCompatActivity {
         Log.d(TAG, message);
     }
 }
+ **/

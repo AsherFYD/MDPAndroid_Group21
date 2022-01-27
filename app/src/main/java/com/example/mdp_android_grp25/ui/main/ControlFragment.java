@@ -205,6 +205,9 @@ public class ControlFragment extends Fragment {
         });
          **/
 
+        /**
+         * for week 8 start button
+         */
         exploreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,6 +235,9 @@ public class ControlFragment extends Fragment {
             }
         });
 
+        /**
+         * for week 9 start button
+         */
         fastestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
