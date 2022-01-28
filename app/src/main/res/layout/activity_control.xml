@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+<!--
     <ToggleButton
         android:id="@+id/fastestToggleBtn2"
         android:layout_width="120dp"
@@ -17,7 +17,8 @@
         android:textOn="STOP"
         app:layout_constraintStart_toEndOf="@+id/exploreResetImageBtn2"
         app:layout_constraintTop_toBottomOf="@+id/fastestTimeTextView2" />
-
+-->
+<!--
     <ImageButton
         android:id="@+id/fastestResetImageBtn2"
         style="@style/Widget.AppCompat.ImageButton"
@@ -31,7 +32,8 @@
         app:layout_constraintStart_toEndOf="@+id/fastestToggleBtn2"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_refresh" />
-
+-->
+<!--
     <ImageButton
         android:id="@+id/exploreResetImageBtn2"
         style="@style/Widget.AppCompat.ImageButton"
@@ -43,10 +45,10 @@
         android:layout_marginEnd="312dp"
         android:layout_marginRight="312dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/exploreToggleBtn2"
+        app:layout_constraintStart_toEndOf="@+id/exploreToggleBtn3"
         app:layout_constraintTop_toBottomOf="@+id/fastestTimeTextView2"
         app:srcCompat="@drawable/ic_refresh" />
-
+-->
     <ToggleButton
         android:id="@+id/exploreToggleBtn2"
         android:layout_width="120dp"
@@ -59,7 +61,7 @@
         android:textOn="STOP"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exploreTimeTextView2" />
-
+<!--
     <TextView
         android:id="@+id/fastestTimeTextView2"
         android:layout_width="157dp"
@@ -75,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fastestTextView"
         app:layout_constraintVertical_bias="0.0" />
-
+-->
     <TextView
         android:id="@+id/fastestTextView"
         android:layout_width="157dp"

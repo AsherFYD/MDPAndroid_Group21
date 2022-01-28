@@ -113,12 +113,12 @@ public class ControlFragment extends Fragment {
         //turnLeftImageBtn = MainActivity.getLeftBtn();
 
 
-        exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
-        fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
-        exploreButton = root.findViewById(R.id.exploreToggleBtn2);
-        fastestButton = root.findViewById(R.id.fastestToggleBtn2);
-        exploreResetButton = root.findViewById(R.id.exploreResetImageBtn2);
-        fastestResetButton = root.findViewById(R.id.fastestResetImageBtn2);
+        //exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
+        //fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
+        exploreButton = root.findViewById(R.id.exploreToggleBtn3);
+        fastestButton = root.findViewById(R.id.fastestToggleBtn3);
+        //exploreResetButton = root.findViewById(R.id.exploreResetImageBtn2);
+        //fastestResetButton = root.findViewById(R.id.fastestResetImageBtn2);
         robotStatusTextView = MainActivity.getRobotStatusTextView();
         fastestTimer = 0;
         exploreTimer = 0;

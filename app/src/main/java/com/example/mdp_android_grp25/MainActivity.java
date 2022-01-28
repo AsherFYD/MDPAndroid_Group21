@@ -71,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
         viewPager.setOffscreenPageLimit(9999);
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setupWithViewPager(viewPager);
+        //TabLayout tabs = findViewById(R.id.tabs);
+        //tabs.setupWithViewPager(viewPager);
         LocalBroadcastManager
                 .getInstance(this)
                 .registerReceiver(messageReceiver, new IntentFilter("incomingMessage"));
@@ -416,104 +416,99 @@ public class MainActivity extends AppCompatActivity {
     // alg sends x,y,robotDirection,movementAction
     // alg sends ALG,<obstacle id>
     // rpi sends RPI,<image id>
-    BroadcastReceiver messageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String message = intent.getStringExtra("receivedMessage");
-            showLog("receivedMessage: message --- " + message);
+    BroadcastReceiver messageReceiver;
 
-            //for robot status
-            if(message.contains(":")){
-                String[] cmd = message.split(":");
-                if (cmd[0].equals("status")){
-                    showLog("Updating robot status");
-                    robotStatusTextView.setText(cmd[1]);
-                }
-            }
+    {
+        messageReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String message = intent.getStringExtra("receivedMessage");
+                showLog("receivedMessage: message --- " + message);
 
-            if(message.contains(",")) {
-                String[] cmd = message.split(",");
-
-                // check if string is cmd sent by ALG/RPI to get obstacle/image id
-                if (cmd[0].equals("ALG") || cmd[0].equals("RPI")) {
-                    showLog("cmd[0] is ALG or RPI");
-                    if(obstacleID.equals(""))
-                        obstacleID = cmd[0].equals("ALG") ? cmd[1] : "";
-                    if(imageID.equals(""))
-                        imageID = cmd[0].equals("RPI") ? cmd[1] : "";
-
-                    showLog("obstacleID = " + obstacleID);
-                    showLog("imageID = " + imageID);
-
-                    // call update fn only when both IDs are obtained
-                    if (!(obstacleID.equals("") || imageID.equals(""))) {
-                        showLog("imageID and obstacleID not empty");
-                        gridMap.updateIDFromRpi(obstacleID, imageID);
-                        obstacleID = "";
-                        imageID = "";
-                    }
-                } else {
-
-                    // alg sends in cm and float e.g. 100,100,N
-                    float x = Integer.parseInt(cmd[0]);
-                    float y = Integer.parseInt(cmd[1]);
-
-                    // process received figures to pass into our fn
-                    int a = Math.round(x);
-                    int b = Math.round(y);
-                    a = (a / 10) + 1;
-                    b = (b / 10) + 1;
-
-                    String direction = cmd[2];
-
-                    // allow robot to show up on grid if its on the very boundary
-                    if (a == 1) a++;
-                    if (b == 20) b--;
-
-                    if (cmd.length == 4){
-                        String command = cmd[3];
-
-                        // if move forward, reverse, turn on the spot left/right
-                        if (command.equals("f") || command.equals("r") || command.equals("sr")
-                            || command.equals("sl")) {
-                            showLog("forward, reverse or turn on spot");
-                            gridMap.performAlgoCommand(a, b, direction);
-                        }
-                        // for all other turning cmds
-                        else {
-                            gridMap.performAlgoTurning(a, b, direction, command);
-                        }
+                //for robot status
+                if (message.contains(":")) {
+                    String[] cmd = message.split(":");
+                    if (cmd[0].equals("status")) {
+                        showLog("Updating robot status");
+                        robotStatusTextView.setText(cmd[1]);
                     }
                 }
-            }
-            else if (message.equals("END")) {
-                // if wk 8 btn is checked, means running wk 8 challenge and likewise for wk 9
-                // end the corresponding timer
-                ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn2);
-                ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn2);
 
-                if (exploreButton.isChecked()) {
-                    showLog("explorebutton is checked");
-                    stopTimerFlag = true;
-                    exploreButton.setChecked(false);
-                    robotStatusTextView.setText("Auto Movement/ImageRecog Stopped");
-                } else if (fastestButton.isChecked()) {
-                    showLog("fastestbutton is checked");
-                    stopTimerFlag = true;
-                    fastestButton.setChecked(false);
-                    robotStatusTextView.setText("Week 9 Stopped");
+                if (message.contains(",")) {
+                    String[] cmd = message.split(",");
+
+                    // check if string is cmd sent by ALG/RPI to get obstacle/image id
+                    if (cmd[0].equals("ALG") || cmd[0].equals("RPI")) {
+                        showLog("cmd[0] is ALG or RPI");
+                        if (obstacleID.equals(""))
+                            obstacleID = cmd[0].equals("ALG") ? cmd[1] : "";
+                        if (imageID.equals(""))
+                            imageID = cmd[0].equals("RPI") ? cmd[1] : "";
+
+                        showLog("obstacleID = " + obstacleID);
+                        showLog("imageID = " + imageID);
+
+                        // call update fn only when both IDs are obtained
+                        if (!(obstacleID.equals("") || imageID.equals(""))) {
+                            showLog("imageID and obstacleID not empty");
+                            gridMap.updateIDFromRpi(obstacleID, imageID);
+                            obstacleID = "";
+                            imageID = "";
+                        }
+                    } else {
+
+                        // alg sends in cm and float e.g. 100,100,N
+                        float x = Integer.parseInt(cmd[0]);
+                        float y = Integer.parseInt(cmd[1]);
+
+                        // process received figures to pass into our fn
+                        int a = Math.round(x);
+                        int b = Math.round(y);
+                        a = (a / 10) + 1;
+                        b = (b / 10) + 1;
+
+                        String direction = cmd[2];
+
+                        // allow robot to show up on grid if its on the very boundary
+                        if (a == 1) a++;
+                        if (b == 20) b--;
+
+                        if (cmd.length == 4) {
+                            String command = cmd[3];
+
+                            // if move forward, reverse, turn on the spot left/right
+                            if (command.equals("f") || command.equals("r") || command.equals("sr")
+                                    || command.equals("sl")) {
+                                showLog("forward, reverse or turn on spot");
+                                gridMap.performAlgoCommand(a, b, direction);
+                            }
+                            // for all other turning cmds
+                            else {
+                                gridMap.performAlgoTurning(a, b, direction, command);
+                            }
+                        }
+                    }
+                } else if (message.equals("END")) {
+                    // if wk 8 btn is checked, means running wk 8 challenge and likewise for wk 9
+                    // end the corresponding timer
+                    ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn3);
+                    ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn3);
+
+                    if (exploreButton.isChecked()) {
+                        showLog("explorebutton is checked");
+                        stopTimerFlag = true;
+                        exploreButton.setChecked(false);
+                        robotStatusTextView.setText("Auto Movement/ImageRecog Stopped");
+                    } else if (fastestButton.isChecked()) {
+                        showLog("fastestbutton is checked");
+                        stopTimerFlag = true;
+                        fastestButton.setChecked(false);
+                        robotStatusTextView.setText("Week 9 Stopped");
+                    }
                 }
             }
-        }
-    };
-
-
-
-
-
-
-
-
+        };
+    }
 
 
     private static SharedPreferences getSharedPreferences(Context context) {
