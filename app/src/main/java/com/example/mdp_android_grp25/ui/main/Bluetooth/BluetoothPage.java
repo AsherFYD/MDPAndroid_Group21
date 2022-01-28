@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ParcelUuid;
 import android.os.Parcelable;
+import android.text.method.ScrollingMovementMethod;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -268,6 +269,8 @@ public class BluetoothPage extends AppCompatActivity {
 
 
         receivedMsgTextView = (TextView) findViewById(R.id.received_msg_textview);
+        receivedMsgTextView.setMovementMethod(new ScrollingMovementMethod()); //to make it scrollable
+
         sendMsgEditText = (EditText) findViewById(R.id.Send_msg_edittext);
         sendMsgBtn = (Button) findViewById(R.id.send_msg_btn);
 
