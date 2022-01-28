@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mdp_android_grp25.R;
+import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.nio.charset.Charset;

@@ -1,11 +1,10 @@
-package com.example.mdp_android_grp25.ui.main;
+package com.example.mdp_android_grp25.ui.main.Bluetooth;
 
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -22,10 +21,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.util.UUID;
-import android.provider.Settings.Secure;
 
 public class BluetoothConnectionService {
-    BluetoothPopUp mBluetoothPopup;
+    BluetoothPage mBluetoothPopup;
     private static BluetoothConnectionService instance;
     private static final String TAG = "BLUETOOTHPOPUP";
 
@@ -132,8 +130,8 @@ public class BluetoothConnectionService {
                 }
                 Log.d(TAG, "RUN: ConnectThread: could not connect to UUID."+ myUUID);
                 try {
-                    BluetoothPopUp mBluetoothPopUpActivity = (BluetoothPopUp) mContext;
-                    mBluetoothPopUpActivity.runOnUiThread(new Runnable() {
+                    BluetoothPage mBluetoothPageActivity = (BluetoothPage) mContext;
+                    mBluetoothPageActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(mContext, "Failed to connect to the Device.", Toast.LENGTH_LONG).show();
@@ -205,8 +203,8 @@ public class BluetoothConnectionService {
             /**
              * When connected, set the textviews in mainactivity to show status
              */
-            BluetoothPopUp mBluetoothPopUpActivity = (BluetoothPopUp) mContext;
-            mBluetoothPopUpActivity.runOnUiThread(new Runnable() {
+            BluetoothPage mBluetoothPageActivity = (BluetoothPage) mContext;
+            mBluetoothPageActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     TextView status = MainActivity.getBluetoothStatus();
@@ -276,8 +274,8 @@ public class BluetoothConnectionService {
                     /**
                      * When disconnected, set textviews in main activity to show connection status at main activity
                      */
-                    BluetoothPopUp mBluetoothPopUpActivity = (BluetoothPopUp) mContext;
-                    mBluetoothPopUpActivity.runOnUiThread(new Runnable() {
+                    BluetoothPage mBluetoothPageActivity = (BluetoothPage) mContext;
+                    mBluetoothPageActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             TextView status = MainActivity.getBluetoothStatus();
