@@ -29,8 +29,8 @@
 
     <Spinner
         android:id="@+id/bearingSpinner"
-        android:layout_width="89dp"
-        android:layout_height="18dp"
+        android:layout_width="124dp"
+        android:layout_height="23dp"
         android:layout_marginStart="472dp"
         android:layout_marginLeft="472dp"
         android:layout_marginTop="52dp"
@@ -39,8 +39,8 @@
 
     <Spinner
         android:id="@+id/imageIDSpinner"
-        android:layout_width="89dp"
-        android:layout_height="18dp"
+        android:layout_width="126dp"
+        android:layout_height="22dp"
         android:layout_marginStart="472dp"
         android:layout_marginLeft="472dp"
         android:layout_marginTop="24dp"
@@ -57,7 +57,8 @@
         android:contentDescription="TODO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startpointToggleBtn"
-        app:srcCompat="@drawable/baseline_explore_24" />
+        app:srcCompat="@drawable/baseline_explore_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageButton
         android:id="@+id/addObstacleBtn"
@@ -68,7 +69,8 @@
         android:layout_marginRight="380dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waypointToggleBtn"
-        app:srcCompat="@drawable/baseline_dangerous_24" />
+        app:srcCompat="@drawable/baseline_dangerous_24"
+        tools:ignore="VectorDrawableCompat" />
 
     <Button
         android:id="@+id/updateMapBtn"
@@ -78,8 +80,10 @@
         android:layout_marginLeft="384dp"
         android:layout_marginTop="32dp"
         android:text="Preload Obstacles"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/changeDirectionBtn" />
+        app:layout_constraintTop_toBottomOf="@+id/changeDirectionBtn"
+        tools:visibility="invisible" />
 
     <Switch
         android:id="@+id/autoManualSwitch"
@@ -177,5 +181,31 @@
         android:layout_marginTop="116dp"
         app:layout_constraintStart_toEndOf="@+id/textView_changeObstacle"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ToggleButton
+        android:id="@+id/exploreToggleBtn3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Exploration"
+        android:textOff="Imagerec START"
+        android:textOn="STOP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetBtn"
+        tools:ignore="MissingConstraints" />
+
+    <ToggleButton
+        android:id="@+id/fastestToggleBtn3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Fastest"
+        android:textOff="Fastest START"
+        android:textOn="STOP"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.64"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/resetBtn"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

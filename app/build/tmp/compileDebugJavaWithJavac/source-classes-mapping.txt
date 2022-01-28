@@ -105,8 +105,6 @@ com/example/mdp_android_grp25/ui/main/PageViewModel.java
  com.example.mdp_android_grp25.ui.main.PageViewModel$1
 com/example/mdp_android_grp25/ui/main/DeviceListAdapter.java
  com.example.mdp_android_grp25.ui.main.DeviceListAdapter
-com/example/mdp_android_grp25/Constants.java
- com.example.mdp_android_grp25.Constants
 com/example/mdp_android_grp25/ui/main/MapTabFragment.java
  com.example.mdp_android_grp25.ui.main.MapTabFragment
  com.example.mdp_android_grp25.ui.main.MapTabFragment$1
@@ -120,6 +118,8 @@ com/example/mdp_android_grp25/ui/main/MapTabFragment.java
  com.example.mdp_android_grp25.ui.main.MapTabFragment$7
  com.example.mdp_android_grp25.ui.main.MapTabFragment$8
  com.example.mdp_android_grp25.ui.main.MapTabFragment$9
+com/example/mdp_android_grp25/Constants.java
+ com.example.mdp_android_grp25.Constants
 com/example/mdp_android_grp25/ui/main/BluetoothConnectionService.java
  com.example.mdp_android_grp25.ui.main.BluetoothConnectionService
  com.example.mdp_android_grp25.ui.main.BluetoothConnectionService$AcceptThread
@@ -135,6 +135,8 @@ com/example/mdp_android_grp25/ui/main/DirectionFragment.java
  com.example.mdp_android_grp25.ui.main.DirectionFragment
  com.example.mdp_android_grp25.ui.main.DirectionFragment$1
  com.example.mdp_android_grp25.ui.main.DirectionFragment$2
+com/example/mdp_android_grp25/ui/main/SectionsPagerAdapter.java
+ com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter
 com/example/mdp_android_grp25/ui/main/ControlFragment.java
  com.example.mdp_android_grp25.ui.main.ControlFragment
  com.example.mdp_android_grp25.ui.main.ControlFragment$1
@@ -142,8 +144,6 @@ com/example/mdp_android_grp25/ui/main/ControlFragment.java
  com.example.mdp_android_grp25.ui.main.ControlFragment$3
  com.example.mdp_android_grp25.ui.main.ControlFragment$4
  com.example.mdp_android_grp25.ui.main.ControlFragment$5
-com/example/mdp_android_grp25/ui/main/SectionsPagerAdapter.java
- com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter
 com/example/mdp_android_grp25/MainActivity.java
  com.example.mdp_android_grp25.MainActivity
  com.example.mdp_android_grp25.MainActivity$1
