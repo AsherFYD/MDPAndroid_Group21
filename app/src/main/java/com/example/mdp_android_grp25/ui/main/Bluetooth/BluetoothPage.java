@@ -1,4 +1,4 @@
-package com.example.mdp_android_grp25.ui.main;
+package com.example.mdp_android_grp25.ui.main.Bluetooth;
 
 import android.Manifest;
 import android.app.ProgressDialog;
@@ -29,7 +29,6 @@ import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.mdp_android_grp25.MainActivity;
@@ -39,9 +38,8 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
-import android.provider.Settings.Secure;
 
-public class BluetoothPopUp extends AppCompatActivity {
+public class BluetoothPage extends AppCompatActivity {
     private static final String TAG = "BLUETOOTHPOPUP";
     private String connStatus;
     BluetoothAdapter mBluetoothAdapter;
@@ -56,7 +54,7 @@ public class BluetoothPopUp extends AppCompatActivity {
     ProgressDialog myDialog;
 
     TextView receivedMsgTextView;
-    StringBuilder messages;
+    //StringBuilder messages;
     EditText sendMsgEditText;
     Button sendMsgBtn;
 
@@ -74,7 +72,7 @@ public class BluetoothPopUp extends AppCompatActivity {
     boolean retryConnection = false;
     Handler reconnectionHandler = new Handler();
 
-    //apparently to deal with robust connection
+    //To deal with robust connection
     Runnable reconnectionRunnable = new Runnable() {
         @Override
         public void run() {
@@ -82,22 +80,23 @@ public class BluetoothPopUp extends AppCompatActivity {
             try {
                 if (BluetoothConnectionService.BluetoothConnectionStatus == false) {
                     startBTConnection(mBTDevice, myUUID);
-                    Toast.makeText(BluetoothPopUp.this, "Reconnection Success", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(BluetoothPage.this, "Reconnection Success", Toast.LENGTH_SHORT).show();
 
                 }
                 reconnectionHandler.removeCallbacks(reconnectionRunnable);
                 retryConnection = false;
             } catch (Exception e) {
-                Toast.makeText(BluetoothPopUp.this, "Failed to reconnect, trying in 5 second", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BluetoothPage.this, "Failed to reconnect, trying in 5 second", Toast.LENGTH_SHORT).show();
             }
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "Bluetoothpopup activity started");
+        Log.d(TAG, "BluetoothPage activity started");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.bluetooth_pop_up_window);
+        setContentView(R.layout.bluetooth_page);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -141,7 +140,7 @@ public class BluetoothPopUp extends AppCompatActivity {
                     Log.d(TAG, "onItemClick: Initiating pairing with " + deviceName);
                     mNewBTDevices.get(i).createBond();
 
-                    mBluetoothConnection = new BluetoothConnectionService(BluetoothPopUp.this);
+                    mBluetoothConnection = new BluetoothConnectionService(BluetoothPage.this);
                     mBTDevice = mNewBTDevices.get(i);
                 }
             }
@@ -168,7 +167,7 @@ public class BluetoothPopUp extends AppCompatActivity {
                 }
 
 
-                mBluetoothConnection = new BluetoothConnectionService(BluetoothPopUp.this);
+                mBluetoothConnection = new BluetoothConnectionService(BluetoothPage.this);
             }
         });
 
@@ -183,9 +182,9 @@ public class BluetoothPopUp extends AppCompatActivity {
                     compoundButton.setText("OFF");
                 }
 
-                if(mBluetoothAdapter ==null){
+                if(mBluetoothAdapter == null){
                     Log.d(TAG, "enableDisableBT: Device does not support Bluetooth capabilities!");
-                    Toast.makeText(BluetoothPopUp.this, "Device Does Not Support Bluetooth capabilities!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(BluetoothPage.this, "Device Does Not Support Bluetooth capabilities!", Toast.LENGTH_LONG).show();
                     compoundButton.setChecked(false);
                 }
                 else {
@@ -221,7 +220,7 @@ public class BluetoothPopUp extends AppCompatActivity {
             public void onClick(View view) {
                 if(mBTDevice ==null)
                 {
-                    Toast.makeText(BluetoothPopUp.this, "Please Select a Device before connecting.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(BluetoothPage.this, "Please Select a Device before connecting.", Toast.LENGTH_LONG).show();
                 }
                 else {
                     startConnection();
@@ -255,7 +254,9 @@ public class BluetoothPopUp extends AppCompatActivity {
             }
         });
 
-        myDialog = new ProgressDialog(BluetoothPopUp.this);
+
+        //dialog when attempting to reconnect
+        myDialog = new ProgressDialog(BluetoothPage.this);
         myDialog.setMessage("Waiting for other device to reconnect...");
         myDialog.setCancelable(false);
         myDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
@@ -275,6 +276,7 @@ public class BluetoothPopUp extends AppCompatActivity {
             public void onClick(View v) {
                 String sentText = sendMsgEditText.getText().toString();
 
+                //May not need this
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("message", sharedPreferences.getString("message", "") + '\n' + sentText);
                 editor.commit();
@@ -283,9 +285,13 @@ public class BluetoothPopUp extends AppCompatActivity {
                     byte[] bytes = sentText.getBytes(Charset.defaultCharset());
                     BluetoothConnectionService.write(bytes);
                 }
+
+                //set the Edit text to empty after sending
+                sendMsgEditText.setText("");
             }
         });
 
+        //register receiver to receive message
         LocalBroadcastManager.getInstance(this).registerReceiver(mReceiver, new IntentFilter("incomingMessage"));
 
         //get local device name
@@ -301,7 +307,9 @@ public class BluetoothPopUp extends AppCompatActivity {
         public void onReceive(Context context, Intent intent) {
             String text = intent.getStringExtra("receivedMessage");
             Log.d(TAG, "Message received in activity: "  + text);
-            receivedMsgTextView.setText(text); //set the text to the textview
+
+            //append the message and set a new line for future messages
+            receivedMsgTextView.append(text + "\n");
 
             //if(text != null){
             //messages.append(text + "\n"); //build the message
@@ -315,7 +323,7 @@ public class BluetoothPopUp extends AppCompatActivity {
         mNewBTDevices.clear();
         if(mBluetoothAdapter != null) {
             if (!mBluetoothAdapter.isEnabled()) {
-                Toast.makeText(BluetoothPopUp.this, "Please turn on Bluetooth first!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BluetoothPage.this, "Please turn on Bluetooth first!", Toast.LENGTH_SHORT).show();
             }
             if (mBluetoothAdapter.isDiscovering()) {
                 mBluetoothAdapter.cancelDiscovery();
@@ -467,7 +475,7 @@ public class BluetoothPopUp extends AppCompatActivity {
                 BluetoothDevice mDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 if(mDevice.getBondState() == BluetoothDevice.BOND_BONDED){
                     Log.d(TAG, "BOND_BONDED.");
-                    Toast.makeText(BluetoothPopUp.this, "Successfully paired with " + mDevice.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BluetoothPage.this, "Successfully paired with " + mDevice.getName(), Toast.LENGTH_SHORT).show();
                     mBTDevice = mDevice;
                 }
                 if(mDevice.getBondState() == BluetoothDevice.BOND_BONDING){
@@ -500,15 +508,15 @@ public class BluetoothPopUp extends AppCompatActivity {
                 }
 
                 Log.d(TAG, "mBroadcastReceiver5: Device now connected to "+mDevice.getName());
-                Toast.makeText(BluetoothPopUp.this, "Device now connected to "+mDevice.getName(), Toast.LENGTH_LONG).show();
+                Toast.makeText(BluetoothPage.this, "Device now connected to "+mDevice.getName(), Toast.LENGTH_LONG).show();
                 editor.putString("connStatus", "Connected to " + mDevice.getName());
                 connStatusTextView.setText("Connected to " + mDevice.getName());
 
             }
             else if(status.equals("disconnected") && retryConnection == false){
                 Log.d(TAG, "mBroadcastReceiver5: Disconnected from "+mDevice.getName());
-                Toast.makeText(BluetoothPopUp.this, "Disconnected from "+mDevice.getName(), Toast.LENGTH_LONG).show();
-                mBluetoothConnection = new BluetoothConnectionService(BluetoothPopUp.this);
+                Toast.makeText(BluetoothPage.this, "Disconnected from "+mDevice.getName(), Toast.LENGTH_LONG).show();
+                mBluetoothConnection = new BluetoothConnectionService(BluetoothPage.this);
                 //mBluetoothConnection.startAcceptThread();
 
 
@@ -522,7 +530,7 @@ public class BluetoothPopUp extends AppCompatActivity {
                 try {
                     myDialog.show();
                 }catch (Exception e){
-                    Log.d(TAG, "BluetoothPopUp: mBroadcastReceiver5 Dialog show failure");
+                    Log.d(TAG, "BluetoothPage: mBroadcastReceiver5 Dialog show failure");
                 }
                 retryConnection = true;
                 reconnectionHandler.postDelayed(reconnectionRunnable, 5000);
@@ -584,8 +592,9 @@ public class BluetoothPopUp extends AppCompatActivity {
         super.finish();
     }
 
-    //get local device bluetooth name
 
+
+    //get local device bluetooth name
     public String getLocalBluetoothName(){
         if(mBluetoothAdapter == null){
             mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();

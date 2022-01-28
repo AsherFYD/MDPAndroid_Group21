@@ -21,8 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.mdp_android_grp25.ui.main.BluetoothConnectionService;
-import com.example.mdp_android_grp25.ui.main.BluetoothPopUp;
+import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService;
+import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage;
 import com.example.mdp_android_grp25.ui.main.BluetoothChatFragment;
 import com.example.mdp_android_grp25.ui.main.ControlFragment;
 import com.example.mdp_android_grp25.ui.main.GridMap;
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         bluetoothButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent popup = new Intent(MainActivity.this, BluetoothPopUp.class);
+                Intent popup = new Intent(MainActivity.this, BluetoothPage.class);
                 startActivity(popup);
             }
         });
