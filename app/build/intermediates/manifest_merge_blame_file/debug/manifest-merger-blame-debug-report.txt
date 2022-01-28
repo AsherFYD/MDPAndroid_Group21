@@ -93,9 +93,9 @@
 50-->/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:37:27-74
 51            </intent-filter>
 52        </activity>
-53        <activity android:name="com.example.mdp_android_grp25.ui.main.BluetoothPopUp" >
+53        <activity android:name="com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage" >
 53-->/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:40:9-42:20
-53-->/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:40:19-86
+53-->/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:40:19-95
 54            android:windowSoftInputMode="adjustResize"
 55        </activity>
 56        <activity android:name="com.example.mdp_android_grp25.ui.main.MapInformation" />

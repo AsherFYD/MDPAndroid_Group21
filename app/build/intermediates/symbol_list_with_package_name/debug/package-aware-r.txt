@@ -1600,7 +1600,7 @@ layout activity_map
 layout activity_map_config
 layout activity_map_information
 layout activity_mode
-layout bluetooth_pop_up_window
+layout bluetooth_page
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
