@@ -55,6 +55,7 @@ public class GridMap extends View {
 
     SharedPreferences sharedPreferences;
 
+    //paint objects
     private Paint blackPaint = new Paint();
     private Paint whitePaint = new Paint();
     private Paint redPaint = new Paint();
@@ -85,6 +86,7 @@ public class GridMap extends View {
     private static boolean unSetCellStatus = false;
     private static boolean setExploredStatus = false;
     private static boolean validPosition = false;
+
     private Bitmap arrowBitmap = BitmapFactory.decodeResource(getResources(),
             R.drawable.ic_arrow_error);
 
@@ -270,6 +272,7 @@ public class GridMap extends View {
     }
 
     private void drawHorizontalLines(Canvas canvas) {
+        showLog("Entering drawHorizontalLines");
         for (int y = 0; y <= ROW; y++)
             canvas.drawLine(
                 cells[1][y].startX,
@@ -278,9 +281,11 @@ public class GridMap extends View {
                 cells[20][y].startY - (cellSize / 30),
                 blackPaint
             );
+        showLog("Exiting drawHorizontalLines");
     }
 
     private void drawVerticalLines(Canvas canvas) {
+        showLog("Entering drawVerticalLines");
         for (int x = 0; x <= COL; x++)
             canvas.drawLine(
                 cells[x][0].startX - (cellSize / 30) + cellSize,
@@ -289,6 +294,7 @@ public class GridMap extends View {
                 cells[x][19].endY + (cellSize / 30),
                 blackPaint
             );
+        showLog("Exiting drawVerticalLines");
     }
 
     // this draws the axis numbers
@@ -311,13 +317,16 @@ public class GridMap extends View {
                 );
         }
         for (int y = 0; y < ROW; y++) {
-            if ((20 - y) > 9)
+            //for y - axis grid number 10 to 19, when y is 0 to 9
+            if ((19 - y) > 9)
                 canvas.drawText(
                     Integer.toString(19 - y),
                     cells[0][y].startX + (cellSize / 2),
                     cells[0][y].startY + (cellSize / 1.5f),
                     blackPaint
                 );
+
+            //for y - axis grid number 0 to 9, when y is 10 to 19
             else
                 canvas.drawText(
                     Integer.toString(19 - y),
@@ -325,6 +334,7 @@ public class GridMap extends View {
                     cells[0][y].startY + (cellSize / 1.5f),
                     blackPaint
                 );
+
         }
         showLog("Exiting drawGridNumber");
     }
@@ -526,6 +536,7 @@ public class GridMap extends View {
         showLog("Exiting createCell");
     }
 
+    //set start coordinates for robot
     public void setStartCoord(int col, int row) {
         showLog("Entering setStartCoord");
         startCoord[0] = col;
@@ -539,6 +550,7 @@ public class GridMap extends View {
         showLog("Exiting setStartCoord");
     }
 
+    //just to return the robot sstart coordinates
     private int[] getStartCoord() {
         return startCoord;
     }
@@ -630,7 +642,7 @@ public class GridMap extends View {
         robotDirection = direction;
         editor.putString("direction", direction);
         editor.commit();
-        this.invalidate();;
+        this.invalidate(); // this is to reset the map and draw everything again
     }
 
     private void updateRobotAxis(int col, int row, String direction) {
@@ -2324,6 +2336,7 @@ public class GridMap extends View {
     }
 
     // checklist req
+    // to add/remove obstacle on AMD tool
     public String commandMsgGenerator (int command) {
         String msg = "";
         switch (command) {
