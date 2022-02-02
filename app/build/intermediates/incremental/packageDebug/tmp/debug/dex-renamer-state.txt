@@ -1,7 +1,10 @@
-#Mon Jan 31 16:26:38 SGT 2022
-base.0=C\:\\Users\\gojek\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Thu Feb 03 03:15:35 SGT 2022
+path.2=classes.dex
 path.1=classes.dex
-renamed.1=classes2.dex
 path.0=classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
 renamed.0=classes.dex
-base.1=C\:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+base.2=/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+base.1=/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/C\:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+base.0=/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/C\:\\Users\\gojek\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex

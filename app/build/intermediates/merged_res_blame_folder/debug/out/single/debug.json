@@ -1,314 +1,314 @@
 [
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_map_info.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_map_info.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_map_info.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_map_info.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_bluetooth_page.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\bluetooth_page.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_map_info.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_map_info.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_direction.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_direction.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_right.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_right.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_baseline_dangerous_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/baseline_dangerous_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_send.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_send.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_rounded_corner.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/rounded_corner.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_chat.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_chat.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_fragment_main.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/fragment_main.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_launcher_background.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_error.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_error.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_left.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_left.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_mode.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_mode.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_toolbar_layout.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/toolbar_layout.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_clear.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_clear.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_right.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_right.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_map.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_map.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_border_black_background.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/border_black_background.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_control.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_control.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_outline_arrow_forward_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/outline_arrow_forward_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border_black_background.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\border_black_background.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_change.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_change.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_directionpic.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\directionpic.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_move_forward.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_move_forward.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_left.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_left.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_change.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_change.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_baseline_explore_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\baseline_explore_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_back.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_back.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_map_information.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_map_information.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_baseline_dangerous_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\baseline_dangerous_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_map_info.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_map_info.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-ldpi/ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_launcher_background.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_bluetooth_page.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/bluetooth_page.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_direction.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_direction.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_chat.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_chat.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_right.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_right.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_reverse.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_reverse.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_map_info.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_map_info.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_move_backward.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_move_backward.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_toolbar_layout.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\toolbar_layout.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_right.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_right.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_left.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_left.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_launcher_background.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_compass.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/compass.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_comms.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_comms.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_main.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_ic_map_info.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v21\\ic_map_info.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_outline_arrow_upward_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\outline_arrow_upward_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_move_forward.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_move_forward.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_refresh.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_refresh.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_map.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_map.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_check.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_check.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_up.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_up.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\ic_launcher_background.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_outline_arrow_downward_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/outline_arrow_downward_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_arrowpic.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/arrowpic.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_forward.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_forward.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_move_right.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_move_right.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_baseline_bluetooth_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/baseline_bluetooth_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_arrow9.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\arrow9.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-hdpi/ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_reverse.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_reverse.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_map_config.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_map_config.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_outline_arrow_back_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\outline_arrow_back_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_mode.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_mode.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_ic_map_info.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxxhdpi\\ic_map_info.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_compass.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\compass.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_device_adapter_view.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/device_adapter_view.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_launcher_background.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_down.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_down.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_corner.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\rounded_corner.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_map_information.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_map_information.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_back.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_back.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_clear.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_clear.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_baseline_more_vert_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\baseline_more_vert_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_error.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_error.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_baseline_settings_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\baseline_settings_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_baseline_explore_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/baseline_explore_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_arrowpic.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\arrowpic.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_baseline_settings_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/baseline_settings_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_map_config.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_map_config.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_map_info.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_map_info.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_move_backward.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_move_backward.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_map_info.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-hdpi/ic_map_info.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_move_right.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_move_right.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_control.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_control.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\ic_launcher_background.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_refresh.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_refresh.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_map_info.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_map_info.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_outline_arrow_forward_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\outline_arrow_forward_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_check.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_check.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_dialog_change_obstacle.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\activity_dialog_change_obstacle.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_outline_arrow_back_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/outline_arrow_back_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_move_left.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_move_left.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_send.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_send.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_map_info.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-ldpi/ic_map_info.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_main.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\fragment_main.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/menu_appbar_menu.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/menu/appbar_menu.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_arrow_move_left.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_arrow_move_left.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_images.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\images.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_dialog_change_obstacle.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_dialog_change_obstacle.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_ic_forward.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/ic_forward.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_images.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/images.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_baseline_bluetooth_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\baseline_bluetooth_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_map_info.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-mdpi/ic_map_info.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_down.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_down.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_comms.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_comms.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_up.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_up.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\layout_device_adapter_view.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\layout\\device_adapter_view.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_baseline_more_vert_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/baseline_more_vert_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_directionpic.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/directionpic.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_left.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\ic_arrow_left.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-mdpi/ic_launcher_background.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\menu_appbar_menu.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\menu\\appbar_menu.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_map_info.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\ic_map_info.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_arrow9.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/arrow9.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border_white_background.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\src\\main\\res\\drawable\\border_white_background.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable_border_white_background.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/drawable/border_white_background.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_map_info.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\ic_map_info.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_outline_arrow_upward_24.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v24/outline_arrow_upward_24.xml"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_outline_arrow_downward_24.xml.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\outline_arrow_downward_24.xml"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_ic_launcher_background.png.flat",
-        "source": "C:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_launcher_background.png"
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_launcher_background.png"
     }
 ]

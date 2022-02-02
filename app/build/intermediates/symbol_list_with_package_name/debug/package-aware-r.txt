@@ -1324,6 +1324,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id exploreResetImageBtn
+id exploreResetImageBtn2
 id exploreTextView
 id exploreTimeTextView2
 id exploreToggleBtn
@@ -1331,6 +1332,7 @@ id exploreToggleBtn2
 id exploreToggleBtn3
 id exploredImageBtn
 id fastestResetImageBtn
+id fastestResetImageBtn2
 id fastestTextView
 id fastestTextView2
 id fastestTimeTextView2
