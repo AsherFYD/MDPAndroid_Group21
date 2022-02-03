@@ -113,12 +113,12 @@ public class ControlFragment extends Fragment {
         //turnLeftImageBtn = MainActivity.getLeftBtn();
 
 
-        //exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
-        //fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
+        exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
+        fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
         exploreButton = root.findViewById(R.id.exploreToggleBtn3);
         fastestButton = root.findViewById(R.id.fastestToggleBtn3);
-        //exploreResetButton = root.findViewById(R.id.exploreResetImageBtn2);
-        //fastestResetButton = root.findViewById(R.id.fastestResetImageBtn2);
+        exploreResetButton = root.findViewById(R.id.exploreResetImageBtn2);
+        fastestResetButton = root.findViewById(R.id.fastestResetImageBtn2);
         robotStatusTextView = MainActivity.getRobotStatusTextView();
         fastestTimer = 0;
         exploreTimer = 0;
@@ -214,7 +214,7 @@ public class ControlFragment extends Fragment {
                 showLog("Clicked exploreToggleBtn");
                 ToggleButton exploreToggleBtn = (ToggleButton) v;
 
-                if (exploreToggleBtn.getText().equals("WK8 START")) { //press stop
+                if (exploreToggleBtn.getText().equals("Imagerec START")) { //press stop
                     showToast("Auto Movement/ImageRecog timer stop!");
                     robotStatusTextView.setText("Auto Movement Stopped");
                     timerHandler.removeCallbacks(timerRunnableExplore);
@@ -243,7 +243,7 @@ public class ControlFragment extends Fragment {
             public void onClick(View v) {
                 showLog("Clicked fastestToggleBtn");
                 ToggleButton fastestToggleBtn = (ToggleButton) v;
-                if (fastestToggleBtn.getText().equals("WK9 START")) { //press stop for wk9 start
+                if (fastestToggleBtn.getText().equals("Fastest START")) { //press stop for wk9 start
                     showToast("Fastest car timer stop!");
                     robotStatusTextView.setText("Fastest Car Stopped");
                     timerHandler.removeCallbacks(timerRunnableFastest);
@@ -277,6 +277,20 @@ public class ControlFragment extends Fragment {
                     exploreButton.toggle();
                 timerHandler.removeCallbacks(timerRunnableExplore);
                 showLog("Exiting exploreResetImageBtn");
+            }
+        });
+
+        fastestResetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked fastestResetImageBtn");
+                showToast("Resetting fastest time...");
+                fastestTimeTextView.setText("00:00");
+                robotStatusTextView.setText("Not Available");
+                if(fastestButton.isChecked())
+                    fastestButton.toggle();
+                timerHandler.removeCallbacks(timerRunnableFastest);
+                showLog("Exiting fastestResetImageBtn");
             }
         });
 
