@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
+ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
 MERGED from [com.google.android.material:material:1.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/3687f3b99e8403f2ac71fc13522840ff/material-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/9f7e7a548ad00e2e3c3268a409525997/appcompat-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gojek/.gradle/caches/transforms-2/files-2.1/d6fdfaaabf2017e1a46426335e1b873c/constraintlayout-1.1.3/AndroidManifest.xml:2:1-11:12
@@ -46,16 +46,16 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/gojek/.gradle/cach
 MERGED from [androidx.documentfile:documentfile:1.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/07966c8c4706ffeaf638d555f4c86fb0/documentfile-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/41c41c2fbc05e9a19fa443c48f799c3d/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/634f2f03e50a0eb4514a8d791ceb2f13/print-1.0.0/AndroidManifest.xml:17:1-22:12
-INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
-INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
+INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
+INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
 	package
 		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:5:5-44
 		INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
-		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
+		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
 		INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
 	xmlns:tools
 		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:4:5-51
@@ -63,7 +63,7 @@ INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main
 		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:3:5-61
 	android:versionCode
 		INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
-		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-46:12
+		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:1-47:12
 		INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:2:11-69
@@ -102,7 +102,7 @@ ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/An
 	android:name
 		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:19:22-76
 application
-ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:22:5-44:19
+ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:22:5-45:19
 MERGED from [com.google.android.material:material:1.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/3687f3b99e8403f2ac71fc13522840ff/material-1.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/3687f3b99e8403f2ac71fc13522840ff/material-1.0.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] /Users/gojek/.gradle/caches/transforms-2/files-2.1/d6fdfaaabf2017e1a46426335e1b873c/constraintlayout-1.1.3/AndroidManifest.xml:9:5-20
@@ -161,10 +161,12 @@ activity#com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage
 ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:40:9-42:20
 	android:name
 		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:40:19-95
-activity#com.example.mdp_android_grp25.ui.main.MapInformation
-ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:43:9-89
+uses-permission#android.permission.INTERNET
+ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:46:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
 	android:name
-		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:43:19-86
+		ADDED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml:46:22-64
 uses-sdk
 INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/AndroidManifest.xml
@@ -267,10 +269,6 @@ uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:5-79
 	android:name
 		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:23:22-76
-uses-permission#android.permission.INTERNET
-ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:5-67
-	android:name
-		ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:24:22-64
 uses-feature#0x00020000
 ADDED from [com.google.android.gms:play-services-maps:17.0.0] /Users/gojek/.gradle/caches/transforms-2/files-2.1/8dd8e7c17a85a0661f86487a4c192d89/jetified-play-services-maps-17.0.0/AndroidManifest.xml:26:5-28:35
 	android:glEsVersion
