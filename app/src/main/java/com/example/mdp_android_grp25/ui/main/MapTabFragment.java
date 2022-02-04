@@ -190,7 +190,8 @@ public class MapTabFragment extends Fragment {
                     showToast("Please select starting point");
                     dragSwitch.setChecked(false); //disable drag when setting start point
                     changeObstacleSwitch.setChecked(false); //disable change obstacle when setting start point
-                    gridMap.setStartCoordStatus(true);
+                    gridMap.setSetObstacleStatus(false); //disable setting new obstacles
+                    gridMap.setStartCoordStatus(true); //enable set starting coordinates
                     gridMap.toggleCheckedBtn("setStartPointToggleBtn");
 
                 } else
