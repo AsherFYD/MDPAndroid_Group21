@@ -12,6 +12,7 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <!--
         <item>11</item>
         <item>12</item>
         <item>13</item>
@@ -31,7 +32,7 @@
         <item>27</item>
         <item>28</item>
         <item>29</item>
-        <item>30</item>
+        <item>30</item>-->
     </string-array>
 
     <string-array name="imageBearing_array">

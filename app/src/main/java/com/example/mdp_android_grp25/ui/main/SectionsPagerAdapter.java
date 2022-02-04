@@ -34,7 +34,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return BluetoothChatFragment.newInstance(position +1);*/
             case 0:
                 return MapTabFragment.newInstance(position+1);
-//            case 0:
+//            case 1:
 //                return ControlFragment.newInstance(position+1);
             default:
                 return PlaceholderFragment.newInstance(position + 1);
