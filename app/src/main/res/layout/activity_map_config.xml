@@ -24,7 +24,7 @@
         android:layout_marginStart="380dp"
         android:layout_marginLeft="380dp"
         android:layout_marginTop="24dp"
-        android:text="Image ID:"
+        android:text="Obstacle ID:"
         android:textColor="@color/colorBlack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -139,8 +139,8 @@
         android:layout_width="139dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="288dp"
-        android:layout_marginRight="288dp"
+        android:layout_marginEnd="276dp"
+        android:layout_marginRight="276dp"
         android:textOff="SET WAYPOINT"
         android:textOn="CANCEL"
         android:visibility="invisible"
@@ -227,7 +227,7 @@
         android:layout_height="30dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias=".35"
+        app:layout_constraintHorizontal_bias=".4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exploreToggleBtn3" />
 
@@ -237,7 +237,7 @@
         android:layout_height="30dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias=".9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fastestToggleBtn3" />
 
@@ -246,7 +246,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:background="#E47B7B"
-        android:text="Button"
+        android:text="Reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".2"
         app:layout_constraintStart_toStartOf="parent"
@@ -258,7 +258,7 @@
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:background="#E47B7B"
-        android:text="Button"
+        android:text="Reset"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias=".7"
         app:layout_constraintStart_toStartOf="parent"

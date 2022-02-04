@@ -214,7 +214,7 @@ public class ControlFragment extends Fragment {
                 showLog("Clicked exploreToggleBtn");
                 ToggleButton exploreToggleBtn = (ToggleButton) v;
 
-                if (exploreToggleBtn.getText().equals("Imagerec START")) { //press stop
+                if (exploreToggleBtn.getText().equals("Exploration")) { //press stop
                     showToast("Auto Movement/ImageRecog timer stop!");
                     robotStatusTextView.setText("Auto Movement Stopped");
                     timerHandler.removeCallbacks(timerRunnableExplore);
@@ -243,7 +243,7 @@ public class ControlFragment extends Fragment {
             public void onClick(View v) {
                 showLog("Clicked fastestToggleBtn");
                 ToggleButton fastestToggleBtn = (ToggleButton) v;
-                if (fastestToggleBtn.getText().equals("Fastest START")) { //press stop for wk9 start
+                if (fastestToggleBtn.getText().equals("Fastest")) { //press stop for wk9 start
                     showToast("Fastest car timer stop!");
                     robotStatusTextView.setText("Fastest Car Stopped");
                     timerHandler.removeCallbacks(timerRunnableFastest);

@@ -122,7 +122,7 @@ public class GridMap extends View {
         initMap();
         blackPaint.setStyle(Paint.Style.FILL_AND_STROKE);
         whitePaint.setColor(Color.WHITE);
-        whitePaint.setTextSize(25);
+        whitePaint.setTextSize(10);
         whitePaint.setTextAlign(Paint.Align.CENTER);
         redPaint.setColor(Color.RED);
         redPaint.setStrokeWidth(8);
@@ -818,7 +818,7 @@ public class GridMap extends View {
             imageBearings.get(initialRow-1)[initialColumn-1] = "";
             showLog(commandMsgGenerator(REMOVE_OBSTACLE));
             // commented out for Wk 8 and Wk 9
-//            MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
+            MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
         }
         // drop within gridmap
         else if (dragEvent.getAction() == DragEvent.ACTION_DROP && this.getAutoUpdate() == false) {
@@ -842,7 +842,7 @@ public class GridMap extends View {
                 imageBearings.get(initialRow-1)[initialColumn-1] = "";
                 showLog(commandMsgGenerator(REMOVE_OBSTACLE));
                 // commented out for Wk 8 and Wk 9
-//                MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
+                MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
             }
             // if dropped within gridmap, shift it to new position unless already got existing
             else if ((1 <= initialColumn && initialColumn <= 20)
@@ -870,8 +870,7 @@ public class GridMap extends View {
                     }
                     cells[initialColumn][20 - initialRow].setType("unexplored");
                     showLog(commandMsgGenerator(MOVE_OBSTACLE));
-                    // commented out for Wk 8 and Wk 9
-//                    MainActivity.printMessage(commandMsgGenerator(MOVE_OBSTACLE));
+                    MainActivity.printMessage(commandMsgGenerator(MOVE_OBSTACLE));
                 }
             } else {
                 showLog("Drag event failed.");
@@ -983,6 +982,10 @@ public class GridMap extends View {
                             showLog("newID = " + newID);
                             showLog("newBearing = " + newBearing);
 
+                            MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
+
+                            showLog(commandMsgGenerator(CHANGE_OBSTACLE));
+
                             callInvalidate();
                         }
                     });
@@ -1092,7 +1095,7 @@ public class GridMap extends View {
                     this.setObstacleCoord(column, row);
                     showLog(commandMsgGenerator(ADD_OBSTACLE));
                     // commented out for Wk 8 and 9
-                    //MainActivity.printMessage(commandMsgGenerator(ADD_OBSTACLE));
+                    MainActivity.printMessage(commandMsgGenerator(ADD_OBSTACLE));
                 }
                 this.invalidate();
                 return true;
@@ -2358,6 +2361,13 @@ public class GridMap extends View {
                 msg = "MOVE_OBSTACLE,"
                         + "(" + (initialColumn - 1) + "," + (initialRow - 1) + "),"
                         + "(" + (endColumn - 1) + "," + (endRow - 1) + ")" + "\n";
+                break;
+            case CHANGE_OBSTACLE:
+                // format: <target component>|<command>,<image id>,<obstacle coord>,<face direction>
+                msg = "CHANGE_OBSTACLE,"
+                        + ITEM_LIST.get(initialRow - 1)[initialColumn - 1] + ","
+                        + "(" + (initialColumn - 1) + "," + (initialRow - 1) + "),"
+                        + imageBearings.get(initialRow - 1)[initialColumn - 1].charAt(0) + "\n";
                 break;
             case ROBOT_MOVING:
                 // format: <target component>|<command>,<string>
