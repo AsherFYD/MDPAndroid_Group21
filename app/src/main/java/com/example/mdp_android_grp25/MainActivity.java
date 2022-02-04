@@ -23,7 +23,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService;
 import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage;
-import com.example.mdp_android_grp25.ui.main.BluetoothChatFragment;
+//import com.example.mdp_android_grp25.ui.main.BluetoothChatFragment;
 import com.example.mdp_android_grp25.ui.main.ControlFragment;
 import com.example.mdp_android_grp25.ui.main.GridMap;
 import com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter;
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("connStatus", "Disconnected");
         editor.commit();
 
-        //Bluetooth Button KEEP
+        //Bluetooth Button
         Button bluetoothButton = (Button) findViewById(R.id.bluetoothButton);
         bluetoothButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Bluetooth Status KEEP
+        // Bluetooth Status
         bluetoothStatus = findViewById(R.id.bluetoothStatus);
         bluetoothDevice = findViewById(R.id.bluetoothConnectedDevice);
 
-        // Robot Status KEEP
+        // Robot Status
         robotStatusTextView = findViewById(R.id.robotStatus);
 
         if(BluetoothConnectionService.BluetoothConnectionStatus == true){
@@ -110,11 +110,7 @@ public class MainActivity extends AppCompatActivity {
             robotStatusTextView.setText("Disconnected");
         }
 
-        // Controller, on click listeners for controller
-        /**
-         * Need to include situations when robot is not on the map in the app,
-         * and stop movement if the intended movement will send robot out of bounds
-         */
+        // Controller & on click listeners for controller
         upBtn = findViewById(R.id.upBtn);
         downBtn = findViewById(R.id.downBtn);
         leftBtn = findViewById(R.id.leftBtn);
@@ -190,6 +186,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                 }
 
+                showLog("Exiting left button pressed");
+
 
                 /**
                 if (gridMap.getAutoUpdate())
@@ -203,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
                 else
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                  **/
-                showLog("Exiting left button pressed");
             }
         });
 
@@ -228,6 +225,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                 }
 
+                showLog("Exiting right button pressed");
+
                 /**
                 if (gridMap.getAutoUpdate())
                     Toast.makeText(MainActivity.this, "Press Manual", Toast.LENGTH_SHORT).show(); //what is thisss
@@ -240,7 +239,6 @@ public class MainActivity extends AppCompatActivity {
                 else
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                  **/
-                showLog("Exiting right button pressed");
             }
         });
 
@@ -259,11 +257,6 @@ public class MainActivity extends AppCompatActivity {
             }
         );
 
-
-
-        /**
-         * Have not understand the below items
-         */
         // Map
         gridMap = new GridMap(this);
         gridMap = findViewById(R.id.mapView);
@@ -272,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         directionAxisTextView = findViewById(R.id.directionAxisTextView);
 
         // ControlFragment for Timer
-        controlFragment = new ControlFragment();
+        //controlFragment = new ControlFragment();
 
         // initialize ITEM_LIST and imageBearings strings
         for (int i = 0; i < 20; i++) {
@@ -313,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         showLog("Exiting printMessage");
+
         /**
         showLog(message);
         editor.putString("message",
@@ -341,8 +335,7 @@ public class MainActivity extends AppCompatActivity {
                 message = "Unexpected default for printMessage: " + name;
                 break;
         }
-        editor.putString("message",
-            BluetoothChatFragment.getMessageReceivedTextView().getText() + "\n" + message);
+        //editor.putString("message", BluetoothChatFragment.getMessageReceivedTextView().getText() + "\n" + message);
         editor.commit();
         if (BluetoothConnectionService.BluetoothConnectionStatus == true) {
             byte[] bytes = message.getBytes(Charset.defaultCharset());
@@ -351,11 +344,13 @@ public class MainActivity extends AppCompatActivity {
         showLog("Exiting printMessage");
     }
 
+    /**
     public static void refreshMessageReceived() {
         BluetoothChatFragment
             .getMessageReceivedTextView()
             .setText(sharedPreferences.getString("message", ""));
     }
+     **/
 
     public void refreshDirection(String direction) {
         gridMap.setRobotDirection(direction);

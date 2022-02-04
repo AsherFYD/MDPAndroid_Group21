@@ -63,7 +63,7 @@ public class GridMap extends View {
     private Paint robotColor = new Paint();
     private Paint endColor = new Paint();
     private Paint startColor = new Paint();
-    private Paint waypointColor = new Paint();
+    //private Paint waypointColor = new Paint();
     private Paint unexploredColor = new Paint();
     private Paint exploredColor = new Paint();
     private Paint arrowColor = new Paint();
@@ -75,12 +75,12 @@ public class GridMap extends View {
     private static int[] startCoord = new int[]{-1, -1};
     private static int[] curCoord = new int[]{-1, -1};
     private static int[] oldCoord = new int[]{-1, -1};
-    private static int[] waypointCoord = new int[]{-1, -1};
+    //private static int[] waypointCoord = new int[]{-1, -1};
     private static ArrayList<String[]> arrowCoord = new ArrayList<>();
     private static ArrayList<int[]> obstacleCoord = new ArrayList<>();
     private static boolean autoUpdate = false;
     private static boolean canDrawRobot = false;
-    private static boolean setWaypointStatus = false;
+    //private static boolean setWaypointStatus = false;
     private static boolean startCoordStatus = false;
     private static boolean setObstacleStatus = false;
     private static boolean unSetCellStatus = false;
@@ -131,7 +131,7 @@ public class GridMap extends View {
         robotColor.setStrokeWidth(2);
         endColor.setColor(Color.RED);
         startColor.setColor(Color.CYAN);
-        waypointColor.setColor(Color.GREEN);
+        //waypointColor.setColor(Color.GREEN);
         unexploredColor.setColor(Color.LTGRAY);
         exploredColor.setColor(Color.WHITE);
         arrowColor.setColor(Color.BLACK);
@@ -154,9 +154,11 @@ public class GridMap extends View {
         showLog("Redrawing map");
 
         // Create cell coords
-        Log.d(TAG,"Creating Cell");
+        showLog("Creating Cell");
 
+        //if map is not drawn, draw a dummy map?
         if (!mapDrawn) {
+            showLog("Is this thing used");
             String[] dummyArrowCoord = new String[3];
             dummyArrowCoord[0] = "1";
             dummyArrowCoord[1] = "1";
@@ -164,7 +166,9 @@ public class GridMap extends View {
             arrowCoord.add(dummyArrowCoord);
             this.createCell();
             mapDrawn = true;
+            showLog("Exiting this thing if it is used");
         }
+
 
         drawIndividualCell(canvas);
         drawHorizontalLines(canvas);
@@ -184,7 +188,7 @@ public class GridMap extends View {
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
-                // draw image id
+                // draw obstacle id
                 canvas.drawText(
                     ITEM_LIST.get(19-i)[j],
                     cells[j+1][19-i].startX + ((cells[1][1].endX - cells[1][1].startX) / 2),
@@ -509,9 +513,11 @@ public class GridMap extends View {
         return startCoordStatus;
     }
 
+    /**
     public void setWaypointStatus(boolean status) {
         setWaypointStatus = status;
     }
+     **/
 
     public boolean getCanDrawRobot() {
         return canDrawRobot;
@@ -543,14 +549,14 @@ public class GridMap extends View {
         startCoord[1] = row;
         String direction = getRobotDirection();
         if(direction.equals("None")) {
-            direction = "up";
+            direction = "up"; //default robot direction
         }
         if (this.getStartCoordStatus())
             this.setCurCoord(col, row, direction);
         showLog("Exiting setStartCoord");
     }
 
-    //just to return the robot sstart coordinates
+    //just to return the robot start coordinates
     private int[] getStartCoord() {
         return startCoord;
     }
@@ -620,6 +626,7 @@ public class GridMap extends View {
         return oldCoord;
     }
 
+
     private void setArrowCoordinate(int col, int row, String arrowDirection) {
         showLog("Entering setArrowCoordinate");
         int[] obstacleCoord = new int[]{col, row};
@@ -656,6 +663,7 @@ public class GridMap extends View {
         directionAxisTextView.setText(direction);
     }
 
+    /**
     private void setWaypointCoord(int col, int row) throws JSONException {
         showLog("Entering setWaypointCoord");
         waypointCoord[0] = col;
@@ -671,6 +679,7 @@ public class GridMap extends View {
     private int[] getWaypointCoord() {
         return waypointCoord;
     }
+     **/
 
     public void setObstacleCoord(int col, int row) {
         showLog("Entering setObstacleCoord");
@@ -689,6 +698,7 @@ public class GridMap extends View {
         Log.d(TAG, message);
     }
 
+    //not sure what is this for, got error when this method is commented out
     private void drawArrow(Canvas canvas, ArrayList<String[]> arrowCoord) {
         showLog("Entering drawArrow");
         RectF rect;
@@ -755,9 +765,11 @@ public class GridMap extends View {
                 case "start":
                     this.paint = startColor;
                     break;
+                    /**
                 case "waypoint":
                     this.paint = waypointColor;
                     break;
+                     **/
                 case "unexplored":
                     this.paint = unexploredColor;
                     break;
@@ -844,6 +856,7 @@ public class GridMap extends View {
                 // commented out for Wk 8 and Wk 9
                 MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
             }
+
             // if dropped within gridmap, shift it to new position unless already got existing
             else if ((1 <= initialColumn && initialColumn <= 20)
                     && (1 <= initialRow && initialRow <= 20)
@@ -884,6 +897,8 @@ public class GridMap extends View {
         return true;
     }
 
+
+    //just a method to invalidate --> redraw map
     public void callInvalidate() {
         showLog("Entering callinvalidate");
         this.invalidate();
@@ -900,8 +915,10 @@ public class GridMap extends View {
 
             ToggleButton setStartPointToggleBtn = ((Activity)this.getContext())
                                                     .findViewById(R.id.startpointToggleBtn);
+            /**
             ToggleButton setWaypointToggleBtn = ((Activity)this.getContext())
                                                     .findViewById(R.id.waypointToggleBtn);
+             **/
             showLog("event.getX = " + event.getX() + ", event.getY = " + event.getY());
             showLog("row = " + row + ", column = " + column);
 
@@ -984,13 +1001,13 @@ public class GridMap extends View {
 
                             MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
 
-                            showLog(commandMsgGenerator(CHANGE_OBSTACLE));
+                            //showLog(commandMsgGenerator(CHANGE_OBSTACLE));
 
                             callInvalidate();
                         }
                     });
 
-                    // dismiss
+                    // dismiss dialog
                     mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -1062,6 +1079,7 @@ public class GridMap extends View {
                 this.invalidate();
                 return true;
             }
+            /**
             if (setWaypointStatus) {
                 int[] waypointCoord = this.getWaypointCoord();
                 if (waypointCoord[0] >= 1 && waypointCoord[1] >= 1)
@@ -1078,6 +1096,7 @@ public class GridMap extends View {
                 this.invalidate();
                 return true;
             }
+             **/
 
             // add id and the image bearing, popup to ask for user input
             if (setObstacleStatus) {
@@ -1124,26 +1143,29 @@ public class GridMap extends View {
     }
 
     public void toggleCheckedBtn(String buttonName) {
-        ToggleButton setStartPointToggleBtn = ((Activity)this.getContext())
-                .findViewById(R.id.startpointToggleBtn);
-        ToggleButton setWaypointToggleBtn = ((Activity)this.getContext())
-                .findViewById(R.id.waypointToggleBtn);
-        ImageButton obstacleImageBtn = ((Activity)this.getContext())
-                .findViewById(R.id.addObstacleBtn);
+        ToggleButton setStartPointToggleBtn = ((Activity)this.getContext()).findViewById(R.id.startpointToggleBtn);
+        ImageButton obstacleImageBtn = ((Activity)this.getContext()).findViewById(R.id.addObstacleBtn);
 
         if (!buttonName.equals("setStartPointToggleBtn"))
             if (setStartPointToggleBtn.isChecked()) {
                 this.setStartCoordStatus(false);
                 setStartPointToggleBtn.toggle();
             }
-        if (!buttonName.equals("setWaypointToggleBtn"))
-            if (setWaypointToggleBtn.isChecked()) {
-                this.setWaypointStatus(false);
-                setWaypointToggleBtn.toggle();
-            }
+
+        /**
         if (!buttonName.equals("obstacleImageBtn"))
             if (obstacleImageBtn.isEnabled())
                 this.setSetObstacleStatus(false);
+         **/
+
+        //ToggleButton setWaypointToggleBtn = ((Activity)this.getContext()).findViewById(R.id.waypointToggleBtn);
+        /**
+         if (!buttonName.equals("setWaypointToggleBtn"))
+         if (setWaypointToggleBtn.isChecked()) {
+         this.setWaypointStatus(false);
+         setWaypointToggleBtn.toggle();
+         }
+         **/
     }
 
 
@@ -1173,7 +1195,7 @@ public class GridMap extends View {
         autoUpdate = false;
         arrowCoord = new ArrayList<>();
         obstacleCoord = new ArrayList<>();
-        waypointCoord = new int[]{-1, -1};
+        //waypointCoord = new int[]{-1, -1};
         mapDrawn = false;
         canDrawRobot = false;
         validPosition = false;
@@ -1255,11 +1277,12 @@ public class GridMap extends View {
                                 }
                                 k++;
                             }
-
+                    /**
                     int[] waypointCoord = this.getWaypointCoord();
                     if (waypointCoord[0] >= 1 && waypointCoord[1] >= 1)
                         cells[waypointCoord[0]][20 - waypointCoord[1]].setType("waypoint");
                     break;
+                     **/
                 case "robotPosition":
                     if (canDrawRobot)
                         this.setOldRobotCoord(curCoord[0], curCoord[1]);
@@ -1285,6 +1308,7 @@ public class GridMap extends View {
                             convertRow(infoJsonArray.getInt(1))-1, direction);
                     canDrawRobot = true;
                     break;
+                    /**
                 case "waypoint":
                     infoJsonArray = mapInformation.getJSONArray("waypoint");
                     infoJsonObject = infoJsonArray.getJSONObject(0);
@@ -1292,6 +1316,7 @@ public class GridMap extends View {
                             infoJsonObject.getInt("y"));
                     setWaypointStatus = true;
                     break;
+                     **/
                 case "obstacle":
                     infoJsonArray = mapInformation.getJSONArray("obstacle");
                     for (int j = 0; j < infoJsonArray.length(); j++) {
