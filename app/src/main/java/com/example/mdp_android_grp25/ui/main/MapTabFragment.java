@@ -34,7 +34,7 @@ public class MapTabFragment extends Fragment {
 
     Button resetMapBtn, updateButton;
     ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
-    ToggleButton setStartPointToggleBtn;          //, setWaypointToggleBtn;
+    ToggleButton setStartPointToggleBtn, exploreToggleBtn;          //, setWaypointToggleBtn;
     //Switch manualAutoToggleBtn;
     GridMap gridMap;
 
@@ -81,7 +81,8 @@ public class MapTabFragment extends Fragment {
         setStartPointToggleBtn = root.findViewById(R.id.startpointToggleBtn);
         //setWaypointToggleBtn = root.findViewById(R.id.waypointToggleBtn);
         directionChangeImageBtn = root.findViewById(R.id.changeDirectionBtn);
-        exploredImageBtn = root.findViewById(R.id.exploredImageBtn);
+        //exploredImageBtn = root.findViewById(R.id.exploredImageBtn);
+        exploreToggleBtn = root.findViewById(R.id.exploreToggleBtn3); //Button to start image rec
         obstacleImageBtn = root.findViewById(R.id.addObstacleBtn);
         clearImageBtn = root.findViewById(R.id.clearImageBtn);
         //manualAutoToggleBtn = root.findViewById(R.id.autoManualSwitch);
@@ -235,6 +236,44 @@ public class MapTabFragment extends Fragment {
                 dragSwitch.setChecked(false);
                 showLog("obstacle status = " + gridMap.getSetObstacleStatus());
                 showLog("Exiting obstacleImageBtn");
+            }
+        });
+
+
+        //on Click listener for explore button
+        exploreToggleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked exploreToggleBtn");
+                ToggleButton exploreToggleBtn = (ToggleButton) v;
+
+                if (exploreToggleBtn.getText().equals("Imagerec START")) { //press stop
+                    showToast("Image recognition task has stopped");
+
+
+
+
+                    //robotStatusTextView.setText("Auto Movement Stopped");
+                    //timerHandler.removeCallbacks(timerRunnableExplore);
+                }
+                else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
+                    String msg = gridMap.getObstacles(); //to get the info to send to the robot
+                    //MainActivity.printMessage(msg); //send obstacles to robot
+                    MainActivity.printMessage("beginExplore"); //for checklist
+                    showLog(msg);
+                    showToast("Image recognition task has started");
+
+
+
+                    //MainActivity.stopTimerFlag = false;
+                    //robotStatusTextView.setText("Auto Movement Started");
+                    //exploreTimer = System.currentTimeMillis();
+                    //timerHandler.postDelayed(timerRunnableExplore, 0);
+                }
+                else {
+                    showToast("Else statement: " + exploreToggleBtn.getText());
+                }
+                showLog("Exiting exploreToggleBtn");
             }
         });
 

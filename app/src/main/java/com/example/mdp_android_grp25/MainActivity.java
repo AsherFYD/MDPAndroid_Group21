@@ -272,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
             for (int j = 0; j < 20; j++) {
                 gridMap.ITEM_LIST.get(i)[j] = "";
                 gridMap.imageBearings.get(i)[j] = "";
+                gridMap.IMAGE_LIST.get(i)[j] = "";
             }
         }
     }
@@ -391,7 +392,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Device now connected to "
                         + mDevice.getName(), Toast.LENGTH_LONG).show();
                 editor.putString("connStatus", "Connected to " + mDevice.getName());
-                robotStatusTextView.setText("Ready to move");
+                robotStatusTextView.setText("Ready to move"); //why is this not showinggg
             }
             else if(status.equals("disconnected")){
                 Log.d(TAG, "mBroadcastReceiver5: Disconnected from "+mDevice.getName());
@@ -432,7 +433,9 @@ public class MainActivity extends AppCompatActivity {
                 if (message.contains(",")) {
                     String[] cmd = message.split(",");
 
-                    // check if string is cmd sent by ALG/RPI to get obstacle/image id
+                    showLog(cmd.toString()); //to get the received message
+
+                    // check if string is cmd sent by ALG/RPI to get obstacle/image id, to update image ID
                     if (cmd[0].equals("ALG") || cmd[0].equals("RPI")) {
                         showLog("cmd[0] is ALG or RPI");
                         if (obstacleID.equals(""))
@@ -447,14 +450,25 @@ public class MainActivity extends AppCompatActivity {
                         if (!(obstacleID.equals("") || imageID.equals(""))) {
                             showLog("imageID and obstacleID not empty");
                             gridMap.updateIDFromRpi(obstacleID, imageID);
-                            obstacleID = "";
-                            imageID = "";
+                            obstacleID = ""; //reset it to empty after updating
+                            imageID = ""; //reset it to empty after updating
                         }
-                    } else {
+                    }
+                    //For checklist
+                    else if(cmd[0].equals("TARGET")){
+                        showLog("cmd[0] is Target");
+                        obstacleID = cmd[1];
+                        imageID = cmd[2];
+                        showLog("obstacleID = " + obstacleID);
+                        showLog("imageID = " + imageID);
+                        gridMap.updateIDFromRpi(obstacleID, imageID);
+                    }
+
+                    else {
 
                         // alg sends in cm and float e.g. 100,100,N
-                        float x = Integer.parseInt(cmd[0]);
-                        float y = Integer.parseInt(cmd[1]);
+                        float x = Integer.parseInt(cmd[1]);
+                        float y = Integer.parseInt(cmd[2]);
 
                         // process received figures to pass into our fn
                         int a = Math.round(x);
@@ -462,12 +476,13 @@ public class MainActivity extends AppCompatActivity {
                         a = (a / 10) + 1;
                         b = (b / 10) + 1;
 
-                        String direction = cmd[2];
+                        String direction = cmd[3];
 
                         // allow robot to show up on grid if its on the very boundary
                         if (a == 1) a++;
                         if (b == 20) b--;
 
+                        //This is to move the robot, performAlgoCommand
                         if (cmd.length == 4) {
                             String command = cmd[3];
 

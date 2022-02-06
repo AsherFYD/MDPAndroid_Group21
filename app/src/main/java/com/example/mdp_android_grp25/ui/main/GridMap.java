@@ -41,7 +41,10 @@ import org.json.JSONObject;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.mdp_android_grp25.Constants.*;
 
@@ -58,6 +61,7 @@ public class GridMap extends View {
     //paint objects
     private Paint blackPaint = new Paint();
     private Paint whitePaint = new Paint();
+    private Paint imageIDPaint = new Paint(); // paint to draw when obstacle detected
     private Paint redPaint = new Paint();
     private Paint obstacleColor = new Paint();
     private Paint robotColor = new Paint();
@@ -100,12 +104,25 @@ public class GridMap extends View {
     public static String publicMDFExploration;
     public static String publicMDFObstacle;
 
+    //Map<String, String> dictionary = new HashMap<String, String>();
+
+    //20 X 20 ARRAY, this is for IMAGE ID detected, initially every element is empty string
+    public ArrayList<String[]> IMAGE_LIST = new ArrayList<>(Arrays.asList(
+            new String[20], new String[20], new String[20], new String[20], new String[20],
+            new String[20], new String[20], new String[20], new String[20], new String[20],
+            new String[20], new String[20], new String[20], new String[20], new String[20],
+            new String[20], new String[20], new String[20], new String[20], new String[20]
+    ));
+
+    //20 X 20 ARRAY, this is for obstacle ID
     public ArrayList<String[]> ITEM_LIST = new ArrayList<>(Arrays.asList(
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20]
     ));
+
+    //20 X 20 ARRAY, this is for imagebearings, side where the picture is
     public ArrayList<String[]> imageBearings = new ArrayList<>(Arrays.asList(
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20],
@@ -124,6 +141,12 @@ public class GridMap extends View {
         whitePaint.setColor(Color.WHITE);
         whitePaint.setTextSize(10);
         whitePaint.setTextAlign(Paint.Align.CENTER);
+
+        imageIDPaint.setColor(Color.WHITE);
+        imageIDPaint.setTextSize(25);
+        imageIDPaint.setTextAlign(Paint.Align.CENTER);
+
+
         redPaint.setColor(Color.RED);
         redPaint.setStrokeWidth(8);
         obstacleColor.setColor(Color.BLACK);
@@ -188,6 +211,33 @@ public class GridMap extends View {
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
+
+
+                if(IMAGE_LIST.get(19-i)[j].equals("")){
+                    //if empty, that means dont draw image ID, draw obstacle id instead
+                    showLog("Drawing Obstacle id");
+                    canvas.drawText(
+                            ITEM_LIST.get(19-i)[j],
+                            cells[j+1][19-i].startX + ((cells[1][1].endX - cells[1][1].startX) / 2),
+                            cells[j+1][i].startY + ((cells[1][1].endY - cells[1][1].startY) / 2) + 10,
+                            whitePaint
+                    );
+                }
+                else{
+                    //if not empty, draw IMAGE ID
+                    showLog("Drawing Image id");
+                    canvas.drawText(
+                            IMAGE_LIST.get(19-i)[j],
+                            cells[j+1][19-i].startX + ((cells[1][1].endX - cells[1][1].startX) / 2),
+                            cells[j+1][i].startY + ((cells[1][1].endY - cells[1][1].startY) / 2) + 10,
+                            imageIDPaint
+                    );
+                }
+
+
+
+
+                /**
                 // draw obstacle id
                 canvas.drawText(
                     ITEM_LIST.get(19-i)[j],
@@ -195,6 +245,9 @@ public class GridMap extends View {
                     cells[j+1][i].startY + ((cells[1][1].endY - cells[1][1].startY) / 2) + 10,
                     whitePaint
                 );
+                 **/
+
+
 
                 // color the face direction
                 switch (imageBearings.get(19-i)[j]) {
@@ -649,7 +702,7 @@ public class GridMap extends View {
         robotDirection = direction;
         editor.putString("direction", direction);
         editor.commit();
-        this.invalidate(); // this is to reset the map and draw everything again
+        this.invalidate(); // this is to refresh the map and draw everything again
     }
 
     private void updateRobotAxis(int col, int row, String direction) {
@@ -683,8 +736,11 @@ public class GridMap extends View {
 
     public void setObstacleCoord(int col, int row) {
         showLog("Entering setObstacleCoord");
+        showLog("col:" + col + "row:" + row);
         int[] obstacleCoord = new int[]{col - 1, row - 1};
         GridMap.obstacleCoord.add(obstacleCoord);
+        showLog("Test coordinates: " + GridMap.obstacleCoord.get(0)[0] + " " + GridMap.obstacleCoord.get(0)[1]);
+
         row = this.convertRow(row);
         cells[col][row].setType("obstacle");
         showLog("Exiting setObstacleCoord");
@@ -1134,6 +1190,7 @@ public class GridMap extends View {
                         obstacleCoord.remove(i);
                 ITEM_LIST.get(row)[column-1] = "";  // remove imageID
                 imageBearings.get(row)[column-1] = "";  // remove bearing
+                IMAGE_LIST.get(row)[column-1] = ""; //remove imageID stuff
                 this.invalidate();
                 return true;
             }
@@ -1206,6 +1263,8 @@ public class GridMap extends View {
             for (int j = 0; j < 20; j++) {
                 ITEM_LIST.get(i)[j] = "";
                 imageBearings.get(i)[j] = "";
+                IMAGE_LIST.get(i)[j] = "";
+
             }
         }
 
@@ -2412,9 +2471,32 @@ public class GridMap extends View {
     // wk 8 task
     public boolean updateIDFromRpi(String obstacleID, String imageID) {
         showLog("starting updateIDFromRpi");
-        int x = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[0];
-        int y = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[1];
-        ITEM_LIST.get(y)[x] = (imageID.equals("-1")) ? "" : imageID;
+        showLog("ObstacleID is " + obstacleID);
+        showLog("imageID is " + imageID);
+        int x = 0;
+        int y = 0;
+
+        //int x = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[0];
+        //int y = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[1];
+
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                showLog("Item in ITEM_LIST is " + ITEM_LIST.get(i)[j]); //display all the items in array list
+                if(ITEM_LIST.get(i)[j].equals(obstacleID)){
+                    showLog("updateIDFromRpi, in the if statement");
+                    y = i;
+                    x = j;
+                    showLog("updateIDFromRpi " + "y: " + y + " x: " + x);
+                    showLog("updateIDFromRpi, exiting the if statement");
+                }
+            }
+        }
+
+        showLog("updateIDfromRPItest " + x + " " + y);
+
+
+        //ITEM_LIST.get(y)[x] = (imageID.equals("-1")) ? "" : imageID;
+        IMAGE_LIST.get(y)[x] = (imageID.equals("-1")) ? "" : imageID;
         this.invalidate();
         return true;
     }
