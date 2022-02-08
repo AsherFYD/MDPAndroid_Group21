@@ -117,8 +117,8 @@ public class ControlFragment extends Fragment {
         fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
         exploreButton = root.findViewById(R.id.exploreToggleBtn3);
         fastestButton = root.findViewById(R.id.fastestToggleBtn3);
-        exploreResetButton = root.findViewById(R.id.exploreResetImageBtn2);
-        fastestResetButton = root.findViewById(R.id.fastestResetImageBtn2);
+        exploreResetButton = root.findViewById(R.id.exploreResetBtn);
+        fastestResetButton = root.findViewById(R.id.fastestResetBtn);
         robotStatusTextView = MainActivity.getRobotStatusTextView();
         fastestTimer = 0;
         exploreTimer = 0;

@@ -1,4 +1,4 @@
-#Tue Feb 08 18:26:38 SGT 2022
-base.0=C\:\\Users\\YongDing\\AndroidStudioProjects\\MDPAndroid_Group21\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Wed Feb 09 01:46:14 SGT 2022
+base.0=/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

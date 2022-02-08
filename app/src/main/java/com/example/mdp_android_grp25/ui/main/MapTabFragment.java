@@ -2,6 +2,7 @@ package com.example.mdp_android_grp25.ui.main;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -34,9 +36,13 @@ public class MapTabFragment extends Fragment {
 
     Button resetMapBtn, updateButton;
     ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
-    ToggleButton setStartPointToggleBtn, exploreToggleBtn;          //, setWaypointToggleBtn;
+    ToggleButton setStartPointToggleBtn, exploreToggleBtn, fastestToggleBtn;          //, setWaypointToggleBtn;
     //Switch manualAutoToggleBtn;
-    GridMap gridMap;
+    private static GridMap gridMap;
+    private static long exploreTimer, fastestTimer;
+    private static long exploreTimerLastStopped, fastestTimerLastStopped;
+    TextView exploreTimeTextView, fastestTimeTextView, robotStatusTextView;
+    Button exploreResetBtn, fastestResetBtn;
 
     Switch dragSwitch;
     Switch changeObstacleSwitch;
@@ -48,6 +54,41 @@ public class MapTabFragment extends Fragment {
     static String imageBearing;
     static boolean dragStatus;
     static boolean changeObstacleStatus;
+
+    // Timer
+    public static Handler timerHandler = new Handler();
+
+    public Runnable timerRunnableExplore = new Runnable() {
+        @Override
+        public void run() {
+            long millisExplore = System.currentTimeMillis() - exploreTimer;
+            int secondsExplore = (int) (millisExplore / 1000);
+            int minutesExplore = secondsExplore / 60;
+            secondsExplore = secondsExplore % 60;
+
+            if (MainActivity.stopTimerFlag == false) {
+                exploreTimeTextView.setText(String.format("%02d:%02d", minutesExplore,
+                        secondsExplore));
+                timerHandler.postDelayed(this, 500);
+            }
+        }
+    };
+
+    public Runnable timerRunnableFastest = new Runnable() {
+        @Override
+        public void run() {
+            long millisFastest = System.currentTimeMillis() - fastestTimer;
+            int secondsFastest = (int) (millisFastest / 1000);
+            int minutesFastest = secondsFastest / 60;
+            secondsFastest = secondsFastest % 60;
+
+            if (MainActivity.stopWk9TimerFlag == false) {
+                fastestTimeTextView.setText(String.format("%02d:%02d", minutesFastest,
+                        secondsFastest));
+                timerHandler.postDelayed(this, 500);
+            }
+        }
+    };
 
     public static MapTabFragment newInstance(int index) {
         MapTabFragment fragment = new MapTabFragment();
@@ -82,11 +123,15 @@ public class MapTabFragment extends Fragment {
         //setWaypointToggleBtn = root.findViewById(R.id.waypointToggleBtn);
         directionChangeImageBtn = root.findViewById(R.id.changeDirectionBtn);
         //exploredImageBtn = root.findViewById(R.id.exploredImageBtn);
-        exploreToggleBtn = root.findViewById(R.id.exploreToggleBtn3); //Button to start image rec
+        exploreToggleBtn = (ToggleButton) root.findViewById(R.id.exploreToggleBtn3); //Button to start image rec
+        fastestToggleBtn = (ToggleButton) root.findViewById(R.id.fastestToggleBtn3); //Button to start fastest path
         obstacleImageBtn = root.findViewById(R.id.addObstacleBtn);
         clearImageBtn = root.findViewById(R.id.clearImageBtn);
         //manualAutoToggleBtn = root.findViewById(R.id.autoManualSwitch);
         //updateButton = root.findViewById(R.id.updateMapBtn);
+        robotStatusTextView = MainActivity.getRobotStatusTextView();
+        exploreResetBtn = (Button) root.findViewById(R.id.exploreResetBtn); //Button to start image rec
+        fastestResetBtn = (Button) root.findViewById(R.id.fastestResetBtn);
 
         dragSwitch = root.findViewById(R.id.dragSwitch);
         changeObstacleSwitch = root.findViewById(R.id.changeObstacleSwitch);
@@ -94,6 +139,13 @@ public class MapTabFragment extends Fragment {
         spinner_imageBearing = root.findViewById(R.id.bearingSpinner);
         spinner_imageID.setEnabled(false);
         spinner_imageBearing.setEnabled(false);
+
+        exploreTimeTextView = root.findViewById(R.id.exploreTimeTextView2);
+        fastestTimeTextView = root.findViewById(R.id.fastestTimeTextView2);
+        fastestTimer = 0;
+        exploreTimer = 0;
+        exploreTimerLastStopped = 0;
+        fastestTimerLastStopped = 0;
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         // Specify the layout to use when the list of choices appears
@@ -127,14 +179,14 @@ public class MapTabFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> a) { }
         });
 
-        resetMapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked resetMapBtn");
-                showToast("Reseting map...");
-                gridMap.resetMap();
-            }
-        });
+//        resetMapBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showLog("Clicked resetMapBtn");
+//                showToast("Reseting map...");
+//                gridMap.resetMap();
+//            }
+//        });
 
 
         // switch for dragging
@@ -222,6 +274,7 @@ public class MapTabFragment extends Fragment {
                     spinner_imageID.setEnabled(true);
                     spinner_imageBearing.setEnabled(true);
                     gridMap.toggleCheckedBtn("obstacleImageBtn");
+                    gridMap.toggleCheckedBtn("obstacleImageBtn");
                 }
 
                 //If On, turn off obstacle plotting
@@ -245,35 +298,91 @@ public class MapTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 showLog("Clicked exploreToggleBtn");
-                ToggleButton exploreToggleBtn = (ToggleButton) v;
 
                 if (exploreToggleBtn.getText().equals("Imagerec START")) { //press stop
                     showToast("Image recognition task has stopped");
-
-
-
-
-                    //robotStatusTextView.setText("Auto Movement Stopped");
-                    //timerHandler.removeCallbacks(timerRunnableExplore);
+                    robotStatusTextView.setText("Auto Movement Stopped");
+                    long tempExploreLastStopped = System.currentTimeMillis() - exploreTimer;
+                    exploreTimerLastStopped = tempExploreLastStopped;
+                    timerHandler.removeCallbacks(timerRunnableExplore);
                 }
                 else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
                     String msg = gridMap.getObstacles(); //to get the info to send to the robot
-                    //MainActivity.printMessage(msg); //send obstacles to robot
+                    MainActivity.printMessage(msg); //send obstacles to robot
+                    MainActivity.stopTimerFlag = false;
                     MainActivity.printMessage("beginExplore"); //for checklist
                     showLog(msg);
                     showToast("Image recognition task has started");
-
-
-
-                    //MainActivity.stopTimerFlag = false;
-                    //robotStatusTextView.setText("Auto Movement Started");
-                    //exploreTimer = System.currentTimeMillis();
-                    //timerHandler.postDelayed(timerRunnableExplore, 0);
+                    robotStatusTextView.setText("Auto Movement Started");
+                    long tempExplore = System.currentTimeMillis();
+                    exploreTimer = tempExplore - exploreTimerLastStopped;
+                    timerHandler.postDelayed(timerRunnableExplore, 0);
                 }
                 else {
                     showToast("Else statement: " + exploreToggleBtn.getText());
                 }
                 showLog("Exiting exploreToggleBtn");
+            }
+        });
+
+        exploreResetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked exploreResetBtn");
+                showToast("Resetting exploration time...");
+                exploreTimeTextView.setText("00:00");
+                robotStatusTextView.setText("Not Available");
+                exploreTimer = 0;
+                exploreTimerLastStopped = 0;
+                timerHandler.removeCallbacks(timerRunnableExplore);
+                showLog("Exiting exploreResetImageBtn");
+            }
+        });
+
+        fastestResetBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked fastestResetBtn");
+                showToast("Resetting fastest time...");
+                fastestTimeTextView.setText("00:00");
+                robotStatusTextView.setText("Not Available");
+                fastestTimer = 0;
+                fastestTimerLastStopped = 0;
+                timerHandler.removeCallbacks(timerRunnableFastest);
+                showLog("Exiting fastestResetImageBtn");
+            }
+        });
+
+        /**
+         * for week 9 start button
+         */
+        fastestToggleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked fastestToggleBtn");
+                if (fastestToggleBtn.getText().equals("Fastest START")) { //press stop for wk9 start
+                    showToast("Fastest car timer stop!");
+                    robotStatusTextView.setText("Fastest Car Stopped");
+                    long tempFastestLastStopped = System.currentTimeMillis() - fastestTimer;
+                    fastestTimerLastStopped = tempFastestLastStopped;
+                    timerHandler.removeCallbacks(timerRunnableFastest);
+                }
+                else if (fastestToggleBtn.getText().equals("STOP")) { //press start wk 9
+                    showToast("Fastest car timer start!");
+                    try {
+                        //MainActivity.printMessage("STM|G"); //send message for fastest path
+                    } catch (Exception e) {
+                        showLog(e.getMessage());
+                    }
+                    MainActivity.stopWk9TimerFlag = false;
+                    robotStatusTextView.setText("Fastest Car Started");
+                    long tempFastest = System.currentTimeMillis();
+                    fastestTimer = tempFastest - fastestTimerLastStopped;
+                    timerHandler.postDelayed(timerRunnableFastest, 0);
+                }
+                else
+                    showToast(fastestToggleBtn.getText().toString());
+                showLog("Exiting fastestToggleBtn");
             }
         });
 

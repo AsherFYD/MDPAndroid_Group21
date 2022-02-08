@@ -80,30 +80,20 @@
         app:srcCompat="@drawable/baseline_dangerous_24"
         tools:ignore="VectorDrawableCompat" />
 
-    <Button
-        android:id="@+id/updateMapBtn"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:text="Preload Obstacles"
-        android:visibility="gone"
-        tools:layout_editor_absoluteX="420dp"
-        tools:layout_editor_absoluteY="526dp"
-        tools:visibility="invisible" />
-
-    <Switch
-        android:id="@+id/autoManualSwitch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:text="MANUAL"
-        android:textFontWeight="500"
-        android:textOff="@string/manual"
-        android:textOn="@string/auto"
-        android:textSize="28px"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="536dp" />
+<!--    <Switch-->
+<!--        android:id="@+id/autoManualSwitch"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:layout_marginRight="32dp"-->
+<!--        android:text="MANUAL"-->
+<!--        android:textFontWeight="500"-->
+<!--        android:textOff="@string/manual"-->
+<!--        android:textOn="@string/auto"-->
+<!--        android:textSize="28px"-->
+<!--        android:visibility="invisible"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        tools:layout_editor_absoluteY="536dp" />-->
 
     <Button
         android:id="@+id/resetBtn"
@@ -139,8 +129,8 @@
         android:textOff="SET WAYPOINT"
         android:textOn="CANCEL"
         android:visibility="invisible"
-        tools:layout_editor_absoluteX="451dp"
-        tools:layout_editor_absoluteY="526dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fastestTimeTextView2" />
 
     <TextView
         android:id="@+id/textView_drag"
@@ -222,10 +212,12 @@
         android:layout_height="30dp"
         android:layout_marginEnd="526dp"
         android:layout_marginRight="526dp"
-        android:text="TextView"
+        android:gravity="center"
+        android:text="00:00"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exploreResetImageBtn2" />
+        app:layout_constraintTop_toBottomOf="@+id/exploreResetBtn" />
 
     <TextView
         android:id="@+id/fastestTimeTextView2"
@@ -235,13 +227,15 @@
         android:layout_marginLeft="200dp"
         android:layout_marginEnd="226dp"
         android:layout_marginRight="226dp"
-        android:text="TextView"
+        android:gravity="center"
+        android:text="00:00"
+        android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/exploreTimeTextView2"
-        app:layout_constraintTop_toBottomOf="@+id/fastestResetImageBtn2" />
+        app:layout_constraintTop_toBottomOf="@+id/fastestResetBtn"/>
 
     <Button
-        android:id="@+id/exploreResetImageBtn2"
+        android:id="@+id/exploreResetBtn"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginEnd="526dp"
@@ -254,7 +248,7 @@
         tools:text="Reset" />
 
     <Button
-        android:id="@+id/fastestResetImageBtn2"
+        android:id="@+id/fastestResetBtn"
         android:layout_width="100dp"
         android:layout_height="40dp"
         android:layout_marginStart="200dp"
@@ -264,7 +258,7 @@
         android:background="#E47B7B"
         android:text="Reset"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/exploreResetImageBtn2"
+        app:layout_constraintStart_toEndOf="@+id/exploreResetBtn"
         app:layout_constraintTop_toBottomOf="@+id/fastestToggleBtn3"
         tools:text="Reset" />
 

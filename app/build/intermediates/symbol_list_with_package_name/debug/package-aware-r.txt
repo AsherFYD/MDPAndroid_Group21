@@ -1254,7 +1254,6 @@ id always
 id appBarLayout
 id async
 id auto
-id autoManualSwitch
 id backBtn
 id backButton
 id barrier
@@ -1324,16 +1323,16 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id exploreResetBtn
 id exploreResetImageBtn
-id exploreResetImageBtn2
 id exploreTextView
 id exploreTimeTextView2
 id exploreToggleBtn
 id exploreToggleBtn2
 id exploreToggleBtn3
 id exploredImageBtn
+id fastestResetBtn
 id fastestResetImageBtn
-id fastestResetImageBtn2
 id fastestTextView
 id fastestTextView2
 id fastestTimeTextView2
@@ -1526,7 +1525,6 @@ id unlabeled
 id up
 id upBtn
 id updateButton
-id updateMapBtn
 id useLogo
 id view_offset_helper
 id view_pager
