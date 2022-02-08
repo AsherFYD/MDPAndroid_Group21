@@ -41,7 +41,10 @@ import org.json.JSONObject;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.mdp_android_grp25.Constants.*;
 
@@ -58,14 +61,15 @@ public class GridMap extends View {
     //paint objects
     private Paint blackPaint = new Paint();
     private Paint whitePaint = new Paint();
+    private Paint imageIDPaint = new Paint(); // paint to draw when obstacle detected
     private Paint redPaint = new Paint();
     private Paint obstacleColor = new Paint();
     private Paint robotColor = new Paint();
     private Paint endColor = new Paint();
     private Paint startColor = new Paint();
-    private Paint waypointColor = new Paint();
+    //private Paint waypointColor = new Paint();
     private Paint unexploredColor = new Paint();
-    private Paint exploredColor = new Paint();
+    //private Paint exploredColor = new Paint();
     private Paint arrowColor = new Paint();
     private Paint fastestPathColor = new Paint();
 
@@ -75,12 +79,12 @@ public class GridMap extends View {
     private static int[] startCoord = new int[]{-1, -1};
     private static int[] curCoord = new int[]{-1, -1};
     private static int[] oldCoord = new int[]{-1, -1};
-    private static int[] waypointCoord = new int[]{-1, -1};
+    //private static int[] waypointCoord = new int[]{-1, -1};
     private static ArrayList<String[]> arrowCoord = new ArrayList<>();
     private static ArrayList<int[]> obstacleCoord = new ArrayList<>();
     private static boolean autoUpdate = false;
     private static boolean canDrawRobot = false;
-    private static boolean setWaypointStatus = false;
+    //private static boolean setWaypointStatus = false;
     private static boolean startCoordStatus = false;
     private static boolean setObstacleStatus = false;
     private static boolean unSetCellStatus = false;
@@ -100,12 +104,25 @@ public class GridMap extends View {
     public static String publicMDFExploration;
     public static String publicMDFObstacle;
 
+    //Map<String, String> dictionary = new HashMap<String, String>();
+
+    //20 X 20 ARRAY, this is for IMAGE ID detected, initially every element is empty string
+    public ArrayList<String[]> IMAGE_LIST = new ArrayList<>(Arrays.asList(
+            new String[20], new String[20], new String[20], new String[20], new String[20],
+            new String[20], new String[20], new String[20], new String[20], new String[20],
+            new String[20], new String[20], new String[20], new String[20], new String[20],
+            new String[20], new String[20], new String[20], new String[20], new String[20]
+    ));
+
+    //20 X 20 ARRAY, this is for obstacle ID
     public ArrayList<String[]> ITEM_LIST = new ArrayList<>(Arrays.asList(
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20]
     ));
+
+    //20 X 20 ARRAY, this is for imagebearings, side where the picture is
     public ArrayList<String[]> imageBearings = new ArrayList<>(Arrays.asList(
             new String[20], new String[20], new String[20], new String[20], new String[20],
             new String[20], new String[20], new String[20], new String[20], new String[20],
@@ -124,6 +141,12 @@ public class GridMap extends View {
         whitePaint.setColor(Color.WHITE);
         whitePaint.setTextSize(10);
         whitePaint.setTextAlign(Paint.Align.CENTER);
+
+        imageIDPaint.setColor(Color.WHITE);
+        imageIDPaint.setTextSize(25);
+        imageIDPaint.setTextAlign(Paint.Align.CENTER);
+
+
         redPaint.setColor(Color.RED);
         redPaint.setStrokeWidth(8);
         obstacleColor.setColor(Color.BLACK);
@@ -131,9 +154,9 @@ public class GridMap extends View {
         robotColor.setStrokeWidth(2);
         endColor.setColor(Color.RED);
         startColor.setColor(Color.CYAN);
-        waypointColor.setColor(Color.GREEN);
+        //waypointColor.setColor(Color.GREEN);
         unexploredColor.setColor(Color.LTGRAY);
-        exploredColor.setColor(Color.WHITE);
+        //exploredColor.setColor(Color.WHITE);
         arrowColor.setColor(Color.BLACK);
         fastestPathColor.setColor(Color.MAGENTA);
 
@@ -154,9 +177,11 @@ public class GridMap extends View {
         showLog("Redrawing map");
 
         // Create cell coords
-        Log.d(TAG,"Creating Cell");
+        showLog("Creating Cell");
 
+        //if map is not drawn, draw a dummy map?
         if (!mapDrawn) {
+            showLog("Is this thing used");
             String[] dummyArrowCoord = new String[3];
             dummyArrowCoord[0] = "1";
             dummyArrowCoord[1] = "1";
@@ -164,7 +189,9 @@ public class GridMap extends View {
             arrowCoord.add(dummyArrowCoord);
             this.createCell();
             mapDrawn = true;
+            showLog("Exiting this thing if it is used");
         }
+
 
         drawIndividualCell(canvas);
         drawHorizontalLines(canvas);
@@ -184,13 +211,43 @@ public class GridMap extends View {
 
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
-                // draw image id
+
+
+                if(IMAGE_LIST.get(19-i)[j].equals("")){
+                    //if empty, that means dont draw image ID, draw obstacle id instead
+                    showLog("Drawing Obstacle id");
+                    canvas.drawText(
+                            ITEM_LIST.get(19-i)[j],
+                            cells[j+1][19-i].startX + ((cells[1][1].endX - cells[1][1].startX) / 2),
+                            cells[j+1][i].startY + ((cells[1][1].endY - cells[1][1].startY) / 2) + 10,
+                            whitePaint
+                    );
+                }
+                else{
+                    //if not empty, draw IMAGE ID
+                    showLog("Drawing Image id");
+                    canvas.drawText(
+                            IMAGE_LIST.get(19-i)[j],
+                            cells[j+1][19-i].startX + ((cells[1][1].endX - cells[1][1].startX) / 2),
+                            cells[j+1][i].startY + ((cells[1][1].endY - cells[1][1].startY) / 2) + 10,
+                            imageIDPaint
+                    );
+                }
+
+
+
+
+                /**
+                // draw obstacle id
                 canvas.drawText(
                     ITEM_LIST.get(19-i)[j],
                     cells[j+1][19-i].startX + ((cells[1][1].endX - cells[1][1].startX) / 2),
                     cells[j+1][i].startY + ((cells[1][1].endY - cells[1][1].startY) / 2) + 10,
                     whitePaint
                 );
+                 **/
+
+
 
                 // color the face direction
                 switch (imageBearings.get(19-i)[j]) {
@@ -509,9 +566,11 @@ public class GridMap extends View {
         return startCoordStatus;
     }
 
+    /**
     public void setWaypointStatus(boolean status) {
         setWaypointStatus = status;
     }
+     **/
 
     public boolean getCanDrawRobot() {
         return canDrawRobot;
@@ -543,14 +602,14 @@ public class GridMap extends View {
         startCoord[1] = row;
         String direction = getRobotDirection();
         if(direction.equals("None")) {
-            direction = "up";
+            direction = "up"; //default robot direction
         }
         if (this.getStartCoordStatus())
             this.setCurCoord(col, row, direction);
         showLog("Exiting setStartCoord");
     }
 
-    //just to return the robot sstart coordinates
+    //just to return the robot start coordinates
     private int[] getStartCoord() {
         return startCoord;
     }
@@ -573,9 +632,21 @@ public class GridMap extends View {
 
         row = this.convertRow(row);
 
+
+        //set everything that was robot to unexplored
+        for (int x = 0; x <= 20; x++)
+            for (int y = 0; y <= 20; y++)
+            {
+                showLog("Cell Type is: " + cells[x][y].getType());
+                if(cells[x][y].getType().equals("robot")){
+                    cells[x][y].setType("unexplored");
+                }
+            }
+
         for (int x = col - 1; x <= col; x++)
             for (int y = row - 1; y <= row; y++)
                 cells[x][y].setType("robot");
+
 
         showLog("Exiting setCurCoord");
     }
@@ -620,6 +691,7 @@ public class GridMap extends View {
         return oldCoord;
     }
 
+
     private void setArrowCoordinate(int col, int row, String arrowDirection) {
         showLog("Entering setArrowCoordinate");
         int[] obstacleCoord = new int[]{col, row};
@@ -642,7 +714,7 @@ public class GridMap extends View {
         robotDirection = direction;
         editor.putString("direction", direction);
         editor.commit();
-        this.invalidate(); // this is to reset the map and draw everything again
+        this.invalidate(); // this is to refresh the map and draw everything again
     }
 
     private void updateRobotAxis(int col, int row, String direction) {
@@ -656,6 +728,7 @@ public class GridMap extends View {
         directionAxisTextView.setText(direction);
     }
 
+    /**
     private void setWaypointCoord(int col, int row) throws JSONException {
         showLog("Entering setWaypointCoord");
         waypointCoord[0] = col;
@@ -671,11 +744,15 @@ public class GridMap extends View {
     private int[] getWaypointCoord() {
         return waypointCoord;
     }
+     **/
 
     public void setObstacleCoord(int col, int row) {
         showLog("Entering setObstacleCoord");
+        showLog("col:" + col + "row:" + row);
         int[] obstacleCoord = new int[]{col - 1, row - 1};
         GridMap.obstacleCoord.add(obstacleCoord);
+        showLog("Test coordinates: " + GridMap.obstacleCoord.get(0)[0] + " " + GridMap.obstacleCoord.get(0)[1]);
+
         row = this.convertRow(row);
         cells[col][row].setType("obstacle");
         showLog("Exiting setObstacleCoord");
@@ -689,6 +766,7 @@ public class GridMap extends View {
         Log.d(TAG, message);
     }
 
+    //not sure what is this for, got error when this method is commented out
     private void drawArrow(Canvas canvas, ArrayList<String[]> arrowCoord) {
         showLog("Entering drawArrow");
         RectF rect;
@@ -755,14 +833,16 @@ public class GridMap extends View {
                 case "start":
                     this.paint = startColor;
                     break;
+                    /**
                 case "waypoint":
                     this.paint = waypointColor;
                     break;
+                     **/
                 case "unexplored":
                     this.paint = unexploredColor;
                     break;
                 case "explored":
-                    this.paint = exploredColor;
+                    //this.paint = exploredColor;
                     break;
                 case "arrow":
                     this.paint = arrowColor;
@@ -780,6 +860,10 @@ public class GridMap extends View {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getType(){
+            return this.type;
         }
 
         public int getId() {
@@ -844,6 +928,7 @@ public class GridMap extends View {
                 // commented out for Wk 8 and Wk 9
                 MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
             }
+
             // if dropped within gridmap, shift it to new position unless already got existing
             else if ((1 <= initialColumn && initialColumn <= 20)
                     && (1 <= initialRow && initialRow <= 20)
@@ -884,6 +969,8 @@ public class GridMap extends View {
         return true;
     }
 
+
+    //just a method to invalidate --> redraw map
     public void callInvalidate() {
         showLog("Entering callinvalidate");
         this.invalidate();
@@ -900,8 +987,10 @@ public class GridMap extends View {
 
             ToggleButton setStartPointToggleBtn = ((Activity)this.getContext())
                                                     .findViewById(R.id.startpointToggleBtn);
+            /**
             ToggleButton setWaypointToggleBtn = ((Activity)this.getContext())
                                                     .findViewById(R.id.waypointToggleBtn);
+             **/
             showLog("event.getX = " + event.getX() + ", event.getY = " + event.getY());
             showLog("row = " + row + ", column = " + column);
 
@@ -984,13 +1073,13 @@ public class GridMap extends View {
 
                             MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
 
-                            showLog(commandMsgGenerator(CHANGE_OBSTACLE));
+                            //showLog(commandMsgGenerator(CHANGE_OBSTACLE));
 
                             callInvalidate();
                         }
                     });
 
-                    // dismiss
+                    // dismiss dialog
                     mBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
@@ -1016,7 +1105,7 @@ public class GridMap extends View {
                     for (int i = 0; i < 21; i++) {
                         for (int j = 0; j < 21; j++) {
                             if (cells[i][j].type == "robot") {
-                                cells[i][j].setType("explored");
+                                //cells[i][j].setType("explored");
                             }
                         }
                     }
@@ -1062,6 +1151,7 @@ public class GridMap extends View {
                 this.invalidate();
                 return true;
             }
+            /**
             if (setWaypointStatus) {
                 int[] waypointCoord = this.getWaypointCoord();
                 if (waypointCoord[0] >= 1 && waypointCoord[1] >= 1)
@@ -1078,6 +1168,7 @@ public class GridMap extends View {
                 this.invalidate();
                 return true;
             }
+             **/
 
             // add id and the image bearing, popup to ask for user input
             if (setObstacleStatus) {
@@ -1101,7 +1192,7 @@ public class GridMap extends View {
                 return true;
             }
             if (setExploredStatus) {
-                cells[column][20-row].setType("explored");
+                //cells[column][20-row].setType("explored");
                 this.invalidate();
                 return true;
             }
@@ -1115,6 +1206,7 @@ public class GridMap extends View {
                         obstacleCoord.remove(i);
                 ITEM_LIST.get(row)[column-1] = "";  // remove imageID
                 imageBearings.get(row)[column-1] = "";  // remove bearing
+                IMAGE_LIST.get(row)[column-1] = ""; //remove imageID stuff
                 this.invalidate();
                 return true;
             }
@@ -1124,26 +1216,29 @@ public class GridMap extends View {
     }
 
     public void toggleCheckedBtn(String buttonName) {
-        ToggleButton setStartPointToggleBtn = ((Activity)this.getContext())
-                .findViewById(R.id.startpointToggleBtn);
-        ToggleButton setWaypointToggleBtn = ((Activity)this.getContext())
-                .findViewById(R.id.waypointToggleBtn);
-        ImageButton obstacleImageBtn = ((Activity)this.getContext())
-                .findViewById(R.id.addObstacleBtn);
+        ToggleButton setStartPointToggleBtn = ((Activity)this.getContext()).findViewById(R.id.startpointToggleBtn);
+        ImageButton obstacleImageBtn = ((Activity)this.getContext()).findViewById(R.id.addObstacleBtn);
 
         if (!buttonName.equals("setStartPointToggleBtn"))
             if (setStartPointToggleBtn.isChecked()) {
                 this.setStartCoordStatus(false);
                 setStartPointToggleBtn.toggle();
             }
-        if (!buttonName.equals("setWaypointToggleBtn"))
-            if (setWaypointToggleBtn.isChecked()) {
-                this.setWaypointStatus(false);
-                setWaypointToggleBtn.toggle();
-            }
+
+        /**
         if (!buttonName.equals("obstacleImageBtn"))
             if (obstacleImageBtn.isEnabled())
                 this.setSetObstacleStatus(false);
+         **/
+
+        //ToggleButton setWaypointToggleBtn = ((Activity)this.getContext()).findViewById(R.id.waypointToggleBtn);
+        /**
+         if (!buttonName.equals("setWaypointToggleBtn"))
+         if (setWaypointToggleBtn.isChecked()) {
+         this.setWaypointStatus(false);
+         setWaypointToggleBtn.toggle();
+         }
+         **/
     }
 
 
@@ -1173,7 +1268,7 @@ public class GridMap extends View {
         autoUpdate = false;
         arrowCoord = new ArrayList<>();
         obstacleCoord = new ArrayList<>();
-        waypointCoord = new int[]{-1, -1};
+        //waypointCoord = new int[]{-1, -1};
         mapDrawn = false;
         canDrawRobot = false;
         validPosition = false;
@@ -1184,6 +1279,8 @@ public class GridMap extends View {
             for (int j = 0; j < 20; j++) {
                 ITEM_LIST.get(i)[j] = "";
                 imageBearings.get(i)[j] = "";
+                IMAGE_LIST.get(i)[j] = "";
+
             }
         }
 
@@ -1224,7 +1321,8 @@ public class GridMap extends View {
                         x = 1 + j - ((19 - y) * 15);
                         if ((String.valueOf(exploredString.charAt(j + 2))).equals("1")
                                 && !cells[x][y].type.equals("robot"))
-                            cells[x][y].setType("explored");
+                            continue;
+                            //cells[x][y].setType("explored");
                         else if ((String.valueOf(exploredString.charAt(j + 2))).equals("0")
                                 && !cells[x][y].type.equals("robot"))
                             cells[x][y].setType("unexplored");
@@ -1255,11 +1353,12 @@ public class GridMap extends View {
                                 }
                                 k++;
                             }
-
+                    /**
                     int[] waypointCoord = this.getWaypointCoord();
                     if (waypointCoord[0] >= 1 && waypointCoord[1] >= 1)
                         cells[waypointCoord[0]][20 - waypointCoord[1]].setType("waypoint");
                     break;
+                     **/
                 case "robotPosition":
                     if (canDrawRobot)
                         this.setOldRobotCoord(curCoord[0], curCoord[1]);
@@ -1285,6 +1384,7 @@ public class GridMap extends View {
                             convertRow(infoJsonArray.getInt(1))-1, direction);
                     canDrawRobot = true;
                     break;
+                    /**
                 case "waypoint":
                     infoJsonArray = mapInformation.getJSONArray("waypoint");
                     infoJsonObject = infoJsonArray.getJSONObject(0);
@@ -1292,6 +1392,7 @@ public class GridMap extends View {
                             infoJsonObject.getInt("y"));
                     setWaypointStatus = true;
                     break;
+                     **/
                 case "obstacle":
                     infoJsonArray = mapInformation.getJSONArray("obstacle");
                     for (int j = 0; j < infoJsonArray.length(); j++) {
@@ -1340,6 +1441,7 @@ public class GridMap extends View {
     }
 
     // e.g obstacle is on right side of 2x2 and can turn left and vice versa
+    // can use setCurCoord here to remove trail of yellow boxes
     public void moveRobot(String direction) {
         showLog("Entering moveRobot");
         setValidPosition(false);
@@ -1357,6 +1459,8 @@ public class GridMap extends View {
                     case "forward":
                         if (curCoord[1] != 19) {
                             curCoord[1] += 1;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
+                            showLog("MANUAL CONTROLLER, SETTING NEW ROBOT POSITION AND CELL COLOURS");
                             validPosition = true;
                         }
                         break;
@@ -1367,16 +1471,19 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] += 1;
                                 robotDirection = "right";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
                     case "back":
                         if (curCoord[1] != 1) {
                             curCoord[1] -= 1;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             validPosition = true;
                         }
                         break;
@@ -1387,10 +1494,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] -= 1;
                                 robotDirection = "left";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1405,6 +1514,7 @@ public class GridMap extends View {
                         if (0 < curCoord[0] && curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1414,10 +1524,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] -= 1;
                                 robotDirection = "down";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1425,6 +1537,7 @@ public class GridMap extends View {
                         if (curCoord[0] > 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1434,10 +1547,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] += 1;
                                 robotDirection = "up";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1451,6 +1566,7 @@ public class GridMap extends View {
                         if (curCoord[1] != 1) {
                             curCoord[1] -= 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1460,10 +1576,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] -= 1;
                                 robotDirection = "left";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1471,6 +1589,7 @@ public class GridMap extends View {
                         if (0 < curCoord[1] && curCoord[1] < 19) {
                             curCoord[1] += 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1480,10 +1599,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] += 1;
                                 robotDirection = "right";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1497,6 +1618,7 @@ public class GridMap extends View {
                         if (curCoord[0] > 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1506,10 +1628,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] += 1;
                                 robotDirection = "up";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1517,6 +1641,7 @@ public class GridMap extends View {
                         if (curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1526,10 +1651,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] -= 1;
                                 robotDirection = "down";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1682,7 +1809,7 @@ public class GridMap extends View {
                 showLog("prev pos was within grid");
                 for (int i = curCoord[0] - 1; i <= curCoord[0]; i++) {
                     for (int j = curCoord[1] - 1; j <= curCoord[1]; j++) {
-                        cells[i][20 - j - 1].setType("explored");
+                        //cells[i][20 - j - 1].setType("explored");
                     }
                 }
             }
@@ -2309,7 +2436,7 @@ public class GridMap extends View {
                     showLog("pos is good before going out of grid");
                     for (int n = curCoord[0] - 1; n <= curCoord[0]; n++) {
                         for (int m = curCoord[1] - 1; m <= curCoord[1]; m++) {
-                            cells[n][20 - m - 1].setType("explored");
+                            //cells[n][20 - m - 1].setType("explored");
                         }
                     }
                 }
@@ -2387,9 +2514,32 @@ public class GridMap extends View {
     // wk 8 task
     public boolean updateIDFromRpi(String obstacleID, String imageID) {
         showLog("starting updateIDFromRpi");
-        int x = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[0];
-        int y = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[1];
-        ITEM_LIST.get(y)[x] = (imageID.equals("-1")) ? "" : imageID;
+        showLog("ObstacleID is " + obstacleID);
+        showLog("imageID is " + imageID);
+        int x = 0;
+        int y = 0;
+
+        //int x = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[0];
+        //int y = obstacleCoord.get(Integer.parseInt(obstacleID) - 1)[1];
+
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                showLog("Item in ITEM_LIST is " + ITEM_LIST.get(i)[j]); //display all the items in array list
+                if(ITEM_LIST.get(i)[j].equals(obstacleID)){
+                    showLog("updateIDFromRpi, in the if statement");
+                    y = i;
+                    x = j;
+                    showLog("updateIDFromRpi " + "y: " + y + " x: " + x);
+                    showLog("updateIDFromRpi, exiting the if statement");
+                }
+            }
+        }
+
+        showLog("updateIDfromRPItest " + x + " " + y);
+
+
+        //ITEM_LIST.get(y)[x] = (imageID.equals("-1")) ? "" : imageID;
+        IMAGE_LIST.get(y)[x] = (imageID.equals("-1")) ? "" : imageID;
         this.invalidate();
         return true;
     }

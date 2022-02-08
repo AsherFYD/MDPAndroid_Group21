@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService;
 import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage;
-import com.example.mdp_android_grp25.ui.main.BluetoothChatFragment;
+//import com.example.mdp_android_grp25.ui.main.BluetoothChatFragment;
 import com.example.mdp_android_grp25.ui.main.ControlFragment;
 import com.example.mdp_android_grp25.ui.main.GridMap;
 import com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static GridMap gridMap;
     private ControlFragment controlFragment;
-    static TextView xAxisTextView, yAxisTextView, directionAxisTextView;
+    static TextView xAxisTextView, yAxisTextView, directionAxisTextView, commandLog;
     static TextView robotStatusTextView, bluetoothStatus, bluetoothDevice;
     static Button upBtn, downBtn, leftBtn, rightBtn;
 
@@ -66,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
         // Initialization
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //this is for the bottom fragment
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this,
                 getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -85,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("connStatus", "Disconnected");
         editor.commit();
 
-        //Bluetooth Button KEEP
+        //Bluetooth Button
         Button bluetoothButton = (Button) findViewById(R.id.bluetoothButton);
         bluetoothButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,11 +99,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Bluetooth Status KEEP
+        // Bluetooth Status
         bluetoothStatus = findViewById(R.id.bluetoothStatus);
         bluetoothDevice = findViewById(R.id.bluetoothConnectedDevice);
 
-        // Robot Status KEEP
+        //Command Log
+
+        commandLog = findViewById(R.id.commandlog_textview);
+        commandLog.setMovementMethod(new ScrollingMovementMethod()); //to make it scrollable
+
+        // Robot Status
         robotStatusTextView = findViewById(R.id.robotStatus);
 
         if(BluetoothConnectionService.BluetoothConnectionStatus == true){
@@ -110,11 +119,7 @@ public class MainActivity extends AppCompatActivity {
             robotStatusTextView.setText("Disconnected");
         }
 
-        // Controller, on click listeners for controller
-        /**
-         * Need to include situations when robot is not on the map in the app,
-         * and stop movement if the intended movement will send robot out of bounds
-         */
+        // Controller & on click listeners for controller
         upBtn = findViewById(R.id.upBtn);
         downBtn = findViewById(R.id.downBtn);
         leftBtn = findViewById(R.id.leftBtn);
@@ -190,6 +195,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                 }
 
+                showLog("Exiting left button pressed");
+
 
                 /**
                 if (gridMap.getAutoUpdate())
@@ -203,7 +210,6 @@ public class MainActivity extends AppCompatActivity {
                 else
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                  **/
-                showLog("Exiting left button pressed");
             }
         });
 
@@ -228,6 +234,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                 }
 
+                showLog("Exiting right button pressed");
+
                 /**
                 if (gridMap.getAutoUpdate())
                     Toast.makeText(MainActivity.this, "Press Manual", Toast.LENGTH_SHORT).show(); //what is thisss
@@ -240,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                 else
                     Toast.makeText(MainActivity.this, "Please press 'STARTING POINT'", Toast.LENGTH_SHORT).show();
                  **/
-                showLog("Exiting right button pressed");
             }
         });
 
@@ -259,11 +266,6 @@ public class MainActivity extends AppCompatActivity {
             }
         );
 
-
-
-        /**
-         * Have not understand the below items
-         */
         // Map
         gridMap = new GridMap(this);
         gridMap = findViewById(R.id.mapView);
@@ -271,14 +273,15 @@ public class MainActivity extends AppCompatActivity {
         yAxisTextView = findViewById(R.id.yAxisTextView);
         directionAxisTextView = findViewById(R.id.directionAxisTextView);
 
-        // ControlFragment for Timer
-        controlFragment = new ControlFragment();
+        //```ControlFragment for Timer
+        //controlFragment = new ControlFragment();
 
         // initialize ITEM_LIST and imageBearings strings
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 gridMap.ITEM_LIST.get(i)[j] = "";
                 gridMap.imageBearings.get(i)[j] = "";
+                gridMap.IMAGE_LIST.get(i)[j] = "";
             }
         }
     }
@@ -313,6 +316,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         showLog("Exiting printMessage");
+
         /**
         showLog(message);
         editor.putString("message",
@@ -341,8 +345,7 @@ public class MainActivity extends AppCompatActivity {
                 message = "Unexpected default for printMessage: " + name;
                 break;
         }
-        editor.putString("message",
-            BluetoothChatFragment.getMessageReceivedTextView().getText() + "\n" + message);
+        //editor.putString("message", BluetoothChatFragment.getMessageReceivedTextView().getText() + "\n" + message);
         editor.commit();
         if (BluetoothConnectionService.BluetoothConnectionStatus == true) {
             byte[] bytes = message.getBytes(Charset.defaultCharset());
@@ -351,11 +354,13 @@ public class MainActivity extends AppCompatActivity {
         showLog("Exiting printMessage");
     }
 
+    /**
     public static void refreshMessageReceived() {
         BluetoothChatFragment
             .getMessageReceivedTextView()
             .setText(sharedPreferences.getString("message", ""));
     }
+     **/
 
     public void refreshDirection(String direction) {
         gridMap.setRobotDirection(direction);
@@ -396,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Device now connected to "
                         + mDevice.getName(), Toast.LENGTH_LONG).show();
                 editor.putString("connStatus", "Connected to " + mDevice.getName());
-                robotStatusTextView.setText("Ready to move");
+                robotStatusTextView.setText("Ready to move"); //why is this not showinggg
             }
             else if(status.equals("disconnected")){
                 Log.d(TAG, "mBroadcastReceiver5: Disconnected from "+mDevice.getName());
@@ -425,19 +430,11 @@ public class MainActivity extends AppCompatActivity {
                 String message = intent.getStringExtra("receivedMessage");
                 showLog("receivedMessage: message --- " + message);
 
-                //for robot status
-                if (message.contains(":")) {
-                    String[] cmd = message.split(":");
-                    if (cmd[0].equals("status")) {
-                        showLog("Updating robot status");
-                        robotStatusTextView.setText(cmd[1]);
-                    }
-                }
-
                 if (message.contains(",")) {
                     String[] cmd = message.split(",");
+                    showLog(cmd.toString()); //to get the received message
 
-                    // check if string is cmd sent by ALG/RPI to get obstacle/image id
+                    // check if string is cmd sent by ALG/RPI to get obstacle/image id, to update image ID
                     if (cmd[0].equals("ALG") || cmd[0].equals("RPI")) {
                         showLog("cmd[0] is ALG or RPI");
                         if (obstacleID.equals(""))
@@ -452,14 +449,47 @@ public class MainActivity extends AppCompatActivity {
                         if (!(obstacleID.equals("") || imageID.equals(""))) {
                             showLog("imageID and obstacleID not empty");
                             gridMap.updateIDFromRpi(obstacleID, imageID);
-                            obstacleID = "";
-                            imageID = "";
+                            obstacleID = ""; //reset it to empty after updating
+                            imageID = ""; //reset it to empty after updating
                         }
-                    } else {
+
+                        commandLog.append(cmd.toString() + "\n");
+                    }
+                    //For checklist C9
+                    else if(cmd[0].equals("TARGET")){
+                        showLog("cmd[0] is Target");
+                        obstacleID = cmd[1];
+                        imageID = cmd[2];
+                        showLog("obstacleID = " + obstacleID);
+                        showLog("imageID = " + imageID);
+                        gridMap.updateIDFromRpi(obstacleID, imageID);
+                        commandLog.append(message + "\n");
+                    }
+
+                    //for robot status
+                    else if(cmd[0].equals("status")){
+                        showLog("Updating robot status");
+                        robotStatusTextView.setText(cmd[1]);
+                    }
+
+                    else if(cmd[0].equals("ROBOT")){
+                        showLog("Updating robot position");
+                        int x = Integer.parseInt(cmd[1]);
+                        int y = Integer.parseInt(cmd[2]);
+                        String direction = cmd[3];
+
+                        gridMap.setCurCoord(x, y, direction); //must get integer for x and y
+
+                        commandLog.append(message + "\n");
+
+
+                    }
+
+                    else {
 
                         // alg sends in cm and float e.g. 100,100,N
-                        float x = Integer.parseInt(cmd[0]);
-                        float y = Integer.parseInt(cmd[1]);
+                        float x = Integer.parseInt(cmd[1]);
+                        float y = Integer.parseInt(cmd[2]);
 
                         // process received figures to pass into our fn
                         int a = Math.round(x);
@@ -467,12 +497,13 @@ public class MainActivity extends AppCompatActivity {
                         a = (a / 10) + 1;
                         b = (b / 10) + 1;
 
-                        String direction = cmd[2];
+                        String direction = cmd[3];
 
                         // allow robot to show up on grid if its on the very boundary
                         if (a == 1) a++;
                         if (b == 20) b--;
 
+                        //This is to move the robot, performAlgoCommand
                         if (cmd.length == 4) {
                             String command = cmd[3];
 

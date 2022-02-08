@@ -34,8 +34,8 @@ public class MapTabFragment extends Fragment {
 
     Button resetMapBtn, updateButton;
     ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
-    ToggleButton setStartPointToggleBtn, setWaypointToggleBtn;
-    Switch manualAutoToggleBtn;
+    ToggleButton setStartPointToggleBtn, exploreToggleBtn;          //, setWaypointToggleBtn;
+    //Switch manualAutoToggleBtn;
     GridMap gridMap;
 
     Switch dragSwitch;
@@ -79,13 +79,14 @@ public class MapTabFragment extends Fragment {
 
         resetMapBtn = root.findViewById(R.id.resetBtn);
         setStartPointToggleBtn = root.findViewById(R.id.startpointToggleBtn);
-        setWaypointToggleBtn = root.findViewById(R.id.waypointToggleBtn);
+        //setWaypointToggleBtn = root.findViewById(R.id.waypointToggleBtn);
         directionChangeImageBtn = root.findViewById(R.id.changeDirectionBtn);
-        exploredImageBtn = root.findViewById(R.id.exploredImageBtn);
+        //exploredImageBtn = root.findViewById(R.id.exploredImageBtn);
+        exploreToggleBtn = root.findViewById(R.id.exploreToggleBtn3); //Button to start image rec
         obstacleImageBtn = root.findViewById(R.id.addObstacleBtn);
         clearImageBtn = root.findViewById(R.id.clearImageBtn);
-        manualAutoToggleBtn = root.findViewById(R.id.autoManualSwitch);
-        updateButton = root.findViewById(R.id.updateMapBtn);
+        //manualAutoToggleBtn = root.findViewById(R.id.autoManualSwitch);
+        //updateButton = root.findViewById(R.id.updateMapBtn);
 
         dragSwitch = root.findViewById(R.id.dragSwitch);
         changeObstacleSwitch = root.findViewById(R.id.changeObstacleSwitch);
@@ -135,21 +136,27 @@ public class MapTabFragment extends Fragment {
             }
         });
 
+
         // switch for dragging
         dragSwitch.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton toggleButton, boolean isChecked) {
                 showToast("Dragging is " + (isChecked ? "on" : "off"));
                 dragStatus = isChecked;
+
                 if (dragStatus == true) {
                     // disable imageID and imageBearing and disable setObstacle when drag is on
                     spinner_imageID.setEnabled(false);
                     spinner_imageBearing.setEnabled(false);
-                    gridMap.setSetObstacleStatus(false);
+                    gridMap.setSetObstacleStatus(false); //disable set obstacle when drag status is on
                     changeObstacleSwitch.setChecked(false);
                 }
+
             }
         });
+
+
+
 
         // switch for changing obstacle
         changeObstacleSwitch.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
@@ -157,6 +164,7 @@ public class MapTabFragment extends Fragment {
             public void onCheckedChanged(CompoundButton toggleButton, boolean isChecked) {
                 showToast("Changing Obstacle is " + (isChecked ? "on" : "off"));
                 changeObstacleStatus = isChecked;
+
                 if (changeObstacleStatus == true) {
                     // disable dragging, imageID and imageBearing and disable setObstacle
                     spinner_imageID.setEnabled(false);
@@ -164,40 +172,32 @@ public class MapTabFragment extends Fragment {
                     gridMap.setSetObstacleStatus(false);
                     dragSwitch.setChecked(false);
                 }
+
             }
         });
+
+
 
         setStartPointToggleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showLog("Clicked setStartPointToggleBtn");
-                if (setStartPointToggleBtn.getText().equals("STARTING POINT"))
+                //After pressing CANCEL, text on the button would be "SET STARTPOINT" --> set start point cancelled
+                if (setStartPointToggleBtn.getText().equals("SET STARTPOINT"))
                     showToast("Cancelled selecting starting point");
-                else if (setStartPointToggleBtn.getText().equals("CANCEL")
-                        && !gridMap.getAutoUpdate()) {
-                    showToast("Please select starting point");
-                    gridMap.setStartCoordStatus(true);
-                    gridMap.toggleCheckedBtn("setStartPointToggleBtn");
-                } else
-                    showToast("Please select manual mode");
-                showLog("Exiting setStartPointToggleBtn");
-            }
-        });
 
-        setWaypointToggleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked setWaypointToggleBtn");
-                if (setWaypointToggleBtn.getText().equals("WAYPOINT"))
-                    showToast("Cancelled selecting waypoint");
-                else if (setWaypointToggleBtn.getText().equals("CANCEL")) {
-                    showToast("Please select waypoint");
-                    gridMap.setWaypointStatus(true);
-                    gridMap.toggleCheckedBtn("setWaypointToggleBtn");
-                }
-                else
-                    showToast("Please select manual mode");
-                showLog("Exiting setWaypointToggleBtn");
+                    //After pressing SET STARTPOINT, text on the button would be "CANCEL" --> set start point started
+                else if (setStartPointToggleBtn.getText().equals("CANCEL") && !gridMap.getAutoUpdate()) {
+                    showToast("Please select starting point");
+                    dragSwitch.setChecked(false); //disable drag when setting start point
+                    changeObstacleSwitch.setChecked(false); //disable change obstacle when setting start point
+                    gridMap.setSetObstacleStatus(false); //disable setting new obstacles
+                    gridMap.setStartCoordStatus(true); //enable set starting coordinates
+                    gridMap.toggleCheckedBtn("setStartPointToggleBtn");
+
+                } else
+                    //showToast("Please select manual mode");
+                showLog("Exiting setStartPointToggleBtn");
             }
         });
 
@@ -205,8 +205,7 @@ public class MapTabFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 showLog("Clicked directionChangeImageBtn");
-                directionFragment.show(getActivity().getFragmentManager(),
-                        "Direction Fragment");
+                directionFragment.show(getActivity().getFragmentManager(), "Direction Fragment");
                 showLog("Exiting directionChangeImageBtn");
             }
         });
@@ -216,6 +215,7 @@ public class MapTabFragment extends Fragment {
             public void onClick(View view) {
                 showLog("Clicked obstacleImageBtn");
 
+                //If Off, turn on obstacle plotting
                 if (!gridMap.getSetObstacleStatus()) {
                     showToast("Please plot obstacles");
                     gridMap.setSetObstacleStatus(true);
@@ -224,7 +224,10 @@ public class MapTabFragment extends Fragment {
                     gridMap.toggleCheckedBtn("obstacleImageBtn");
                     gridMap.toggleCheckedBtn("obstacleImageBtn");
                 }
+
+                //If On, turn off obstacle plotting
                 else if (gridMap.getSetObstacleStatus()) {
+                    showToast("Plot obstacles turned off");
                     gridMap.setSetObstacleStatus(false);
                     spinner_imageID.setEnabled(false);
                     spinner_imageBearing.setEnabled(false);
@@ -237,6 +240,47 @@ public class MapTabFragment extends Fragment {
             }
         });
 
+
+        //on Click listener for explore button
+        exploreToggleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLog("Clicked exploreToggleBtn");
+                ToggleButton exploreToggleBtn = (ToggleButton) v;
+
+                if (exploreToggleBtn.getText().equals("Imagerec START")) { //press stop
+                    showToast("Image recognition task has stopped");
+
+
+
+
+                    //robotStatusTextView.setText("Auto Movement Stopped");
+                    //timerHandler.removeCallbacks(timerRunnableExplore);
+                }
+                else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
+                    String msg = gridMap.getObstacles(); //to get the info to send to the robot
+                    //MainActivity.printMessage(msg); //send obstacles to robot
+                    MainActivity.printMessage("beginExplore"); //for checklist
+                    showLog(msg);
+                    showToast("Image recognition task has started");
+
+
+
+                    //MainActivity.stopTimerFlag = false;
+                    //robotStatusTextView.setText("Auto Movement Started");
+                    //exploreTimer = System.currentTimeMillis();
+                    //timerHandler.postDelayed(timerRunnableExplore, 0);
+                }
+                else {
+                    showToast("Else statement: " + exploreToggleBtn.getText());
+                }
+                showLog("Exiting exploreToggleBtn");
+            }
+        });
+
+        return root;
+
+        /**
         manualAutoToggleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -270,7 +314,9 @@ public class MapTabFragment extends Fragment {
                 showLog("Exiting manualAutoToggleBtn");
             }
         });
+         **/
 
+        /**
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -291,7 +337,26 @@ public class MapTabFragment extends Fragment {
                 showLog("Exiting updateButton");
             }
         });
-        return root;
+         **/
+
+        /**
+         setWaypointToggleBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        showLog("Clicked setWaypointToggleBtn");
+        if (setWaypointToggleBtn.getText().equals("WAYPOINT"))
+        showToast("Cancelled selecting waypoint");
+        else if (setWaypointToggleBtn.getText().equals("CANCEL")) {
+        showToast("Please select waypoint");
+        gridMap.setWaypointStatus(true);
+        gridMap.toggleCheckedBtn("setWaypointToggleBtn");
+        }
+        else
+        showToast("Please select manual mode");
+        showLog("Exiting setWaypointToggleBtn");
+        }
+        });
+         **/
     }
 
     private void showLog(String message) {
@@ -302,3 +367,4 @@ public class MapTabFragment extends Fragment {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
+

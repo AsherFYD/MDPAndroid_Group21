@@ -126,86 +126,6 @@ public class ControlFragment extends Fragment {
         gridMap = MainActivity.getGridMap();
 
         /**
-        // Button Listener
-        moveForwardImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked moveForwardImageBtn");
-                if (gridMap.getAutoUpdate())
-                    updateStatus("Please press 'MANUAL'");
-                else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("forward");
-                    MainActivity.refreshLabel();
-                    if (gridMap.getValidPosition())
-                        updateStatus("moving forward");
-                    else
-                        updateStatus("Unable to move forward");
-                    MainActivity.printMessage("f");
-                }
-                else
-                    updateStatus("Please press 'STARTING POINT'");
-                showLog("Exiting moveForwardImageBtn");
-            }
-        });
-
-        turnRightImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked turnRightImageBtn");
-                if (gridMap.getAutoUpdate())
-                    updateStatus("Please press 'MANUAL'");
-                else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("right");
-                    MainActivity.refreshLabel();
-                    MainActivity.printMessage("sr");
-                }
-                else
-                    updateStatus("Please press 'STARTING POINT'");
-                showLog("Exiting turnRightImageBtn");
-            }
-        });
-
-        moveBackImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked moveBackwardImageBtn");
-                if (gridMap.getAutoUpdate())
-                    updateStatus("Please press 'MANUAL'");
-                else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("back");
-                    MainActivity.refreshLabel();
-                    if (gridMap.getValidPosition())
-                        updateStatus("moving backward");
-                    else
-                        updateStatus("Unable to move backward");
-                    MainActivity.printMessage("b");
-                }
-                else
-                    updateStatus("Please press 'STARTING POINT'");
-                showLog("Exiting moveBackwardImageBtn");
-            }
-        });
-
-        turnLeftImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showLog("Clicked turnLeftImageBtn");
-                if (gridMap.getAutoUpdate())
-                    updateStatus("Please press 'MANUAL'");
-                else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
-                    gridMap.moveRobot("left");
-                    MainActivity.refreshLabel();
-                    updateStatus("turning left");
-                    MainActivity.printMessage("sl");
-                }
-                else
-                    updateStatus("Please press 'STARTING POINT'");
-                showLog("Exiting turnLeftImageBtn");
-            }
-        });
-         **/
-
-        /**
          * for week 8 start button
          */
         exploreButton.setOnClickListener(new View.OnClickListener() {
@@ -220,7 +140,7 @@ public class ControlFragment extends Fragment {
                     timerHandler.removeCallbacks(timerRunnableExplore);
                 }
                 else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
-                    String msg = gridMap.getObstacles();
+                    String msg = gridMap.getObstacles(); //to get the info to send to the robot
                     MainActivity.printMessage(msg); //send obstacles to robot
                     MainActivity.stopTimerFlag = false;
                     showToast("Auto Movement/ImageRecog timer start!");
@@ -295,6 +215,87 @@ public class ControlFragment extends Fragment {
         });
 
         return root;
+
+
+        /**
+         // Button Listener
+         moveForwardImageBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        showLog("Clicked moveForwardImageBtn");
+        if (gridMap.getAutoUpdate())
+        updateStatus("Please press 'MANUAL'");
+        else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+        gridMap.moveRobot("forward");
+        MainActivity.refreshLabel();
+        if (gridMap.getValidPosition())
+        updateStatus("moving forward");
+        else
+        updateStatus("Unable to move forward");
+        MainActivity.printMessage("f");
+        }
+        else
+        updateStatus("Please press 'STARTING POINT'");
+        showLog("Exiting moveForwardImageBtn");
+        }
+        });
+
+         turnRightImageBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        showLog("Clicked turnRightImageBtn");
+        if (gridMap.getAutoUpdate())
+        updateStatus("Please press 'MANUAL'");
+        else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+        gridMap.moveRobot("right");
+        MainActivity.refreshLabel();
+        MainActivity.printMessage("sr");
+        }
+        else
+        updateStatus("Please press 'STARTING POINT'");
+        showLog("Exiting turnRightImageBtn");
+        }
+        });
+
+         moveBackImageBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        showLog("Clicked moveBackwardImageBtn");
+        if (gridMap.getAutoUpdate())
+        updateStatus("Please press 'MANUAL'");
+        else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+        gridMap.moveRobot("back");
+        MainActivity.refreshLabel();
+        if (gridMap.getValidPosition())
+        updateStatus("moving backward");
+        else
+        updateStatus("Unable to move backward");
+        MainActivity.printMessage("b");
+        }
+        else
+        updateStatus("Please press 'STARTING POINT'");
+        showLog("Exiting moveBackwardImageBtn");
+        }
+        });
+
+         turnLeftImageBtn.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+        showLog("Clicked turnLeftImageBtn");
+        if (gridMap.getAutoUpdate())
+        updateStatus("Please press 'MANUAL'");
+        else if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+        gridMap.moveRobot("left");
+        MainActivity.refreshLabel();
+        updateStatus("turning left");
+        MainActivity.printMessage("sl");
+        }
+        else
+        updateStatus("Please press 'STARTING POINT'");
+        showLog("Exiting turnLeftImageBtn");
+        }
+        });
+         **/
     }
 
     private static void showLog(String message) {

@@ -1285,6 +1285,7 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id color
+id commandlog_textview
 id connStatusTextView
 id connectBtn
 id constraintLayout
@@ -1492,6 +1493,7 @@ id text2
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
+id textView
 id textView_changeObstacle
 id textView_drag
 id text_input_password_toggle
@@ -1622,6 +1624,8 @@ layout device_adapter_view
 layout fragment_main
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
+layout my_dropdown_item
+layout my_selected_item
 layout notification_action
 layout notification_action_tombstone
 layout notification_template_custom_big

@@ -7,7 +7,7 @@
 
     <Spinner
         android:id="@+id/bearingSpinner2"
-        android:layout_width="89dp"
+        android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginStart="132dp"
         android:layout_marginLeft="132dp"
@@ -17,7 +17,7 @@
 
     <Spinner
         android:id="@+id/imageIDSpinner2"
-        android:layout_width="89dp"
+        android:layout_width="wrap_content"
         android:layout_height="18dp"
         android:layout_marginStart="132dp"
         android:layout_marginLeft="132dp"
@@ -39,13 +39,13 @@
 
     <TextView
         android:id="@+id/tv_imageID3"
-        android:layout_width="64dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginLeft="52dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="43dp"
         android:layout_marginTop="28dp"
+        android:text="Obstacle ID:"
         android:textColor="@color/colorBlack"
-        android:text="Image ID:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

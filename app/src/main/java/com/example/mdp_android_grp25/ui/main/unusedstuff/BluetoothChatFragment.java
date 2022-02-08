@@ -1,3 +1,4 @@
+/**
 package com.example.mdp_android_grp25.ui.main;
 
 import android.content.Context;
@@ -17,13 +18,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.mdp_android_grp25.R;
 import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService;
+import com.example.mdp_android_grp25.ui.main.PageViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.nio.charset.Charset;
 
-/**
- * A placeholder fragment containing a simple view.
- */
+
 public class BluetoothChatFragment extends Fragment {
 
     private static final String ARG_SECTION_NUMBER = "section_number";
@@ -108,3 +108,4 @@ public class BluetoothChatFragment extends Fragment {
         return messageReceivedTextView;
     }
 }
+ **/
