@@ -4,12 +4,12 @@
         "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_map_info.png"
     },
     {
-        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_map_info.xml.flat",
-        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_map_info.xml"
-    },
-    {
         "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/layout_activity_direction.xml.flat",
         "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/src/main/res/layout/activity_direction.xml"
+    },
+    {
+        "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_ic_map_info.xml.flat",
+        "source": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/generated/res/pngs/debug/drawable-anydpi-v21/ic_map_info.xml"
     },
     {
         "merged": "/Users/gojek/AndroidStudioProjects/MDPAndroid_Group21/app/build/intermediates/res/merged/debug/drawable-anydpi-v24_baseline_dangerous_24.xml.flat",
