@@ -222,6 +222,7 @@ public class MapTabFragment extends Fragment {
                     spinner_imageID.setEnabled(true);
                     spinner_imageBearing.setEnabled(true);
                     gridMap.toggleCheckedBtn("obstacleImageBtn");
+                    gridMap.toggleCheckedBtn("obstacleImageBtn");
                 }
                 else if (gridMap.getSetObstacleStatus()) {
                     gridMap.setSetObstacleStatus(false);
