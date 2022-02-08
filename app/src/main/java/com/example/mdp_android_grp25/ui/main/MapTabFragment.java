@@ -42,7 +42,7 @@ public class MapTabFragment extends Fragment {
     private static long exploreTimer, fastestTimer;
     private static long exploreTimerLastStopped, fastestTimerLastStopped;
     TextView exploreTimeTextView, fastestTimeTextView, robotStatusTextView;
-    Button exploreResetBtn, fastestResetBtn;
+    ImageButton exploreResetBtn, fastestResetBtn;
 
     Switch dragSwitch;
     Switch changeObstacleSwitch;
@@ -130,8 +130,8 @@ public class MapTabFragment extends Fragment {
         //manualAutoToggleBtn = root.findViewById(R.id.autoManualSwitch);
         //updateButton = root.findViewById(R.id.updateMapBtn);
         robotStatusTextView = MainActivity.getRobotStatusTextView();
-        exploreResetBtn = (Button) root.findViewById(R.id.exploreResetBtn); //Button to start image rec
-        fastestResetBtn = (Button) root.findViewById(R.id.fastestResetBtn);
+        exploreResetBtn = (ImageButton) root.findViewById(R.id.exploreResetBtn); //Button to start image rec
+        fastestResetBtn = (ImageButton) root.findViewById(R.id.fastestResetBtn);
 
         dragSwitch = root.findViewById(R.id.dragSwitch);
         changeObstacleSwitch = root.findViewById(R.id.changeObstacleSwitch);
