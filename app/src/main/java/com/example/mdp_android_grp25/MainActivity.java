@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private static GridMap gridMap;
     private ControlFragment controlFragment;
-    static TextView xAxisTextView, yAxisTextView, directionAxisTextView;
+    static TextView xAxisTextView, yAxisTextView, directionAxisTextView, commandLog;
     static TextView robotStatusTextView, bluetoothStatus, bluetoothDevice;
     static Button upBtn, downBtn, leftBtn, rightBtn;
 
@@ -66,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
         // Initialization
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        //this is for the bottom fragment
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this,
                 getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
@@ -98,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
         // Bluetooth Status
         bluetoothStatus = findViewById(R.id.bluetoothStatus);
         bluetoothDevice = findViewById(R.id.bluetoothConnectedDevice);
+
+        //Command Log
+
+        commandLog = findViewById(R.id.commandlog_textview);
+        commandLog.setMovementMethod(new ScrollingMovementMethod()); //to make it scrollable
 
         // Robot Status
         robotStatusTextView = findViewById(R.id.robotStatus);
@@ -264,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
         yAxisTextView = findViewById(R.id.yAxisTextView);
         directionAxisTextView = findViewById(R.id.directionAxisTextView);
 
-        // ControlFragment for Timer
+        //```ControlFragment for Timer
         //controlFragment = new ControlFragment();
 
         // initialize ITEM_LIST and imageBearings strings
@@ -421,18 +430,8 @@ public class MainActivity extends AppCompatActivity {
                 String message = intent.getStringExtra("receivedMessage");
                 showLog("receivedMessage: message --- " + message);
 
-                //for robot status
-                if (message.contains(":")) {
-                    String[] cmd = message.split(":");
-                    if (cmd[0].equals("status")) {
-                        showLog("Updating robot status");
-                        robotStatusTextView.setText(cmd[1]);
-                    }
-                }
-
                 if (message.contains(",")) {
                     String[] cmd = message.split(",");
-
                     showLog(cmd.toString()); //to get the received message
 
                     // check if string is cmd sent by ALG/RPI to get obstacle/image id, to update image ID
@@ -453,8 +452,10 @@ public class MainActivity extends AppCompatActivity {
                             obstacleID = ""; //reset it to empty after updating
                             imageID = ""; //reset it to empty after updating
                         }
+
+                        commandLog.append(cmd.toString() + "\n");
                     }
-                    //For checklist
+                    //For checklist C9
                     else if(cmd[0].equals("TARGET")){
                         showLog("cmd[0] is Target");
                         obstacleID = cmd[1];
@@ -462,6 +463,26 @@ public class MainActivity extends AppCompatActivity {
                         showLog("obstacleID = " + obstacleID);
                         showLog("imageID = " + imageID);
                         gridMap.updateIDFromRpi(obstacleID, imageID);
+                        commandLog.append(message + "\n");
+                    }
+
+                    //for robot status
+                    else if(cmd[0].equals("status")){
+                        showLog("Updating robot status");
+                        robotStatusTextView.setText(cmd[1]);
+                    }
+
+                    else if(cmd[0].equals("ROBOT")){
+                        showLog("Updating robot position");
+                        int x = Integer.parseInt(cmd[1]);
+                        int y = Integer.parseInt(cmd[2]);
+                        String direction = cmd[3];
+
+                        gridMap.setCurCoord(x, y, direction); //must get integer for x and y
+
+                        commandLog.append(message + "\n");
+
+
                     }
 
                     else {

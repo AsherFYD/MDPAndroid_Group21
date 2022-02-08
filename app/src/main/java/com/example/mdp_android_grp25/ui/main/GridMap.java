@@ -69,7 +69,7 @@ public class GridMap extends View {
     private Paint startColor = new Paint();
     //private Paint waypointColor = new Paint();
     private Paint unexploredColor = new Paint();
-    private Paint exploredColor = new Paint();
+    //private Paint exploredColor = new Paint();
     private Paint arrowColor = new Paint();
     private Paint fastestPathColor = new Paint();
 
@@ -156,7 +156,7 @@ public class GridMap extends View {
         startColor.setColor(Color.CYAN);
         //waypointColor.setColor(Color.GREEN);
         unexploredColor.setColor(Color.LTGRAY);
-        exploredColor.setColor(Color.WHITE);
+        //exploredColor.setColor(Color.WHITE);
         arrowColor.setColor(Color.BLACK);
         fastestPathColor.setColor(Color.MAGENTA);
 
@@ -632,9 +632,21 @@ public class GridMap extends View {
 
         row = this.convertRow(row);
 
+
+        //set everything that was robot to unexplored
+        for (int x = 0; x <= 20; x++)
+            for (int y = 0; y <= 20; y++)
+            {
+                showLog("Cell Type is: " + cells[x][y].getType());
+                if(cells[x][y].getType().equals("robot")){
+                    cells[x][y].setType("unexplored");
+                }
+            }
+
         for (int x = col - 1; x <= col; x++)
             for (int y = row - 1; y <= row; y++)
                 cells[x][y].setType("robot");
+
 
         showLog("Exiting setCurCoord");
     }
@@ -830,7 +842,7 @@ public class GridMap extends View {
                     this.paint = unexploredColor;
                     break;
                 case "explored":
-                    this.paint = exploredColor;
+                    //this.paint = exploredColor;
                     break;
                 case "arrow":
                     this.paint = arrowColor;
@@ -848,6 +860,10 @@ public class GridMap extends View {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getType(){
+            return this.type;
         }
 
         public int getId() {
@@ -1089,7 +1105,7 @@ public class GridMap extends View {
                     for (int i = 0; i < 21; i++) {
                         for (int j = 0; j < 21; j++) {
                             if (cells[i][j].type == "robot") {
-                                cells[i][j].setType("explored");
+                                //cells[i][j].setType("explored");
                             }
                         }
                     }
@@ -1176,7 +1192,7 @@ public class GridMap extends View {
                 return true;
             }
             if (setExploredStatus) {
-                cells[column][20-row].setType("explored");
+                //cells[column][20-row].setType("explored");
                 this.invalidate();
                 return true;
             }
@@ -1305,7 +1321,8 @@ public class GridMap extends View {
                         x = 1 + j - ((19 - y) * 15);
                         if ((String.valueOf(exploredString.charAt(j + 2))).equals("1")
                                 && !cells[x][y].type.equals("robot"))
-                            cells[x][y].setType("explored");
+                            continue;
+                            //cells[x][y].setType("explored");
                         else if ((String.valueOf(exploredString.charAt(j + 2))).equals("0")
                                 && !cells[x][y].type.equals("robot"))
                             cells[x][y].setType("unexplored");
@@ -1424,6 +1441,7 @@ public class GridMap extends View {
     }
 
     // e.g obstacle is on right side of 2x2 and can turn left and vice versa
+    // can use setCurCoord here to remove trail of yellow boxes
     public void moveRobot(String direction) {
         showLog("Entering moveRobot");
         setValidPosition(false);
@@ -1441,6 +1459,8 @@ public class GridMap extends View {
                     case "forward":
                         if (curCoord[1] != 19) {
                             curCoord[1] += 1;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
+                            showLog("MANUAL CONTROLLER, SETTING NEW ROBOT POSITION AND CELL COLOURS");
                             validPosition = true;
                         }
                         break;
@@ -1451,16 +1471,19 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] += 1;
                                 robotDirection = "right";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
                     case "back":
                         if (curCoord[1] != 1) {
                             curCoord[1] -= 1;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             validPosition = true;
                         }
                         break;
@@ -1471,10 +1494,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] -= 1;
                                 robotDirection = "left";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1489,6 +1514,7 @@ public class GridMap extends View {
                         if (0 < curCoord[0] && curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1498,10 +1524,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] -= 1;
                                 robotDirection = "down";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1509,6 +1537,7 @@ public class GridMap extends View {
                         if (curCoord[0] > 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1518,10 +1547,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] -= 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] += 1;
                                 robotDirection = "up";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1535,6 +1566,7 @@ public class GridMap extends View {
                         if (curCoord[1] != 1) {
                             curCoord[1] -= 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1544,10 +1576,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] -= 1;
                                 robotDirection = "left";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1555,6 +1589,7 @@ public class GridMap extends View {
                         if (0 < curCoord[1] && curCoord[1] < 19) {
                             curCoord[1] += 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1564,10 +1599,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] += 1;
                                 robotDirection = "right";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1581,6 +1618,7 @@ public class GridMap extends View {
                         if (curCoord[0] > 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1590,10 +1628,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] += 1;
                                 robotDirection = "up";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1601,6 +1641,7 @@ public class GridMap extends View {
                         if (curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
+                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1610,10 +1651,12 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] += 1;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] -= 1;
                                 robotDirection = "down";
                                 validPosition = true;
+                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1766,7 +1809,7 @@ public class GridMap extends View {
                 showLog("prev pos was within grid");
                 for (int i = curCoord[0] - 1; i <= curCoord[0]; i++) {
                     for (int j = curCoord[1] - 1; j <= curCoord[1]; j++) {
-                        cells[i][20 - j - 1].setType("explored");
+                        //cells[i][20 - j - 1].setType("explored");
                     }
                 }
             }
@@ -2393,7 +2436,7 @@ public class GridMap extends View {
                     showLog("pos is good before going out of grid");
                     for (int n = curCoord[0] - 1; n <= curCoord[0]; n++) {
                         for (int m = curCoord[1] - 1; m <= curCoord[1]; m++) {
-                            cells[n][20 - m - 1].setType("explored");
+                            //cells[n][20 - m - 1].setType("explored");
                         }
                     }
                 }
