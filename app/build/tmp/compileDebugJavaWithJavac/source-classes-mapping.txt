@@ -92,6 +92,10 @@ com/example/mdp_android_grp25/Constants.java
 com/example/mdp_android_grp25/ui/main/MapTabFragment.java
  com.example.mdp_android_grp25.ui.main.MapTabFragment
  com.example.mdp_android_grp25.ui.main.MapTabFragment$1
+ com.example.mdp_android_grp25.ui.main.MapTabFragment$10
+ com.example.mdp_android_grp25.ui.main.MapTabFragment$11
+ com.example.mdp_android_grp25.ui.main.MapTabFragment$12
+ com.example.mdp_android_grp25.ui.main.MapTabFragment$13
  com.example.mdp_android_grp25.ui.main.MapTabFragment$2
  com.example.mdp_android_grp25.ui.main.MapTabFragment$3
  com.example.mdp_android_grp25.ui.main.MapTabFragment$4
