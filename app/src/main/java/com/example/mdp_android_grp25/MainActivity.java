@@ -368,6 +368,8 @@ public class MainActivity extends AppCompatActivity {
         printMessage("Direction is set to " + direction);
     }
 
+
+    //For x,y and direction label of robot
     public static void refreshLabel() {
         xAxisTextView.setText(String.valueOf(gridMap.getCurCoord()[0]-1));
         yAxisTextView.setText(String.valueOf(gridMap.getCurCoord()[1]-1));

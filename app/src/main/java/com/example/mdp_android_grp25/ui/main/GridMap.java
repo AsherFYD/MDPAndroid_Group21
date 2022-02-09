@@ -1454,12 +1454,12 @@ public class GridMap extends View {
 
         // check if got obstacle when moving one grid up before turning in each case
         switch (robotDirection) {
+            //When direction of robot is up
             case "up":
                 switch (direction) {
                     case "forward":
                         if (curCoord[1] != 19) {
                             curCoord[1] += 1;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             showLog("MANUAL CONTROLLER, SETTING NEW ROBOT POSITION AND CELL COLOURS");
                             validPosition = true;
                         }
@@ -1471,19 +1471,16 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] -= 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] += 1;
                                 robotDirection = "right";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
                     case "back":
                         if (curCoord[1] != 1) {
                             curCoord[1] -= 1;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             validPosition = true;
                         }
                         break;
@@ -1494,12 +1491,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] -= 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] -= 1;
                                 robotDirection = "left";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1508,13 +1503,13 @@ public class GridMap extends View {
                         break;
                 }
                 break;
+            //When position of robot is right
             case "right":
                 switch (direction) {
                     case "forward":
                         if (0 < curCoord[0] && curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1524,12 +1519,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] -= 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] -= 1;
                                 robotDirection = "down";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1537,7 +1530,6 @@ public class GridMap extends View {
                         if (curCoord[0] > 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1547,12 +1539,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] -= 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] += 1;
                                 robotDirection = "up";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1560,13 +1550,14 @@ public class GridMap extends View {
                         robotDirection = "error right";
                 }
                 break;
+
+            //when direction of robot is down
             case "down":
                 switch (direction) {
                     case "forward":
                         if (curCoord[1] != 1) {
                             curCoord[1] -= 1;
                             validPosition = true;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1576,12 +1567,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] += 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] -= 1;
                                 robotDirection = "left";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1589,7 +1578,6 @@ public class GridMap extends View {
                         if (0 < curCoord[1] && curCoord[1] < 19) {
                             curCoord[1] += 1;
                             validPosition = true;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1599,12 +1587,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[1] += 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[0] += 1;
                                 robotDirection = "right";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1612,13 +1598,14 @@ public class GridMap extends View {
                         robotDirection = "error down";
                 }
                 break;
+
+            //when direction of robot is left
             case "left":
                 switch (direction) {
                     case "forward":
                         if (curCoord[0] > 2) {
                             curCoord[0] -= 1;
                             validPosition = true;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "right":
@@ -1628,12 +1615,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] += 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] += 1;
                                 robotDirection = "up";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1641,7 +1626,6 @@ public class GridMap extends View {
                         if (curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
-                            setCurCoord(curCoord[0], curCoord[1], robotDirection);
                         }
                         break;
                     case "left":
@@ -1651,12 +1635,10 @@ public class GridMap extends View {
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
                                 curCoord[0] += 1;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             } else {
                                 curCoord[1] -= 1;
                                 robotDirection = "down";
                                 validPosition = true;
-                                setCurCoord(curCoord[0], curCoord[1], robotDirection);
                             }
                         }
                         break;
@@ -1668,6 +1650,7 @@ public class GridMap extends View {
                 robotDirection = "error moveCurCoord";
                 break;
         }
+
         showLog("Enter checking for obstacles in destination 2x2 grid");
         if (getValidPosition())
             // check obstacle for new position

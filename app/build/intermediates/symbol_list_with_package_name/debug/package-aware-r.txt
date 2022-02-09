@@ -1314,6 +1314,7 @@ id directionFragmentTitleTextView
 id directionLabel
 id directionTitleTextView
 id disableHome
+id displayimageview
 id downBtn
 id dragSwitch
 id edit_query
@@ -1493,6 +1494,7 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textView
+id textView3
 id textView_changeObstacle
 id textView_drag
 id text_input_password_toggle
