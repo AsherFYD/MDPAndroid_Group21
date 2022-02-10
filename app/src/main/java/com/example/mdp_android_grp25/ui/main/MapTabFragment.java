@@ -179,14 +179,14 @@ public class MapTabFragment extends Fragment {
             public void onNothingSelected(AdapterView<?> a) { }
         });
 
-//        resetMapBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                showLog("Clicked resetMapBtn");
-//                showToast("Reseting map...");
-//                gridMap.resetMap();
-//            }
-//        });
+        resetMapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLog("Clicked resetMapBtn");
+                showToast("Reseting map...");
+                gridMap.resetMap();
+            }
+        });
 
 
         // switch for dragging

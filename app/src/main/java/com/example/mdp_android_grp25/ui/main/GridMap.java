@@ -1242,51 +1242,52 @@ public class GridMap extends View {
     }
 
 
-//    public void resetMap() {
-//        showLog("Entering resetMap");
-//        TextView robotStatusTextView =  ((Activity)this.getContext())
-//                .findViewById(R.id.robotStatus);
-//        Switch manualAutoToggleBtn = ((Activity)this.getContext())
-//                .findViewById(R.id.autoManualSwitch);
-//        updateRobotAxis(1, 1, "None");
-//        robotStatusTextView.setText("Not Available");
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//
-//
-//        if (manualAutoToggleBtn.isChecked()) {
-//            manualAutoToggleBtn.toggle();
-//            manualAutoToggleBtn.setText("MANUAL");
-//        }
-//        this.toggleCheckedBtn("None");
-//
-//        receivedJsonObject = null;
-//        backupMapInformation = null;
-//        startCoord = new int[]{-1, -1};
-//        curCoord = new int[]{-1, -1};
-//        oldCoord = new int[]{-1, -1};
-//        robotDirection = "None";
-//        autoUpdate = false;
-//        arrowCoord = new ArrayList<>();
-//        obstacleCoord = new ArrayList<>();
-//        //waypointCoord = new int[]{-1, -1};
-//        mapDrawn = false;
-//        canDrawRobot = false;
-//        validPosition = false;
-//        Bitmap arrowBitmap = BitmapFactory.decodeResource(getResources(),
-//                R.drawable.ic_arrow_error);
-//
-//        for (int i = 0; i < 20; i++) {
-//            for (int j = 0; j < 20; j++) {
-//                ITEM_LIST.get(i)[j] = "";
-//                imageBearings.get(i)[j] = "";
-//                IMAGE_LIST.get(i)[j] = "";
-//
-//            }
-//        }
-//
-//        showLog("Exiting resetMap");
-//        this.invalidate();
-//    }
+    public void resetMap() {
+        showLog("Entering resetMap");
+        TextView robotStatusTextView =  ((Activity)this.getContext())
+                .findViewById(R.id.robotStatus);
+        //Switch manualAutoToggleBtn = ((Activity)this.getContext()).findViewById(R.id.autoManualSwitch);
+        updateRobotAxis(1, 1, "None");
+        robotStatusTextView.setText("Not Available");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+
+        /**
+        if (manualAutoToggleBtn.isChecked()) {
+            manualAutoToggleBtn.toggle();
+            manualAutoToggleBtn.setText("MANUAL");
+        }
+        this.toggleCheckedBtn("None");
+         **/
+
+        receivedJsonObject = null;
+        backupMapInformation = null;
+        startCoord = new int[]{-1, -1};
+        curCoord = new int[]{-1, -1};
+        oldCoord = new int[]{-1, -1};
+        robotDirection = "None";
+        autoUpdate = false;
+        arrowCoord = new ArrayList<>();
+        obstacleCoord = new ArrayList<>();
+        //waypointCoord = new int[]{-1, -1};
+        mapDrawn = false;
+        canDrawRobot = false;
+        validPosition = false;
+        Bitmap arrowBitmap = BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_arrow_error);
+
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                ITEM_LIST.get(i)[j] = "";
+                imageBearings.get(i)[j] = "";
+                IMAGE_LIST.get(i)[j] = "";
+
+            }
+        }
+
+        showLog("Exiting resetMap");
+        this.invalidate();
+    }
 
 
     //method to update various information regarding map
