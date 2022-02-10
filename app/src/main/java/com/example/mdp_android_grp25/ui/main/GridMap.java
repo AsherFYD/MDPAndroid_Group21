@@ -1045,7 +1045,7 @@ public class GridMap extends View {
                     if (imageId.equals("")) {
                         mIDSpinner.setSelection(0);
                     } else {
-                        mIDSpinner.setSelection(Integer.parseInt(imageId) - 1);
+                        mIDSpinner.setSelection(Integer.parseInt(imageId)); //THIS IS THE ISSUE
                     }
                     switch (imageBearing) {
                         case "North": mBearingSpinner.setSelection(0);
