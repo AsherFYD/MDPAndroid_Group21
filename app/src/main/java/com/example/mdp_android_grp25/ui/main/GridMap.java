@@ -881,8 +881,8 @@ public class GridMap extends View {
         clipData = dragEvent.getClipData();
         localState = dragEvent.getLocalState();
 
-        String tempID, tempBearing;
-        tempID = tempBearing = "";
+        String tempID, tempBearing, tempImageID;
+        tempID = tempBearing = tempImageID = "";
         endColumn = endRow = -999;
         oldItem = ITEM_LIST.get(initialRow - 1)[initialColumn - 1];
         showLog("dragEvent.getAction() == " + dragEvent.getAction());
@@ -900,9 +900,10 @@ public class GridMap extends View {
             cells[initialColumn][20-initialRow].setType("unexplored");
             ITEM_LIST.get(initialRow-1)[initialColumn-1] = "";
             imageBearings.get(initialRow-1)[initialColumn-1] = "";
+            IMAGE_LIST.get(initialRow-1)[initialColumn-1] = ""; //Remove image id if there is one
             showLog(commandMsgGenerator(REMOVE_OBSTACLE));
             // commented out for Wk 8 and Wk 9
-            MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
+            //MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
         }
         // drop within gridmap
         else if (dragEvent.getAction() == DragEvent.ACTION_DROP && this.getAutoUpdate() == false) {
@@ -924,9 +925,10 @@ public class GridMap extends View {
                 cells[initialColumn][20-initialRow].setType("unexplored");
                 ITEM_LIST.get(initialRow-1)[initialColumn-1] = "";
                 imageBearings.get(initialRow-1)[initialColumn-1] = "";
+                IMAGE_LIST.get(initialRow-1)[initialColumn-1] = ""; //Remove image id if there is one
                 showLog(commandMsgGenerator(REMOVE_OBSTACLE));
                 // commented out for Wk 8 and Wk 9
-                MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
+                //MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
             }
 
             // if dropped within gridmap, shift it to new position unless already got existing
@@ -936,6 +938,7 @@ public class GridMap extends View {
                     && (1 <= endRow && endRow <= 20)) {
                 tempID = ITEM_LIST.get(initialRow-1)[initialColumn-1];
                 tempBearing = imageBearings.get(initialRow-1)[initialColumn-1];
+                tempImageID = IMAGE_LIST.get(initialRow-1)[initialColumn-1];
 
                 // check if got existing obstacle at drop location
                 if (ITEM_LIST.get(endRow-1)[endColumn-1] != ""
@@ -944,8 +947,11 @@ public class GridMap extends View {
                 } else {
                     ITEM_LIST.get(initialRow - 1)[initialColumn - 1] = "";
                     imageBearings.get(initialRow - 1)[initialColumn - 1] = "";
+                    IMAGE_LIST.get(initialRow-1)[initialColumn-1] = ""; //Remove image id if there is one
+
                     ITEM_LIST.get(endRow - 1)[endColumn - 1] = tempID;
                     imageBearings.get(endRow - 1)[endColumn - 1] = tempBearing;
+                    IMAGE_LIST.get(endRow - 1)[endColumn - 1] = tempImageID;
 
                     setObstacleCoord(endColumn, endRow);
                     for (int i = 0; i < obstacleCoord.size(); i++) {
@@ -955,7 +961,7 @@ public class GridMap extends View {
                     }
                     cells[initialColumn][20 - initialRow].setType("unexplored");
                     showLog(commandMsgGenerator(MOVE_OBSTACLE));
-                    MainActivity.printMessage(commandMsgGenerator(MOVE_OBSTACLE));
+                    //MainActivity.printMessage(commandMsgGenerator(MOVE_OBSTACLE));
                 }
             } else {
                 showLog("Drag event failed.");

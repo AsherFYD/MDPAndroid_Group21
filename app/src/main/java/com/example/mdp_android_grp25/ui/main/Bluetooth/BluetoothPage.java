@@ -160,12 +160,15 @@ public class BluetoothPage extends AppCompatActivity {
                 Log.d(TAG, "onItemClick: DEVICE ADDRESS: " + deviceAddress);
 
                 mBTDevice = mPairedBTDevices.get(i);
+
+                /**
                 mDeviceUUIDs = mBTDevice.getUuids();
                 for(Parcelable parcelable: mDeviceUUIDs){
                     ParcelUuid parcelUuid = (ParcelUuid) parcelable;
                     UUID uuid = parcelUuid.getUuid();
                     Log.d(TAG, "uuid: " + uuid);
                 }
+                 **/
 
 
                 mBluetoothConnection = new BluetoothConnectionService(BluetoothPage.this);
@@ -278,8 +281,6 @@ public class BluetoothPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String sentText = sendMsgEditText.getText().toString();
-
-                //May not need this
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("message", sharedPreferences.getString("message", "") + '\n' + sentText);
                 editor.commit();
