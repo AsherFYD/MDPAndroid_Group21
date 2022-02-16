@@ -20,14 +20,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.Charset;
+import java.util.Arrays;
 import java.util.UUID;
 
 public class BluetoothConnectionService {
     BluetoothPage mBluetoothPopup;
     private static BluetoothConnectionService instance;
-    private static final String TAG = "BLUETOOTHPOPUP";
+    private static final String TAG = "BlueToothConnectionServ";
 
-    private static final String appName = "MDP_Group_25";
+    private static final String appName = "MDP_Group_21";
 
     public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
@@ -129,6 +130,7 @@ public class BluetoothConnectionService {
                     Log.e(TAG, "RUN: ConnectThread: Unable to close connection in socket."+ e1.getMessage());
                 }
                 Log.d(TAG, "RUN: ConnectThread: could not connect to UUID."+ myUUID);
+                Log.d(TAG, "io exeception is: " + e.toString());
                 try {
                     BluetoothPage mBluetoothPageActivity = (BluetoothPage) mContext;
                     mBluetoothPageActivity.runOnUiThread(new Runnable() {
@@ -261,6 +263,10 @@ public class BluetoothConnectionService {
                     incomingMessageIntent.putExtra("receivedMessage", incomingmessage);
                     LocalBroadcastManager.getInstance(mContext).sendBroadcast(incomingMessageIntent);
 
+
+                    Arrays.fill(buffer, (byte)0); //try to reset buffer to 0 after a message is received
+                    Log.d(TAG, "buffer reset");
+
                 } catch (IOException e) {
                     Log.e(TAG, "Error reading input stream. "+e.getMessage());
                     connectionStatus = new Intent("ConnectionStatus");
@@ -337,6 +343,7 @@ public class BluetoothConnectionService {
         mConnectedThread.start();
     }
 
+    //PROBLEM IS HEREEEEEEEEE
     public static void write(byte[] out){
         ConnectedThread tmp;
 
