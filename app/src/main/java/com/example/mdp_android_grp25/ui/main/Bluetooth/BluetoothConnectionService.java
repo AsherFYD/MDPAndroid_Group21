@@ -29,7 +29,7 @@ public class BluetoothConnectionService {
 
     private static final String appName = "MDP_Group_25";
 
-    public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+    public static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 
     private final BluetoothAdapter mBluetoothAdapter;
     Context mContext;
