@@ -2442,16 +2442,15 @@ public class GridMap extends View {
 
     // week 8 req to send algo obstacle info
     public String getObstacles() {
-        String msg = "ALG|";
-
+        String msg = "";
         for (int i = 0; i < obstacleCoord.size(); i++) {
             showLog("i = " + Integer.toString(i));
-            msg +=  (Float.toString((float) (obstacleCoord.get(i)[0] + 0.5)) + ","
-                    + Float.toString((float) (obstacleCoord.get(i)[1] + 0.5)) + ","
-                    + imageBearings.get(obstacleCoord.get(i)[1])[obstacleCoord.get(i)[0]].charAt(0)
-                    + ";");
+            int col = obstacleCoord.get(i)[0];
+            int row = obstacleCoord.get(i)[1];
+            msg += (ITEM_LIST.get(row)[col] + "," + col + ","
+                    + row + "," + imageBearings.get(row)[col] + ",");
         }
-        msg += "\n";
+        msg = msg == "" ? "No obstacles found\n" : msg.substring(0, msg.length() - 1) + "\n";
         return msg;
     }
 

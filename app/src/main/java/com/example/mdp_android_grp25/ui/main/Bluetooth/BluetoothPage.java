@@ -161,14 +161,12 @@ public class BluetoothPage extends AppCompatActivity {
 
                 mBTDevice = mPairedBTDevices.get(i);
 
-                /**
                 mDeviceUUIDs = mBTDevice.getUuids();
                 for(Parcelable parcelable: mDeviceUUIDs){
                     ParcelUuid parcelUuid = (ParcelUuid) parcelable;
                     UUID uuid = parcelUuid.getUuid();
                     Log.d(TAG, "uuid: " + uuid);
                 }
-                 **/
 
 
                 mBluetoothConnection = new BluetoothConnectionService(BluetoothPage.this);
@@ -454,13 +452,10 @@ public class BluetoothPage extends AppCompatActivity {
                     otherDevicesListView.setAdapter(mNewDevlceListAdapter);
                 }
 
-
-                /**
                 mNewBTDevices.add(device);
                 Log.d(TAG, "onReceive: "+ device.getName() +" : " + device.getAddress());
                 mNewDevlceListAdapter = new DeviceListAdapter(context, R.layout.device_adapter_view, mNewBTDevices);
                 otherDevicesListView.setAdapter(mNewDevlceListAdapter);
-                 **/
 
             }
         }
