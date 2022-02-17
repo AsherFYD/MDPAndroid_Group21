@@ -404,7 +404,7 @@ public class GridMap extends View {
         if ((androidRowCoord-1) < 0 || androidRowCoord > 19) {
             showLog("row is out of bounds");
             return;
-        } else if (curCoord[0] > 20 || curCoord[0] < 2) {
+        } else if ((curCoord[0] - 1) < 0 || curCoord[0] > 19) {
             showLog("col is out of bounds");
             return;
         } else {
@@ -412,10 +412,10 @@ public class GridMap extends View {
             // horizontal lines
             for (int y = androidRowCoord - 2; y <= androidRowCoord; y++) {
                 canvas.drawLine(
-                    cells[curCoord[0] - 1][21 - y - 2].startX,
+                    cells[curCoord[0]-1][21 - y - 2].endX,
                     cells[curCoord[0]][21 - y - 2].startY,
                     cells[curCoord[0]][21 - y - 2].endX,
-                    cells[curCoord[0]][21 - y - 2].startY,
+                    cells[curCoord[0]][21 - y - 2].endY,
                     robotColor
                 );
             }
