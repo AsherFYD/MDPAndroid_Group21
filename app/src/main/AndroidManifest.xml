@@ -40,7 +40,6 @@
         <activity android:name="com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage">
             android:windowSoftInputMode="adjustResize"
         </activity>
-        <activity android:name="com.example.mdp_android_grp25.ui.main.MapInformation" />
     </application>
 
 </manifest>

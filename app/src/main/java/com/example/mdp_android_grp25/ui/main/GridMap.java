@@ -404,7 +404,7 @@ public class GridMap extends View {
         if ((androidRowCoord-1) < 0 || androidRowCoord > 19) {
             showLog("row is out of bounds");
             return;
-        } else if (curCoord[0] > 20 || curCoord[0] < 2) {
+        } else if ((curCoord[0] - 1) < 0 || curCoord[0] > 19) {
             showLog("col is out of bounds");
             return;
         } else {
@@ -412,10 +412,10 @@ public class GridMap extends View {
             // horizontal lines
             for (int y = androidRowCoord - 2; y <= androidRowCoord; y++) {
                 canvas.drawLine(
-                    cells[curCoord[0] - 1][21 - y - 2].startX,
+                    cells[curCoord[0]-1][21 - y - 2].endX,
                     cells[curCoord[0]][21 - y - 2].startY,
                     cells[curCoord[0]][21 - y - 2].endX,
-                    cells[curCoord[0]][21 - y - 2].startY,
+                    cells[curCoord[0]][21 - y - 2].endY,
                     robotColor
                 );
             }
@@ -2442,16 +2442,15 @@ public class GridMap extends View {
 
     // week 8 req to send algo obstacle info
     public String getObstacles() {
-        String msg = "ALG|";
-
+        String msg = "";
         for (int i = 0; i < obstacleCoord.size(); i++) {
             showLog("i = " + Integer.toString(i));
-            msg +=  (Float.toString((float) (obstacleCoord.get(i)[0] + 0.5)) + ","
-                    + Float.toString((float) (obstacleCoord.get(i)[1] + 0.5)) + ","
-                    + imageBearings.get(obstacleCoord.get(i)[1])[obstacleCoord.get(i)[0]].charAt(0)
-                    + ";");
+            int col = obstacleCoord.get(i)[0];
+            int row = obstacleCoord.get(i)[1];
+            msg += (ITEM_LIST.get(row)[col] + "," + col + ","
+                    + row + "," + imageBearings.get(row)[col] + ",");
         }
-        msg += "\n";
+        msg = msg == "" ? "No obstacles found\n" : msg.substring(0, msg.length() - 1) + "\n";
         return msg;
     }
 

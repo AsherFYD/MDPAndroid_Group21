@@ -305,18 +305,28 @@ public class MapTabFragment extends Fragment {
                     long tempExploreLastStopped = System.currentTimeMillis() - exploreTimer;
                     exploreTimerLastStopped = tempExploreLastStopped;
                     timerHandler.removeCallbacks(timerRunnableExplore);
+                    exploreResetBtn.setEnabled(true);
+                    exploreResetBtn.setBackgroundColor(Color.WHITE);
                 }
                 else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
                     String msg = gridMap.getObstacles(); //to get the info to send to the robot
                     MainActivity.printMessage(msg); //send obstacles to robot
                     MainActivity.stopTimerFlag = false;
-                    MainActivity.printMessage("beginExplore"); //for checklist
-                    showLog(msg);
-                    showToast("Image recognition task has started");
-                    robotStatusTextView.setText("Auto Movement Started");
+                    if (msg == "No obstacles found\n") {
+                        MainActivity.printMessage("Please input robot and obstacles"); //for checklist
+                        showToast("Please input robot and obstacles");
+                    }
+                    else {
+                        MainActivity.printMessage("beginExplore"); //for checklist
+                        showLog(msg);
+                        showToast("Image recognition task has started");
+                        robotStatusTextView.setText("Auto Movement Started");
+                    }
                     long tempExplore = System.currentTimeMillis();
                     exploreTimer = tempExplore - exploreTimerLastStopped;
                     timerHandler.postDelayed(timerRunnableExplore, 0);
+                    exploreResetBtn.setEnabled(false);
+                    exploreResetBtn.setBackgroundColor(Color.GRAY);
                 }
                 else {
                     showToast("Else statement: " + exploreToggleBtn.getText());
@@ -366,11 +376,13 @@ public class MapTabFragment extends Fragment {
                     long tempFastestLastStopped = System.currentTimeMillis() - fastestTimer;
                     fastestTimerLastStopped = tempFastestLastStopped;
                     timerHandler.removeCallbacks(timerRunnableFastest);
+                    fastestResetBtn.setEnabled(true);
+                    fastestResetBtn.setBackgroundColor(Color.WHITE);
                 }
                 else if (fastestToggleBtn.getText().equals("STOP")) { //press start wk 9
                     showToast("Fastest car timer start!");
                     try {
-                        //MainActivity.printMessage("STM|G"); //send message for fastest path
+                        MainActivity.printMessage("Fastest path start"); //send message for fastest path
                     } catch (Exception e) {
                         showLog(e.getMessage());
                     }
@@ -379,6 +391,8 @@ public class MapTabFragment extends Fragment {
                     long tempFastest = System.currentTimeMillis();
                     fastestTimer = tempFastest - fastestTimerLastStopped;
                     timerHandler.postDelayed(timerRunnableFastest, 0);
+                    fastestResetBtn.setEnabled(false);
+                    fastestResetBtn.setBackgroundColor(Color.GRAY);
                 }
                 else
                     showToast(fastestToggleBtn.getText().toString());

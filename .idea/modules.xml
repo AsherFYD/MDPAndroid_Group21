@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDP_Android_GRP15.iml" filepath="$PROJECT_DIR$/.idea/modules/MDP_Android_GRP15.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MDP_Android_GRP15.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MDP_Android_GRP15.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MDP_Android_GRP21.iml" filepath="$PROJECT_DIR$/.idea/modules/MDP_Android_GRP21.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MDP_Android_GRP21.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MDP_Android_GRP21.app.iml" />
     </modules>
   </component>
 </project>

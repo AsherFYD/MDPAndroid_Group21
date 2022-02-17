@@ -141,7 +141,7 @@ public class ControlFragment extends Fragment {
                 }
                 else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
                     String msg = gridMap.getObstacles(); //to get the info to send to the robot
-                    MainActivity.printMessage(msg); //send obstacles to robot
+//                    MainActivity.printMessage(msg); //send obstacles to robot
                     MainActivity.stopTimerFlag = false;
                     showToast("Auto Movement/ImageRecog timer start!");
                     robotStatusTextView.setText("Auto Movement Started");

@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean stopTimerFlag = false;
     public static boolean stopWk9TimerFlag = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -308,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
     // Use this method to send message through bluetooth to robot
     public static void printMessage(String message) {
         showLog("Entering printMessage");
-        //editor = sharedPreferences.edit();
+        editor = sharedPreferences.edit();
 
         if (BluetoothConnectionService.BluetoothConnectionStatus == true) {
             byte[] bytes = message.getBytes(Charset.defaultCharset());
