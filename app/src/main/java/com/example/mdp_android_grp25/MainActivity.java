@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Moving forward", Toast.LENGTH_SHORT).show();
-                        printMessage("f");
+                        printMessage("w\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to move forward", Toast.LENGTH_SHORT).show();
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Moving backward", Toast.LENGTH_SHORT).show();
-                        printMessage("b");
+                        printMessage("s\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to move backward", Toast.LENGTH_SHORT).show();
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Turning left", Toast.LENGTH_SHORT).show();
-                        printMessage("tl");
+                        printMessage("a\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to turn left", Toast.LENGTH_SHORT).show();
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Turning right", Toast.LENGTH_SHORT).show();
-                        printMessage("tr");
+                        printMessage("d\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to turn right", Toast.LENGTH_SHORT).show();
