@@ -412,21 +412,21 @@ public class GridMap extends View {
             // horizontal lines
             for (int y = androidRowCoord - 2; y <= androidRowCoord; y++) {
                 canvas.drawLine(
-                    cells[curCoord[0]-1][21 - y - 2].endX,
-                    cells[curCoord[0]][21 - y - 2].startY,
-                    cells[curCoord[0]][21 - y - 2].endX,
-                    cells[curCoord[0]][21 - y - 2].endY,
+                    cells[curCoord[0]-1][21 - y - 1].startX,
+                    cells[curCoord[0]][21 - y - 1].startY,
+                    cells[curCoord[0]][21 - y - 1].endX,
+                    cells[curCoord[0]][21 - y - 1].startY,
                     robotColor
                 );
             }
             // vertical lines
             for (int x = curCoord[0] - 2; x <= curCoord[0]; x++) {
                 canvas.drawLine(
-                    cells[x][21 - androidRowCoord - 1].endX,
-                    cells[x][21 - androidRowCoord - 1].endY,
-                    cells[x][21 - androidRowCoord - 1].endX,
-                    cells[x][21 - androidRowCoord - 2].startY,
-                    robotColor
+                    cells[x][21 - androidRowCoord - 2].endX,
+                    cells[x][21 - androidRowCoord].endY,
+                    cells[x][21 - androidRowCoord - 2].endX,
+                    cells[x][21 - androidRowCoord].startY,
+                    blackPaint
                 );
             }
 
@@ -644,7 +644,7 @@ public class GridMap extends View {
             }
 
         for (int x = col - 1; x <= col; x++)
-            for (int y = row - 1; y <= row; y++)
+            for (int y = row; y <= row + 1; y++)
                 cells[x][y].setType("robot");
 
 
@@ -683,7 +683,7 @@ public class GridMap extends View {
         }
         for (int x = oldCol - 1; x <= oldCol; x++)
             for (int y = oldRow - 1; y <= oldRow; y++)
-                cells[x][y].setType("explored");
+                cells[x][y].setType("unexplored");
         showLog("Exiting setOldRobotCoord");
     }
 
@@ -902,7 +902,7 @@ public class GridMap extends View {
             imageBearings.get(initialRow-1)[initialColumn-1] = "";
             IMAGE_LIST.get(initialRow-1)[initialColumn-1] = ""; //Remove image id if there is one
             showLog(commandMsgGenerator(REMOVE_OBSTACLE));
-            // commented out for Wk 8 and Wk 9
+            //commented out for Wk 8 and Wk 9
             //MainActivity.printMessage(commandMsgGenerator(REMOVE_OBSTACLE));
         }
         // drop within gridmap
@@ -1077,7 +1077,7 @@ public class GridMap extends View {
                             showLog("newID = " + newID);
                             showLog("newBearing = " + newBearing);
 
-                            MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
+//                            MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
 
                             //showLog(commandMsgGenerator(CHANGE_OBSTACLE));
 
@@ -1111,7 +1111,7 @@ public class GridMap extends View {
                     for (int i = 0; i < 21; i++) {
                         for (int j = 0; j < 21; j++) {
                             if (cells[i][j].type == "robot") {
-                                //cells[i][j].setType("explored");
+                                cells[i][j].setType("unexplored");
                             }
                         }
                     }
@@ -1192,13 +1192,13 @@ public class GridMap extends View {
                     this.setObstacleCoord(column, row);
                     showLog(commandMsgGenerator(ADD_OBSTACLE));
                     // commented out for Wk 8 and 9
-                    MainActivity.printMessage(commandMsgGenerator(ADD_OBSTACLE));
+//                    MainActivity.printMessage(commandMsgGenerator(ADD_OBSTACLE));
                 }
                 this.invalidate();
                 return true;
             }
             if (setExploredStatus) {
-                //cells[column][20-row].setType("explored");
+                cells[column][20-row].setType("unexplored");
                 this.invalidate();
                 return true;
             }
@@ -1329,7 +1329,7 @@ public class GridMap extends View {
                         if ((String.valueOf(exploredString.charAt(j + 2))).equals("1")
                                 && !cells[x][y].type.equals("robot"))
                             continue;
-                            //cells[x][y].setType("explored");
+                            //cells[x][y].setType("unexplored");
                         else if ((String.valueOf(exploredString.charAt(j + 2))).equals("0")
                                 && !cells[x][y].type.equals("robot"))
                             cells[x][y].setType("unexplored");
@@ -1799,7 +1799,7 @@ public class GridMap extends View {
                 showLog("prev pos was within grid");
                 for (int i = curCoord[0] - 1; i <= curCoord[0]; i++) {
                     for (int j = curCoord[1] - 1; j <= curCoord[1]; j++) {
-                        //cells[i][20 - j - 1].setType("explored");
+                        cells[i][20 - j - 1].setType("unexplored");
                     }
                 }
             }
@@ -2426,7 +2426,7 @@ public class GridMap extends View {
                     showLog("pos is good before going out of grid");
                     for (int n = curCoord[0] - 1; n <= curCoord[0]; n++) {
                         for (int m = curCoord[1] - 1; m <= curCoord[1]; m++) {
-                            //cells[n][20 - m - 1].setType("explored");
+                            cells[n][20 - m - 1].setType("unexplored");
                         }
                     }
                 }

@@ -1640,6 +1640,9 @@ layout toolbar_layout
 menu appbar_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap image11
+mipmap image12
+mipmap image13
 string abc_action_bar_home_description
 string abc_action_bar_up_description
 string abc_action_menu_overflow_description

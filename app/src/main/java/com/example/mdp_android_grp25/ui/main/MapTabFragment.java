@@ -317,7 +317,7 @@ public class MapTabFragment extends Fragment {
                         showToast("Please input robot and obstacles");
                     }
                     else {
-                        MainActivity.printMessage("beginExplore"); //for checklist
+//                        MainActivity.printMessage("beginExplore"); //for checklist
                         showLog(msg);
                         showToast("Image recognition task has started");
                         robotStatusTextView.setText("Auto Movement Started");
