@@ -310,16 +310,20 @@ public class MapTabFragment extends Fragment {
                 }
                 else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
                     String msg = gridMap.getObstacles(); //to get the info to send to the robot
-                    MainActivity.printMessage(msg); //send obstacles to robot
+                    //MainActivity.printMessage(msg); //send obstacles to robot
                     MainActivity.stopTimerFlag = false;
                     if (msg == "No obstacles found\n") {
-                        MainActivity.printMessage("Please input robot and obstacles"); //for checklist
-                        showToast("Please input robot and obstacles");
+                        //MainActivity.printMessage("Please input obstacles"); //for checklist
+                        showToast("Please set obstacles on the map");
+                    }
+                    else if (GridMap.robotDirection == "None"){
+                        showToast("Please set robot on the map");
                     }
                     else {
-//                        MainActivity.printMessage("beginExplore"); //for checklist
+                        //MainActivity.printMessage("beginExplore"); //for checklist
                         showLog(msg);
                         showToast("Image recognition task has started");
+                        MainActivity.printMessage(msg); //send obstacles to robot only when there is robot and obstacles on map
                         robotStatusTextView.setText("Auto Movement Started");
                     }
                     long tempExplore = System.currentTimeMillis();

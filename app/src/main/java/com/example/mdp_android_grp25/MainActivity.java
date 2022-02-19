@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Moving forward", Toast.LENGTH_SHORT).show();
-                        printMessage("w\n");
+                        printMessage("W\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to move forward", Toast.LENGTH_SHORT).show();
@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Moving backward", Toast.LENGTH_SHORT).show();
-                        printMessage("s\n");
+                        printMessage("S\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to move backward", Toast.LENGTH_SHORT).show();
@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Turning left", Toast.LENGTH_SHORT).show();
-                        printMessage("a\n");
+                        printMessage("A\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to turn left", Toast.LENGTH_SHORT).show();
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity {
                     refreshLabel();
                     if (gridMap.getValidPosition()){
                         Toast.makeText(MainActivity.this, "Turning right", Toast.LENGTH_SHORT).show();
-                        printMessage("d\n");
+                        printMessage("D\n");
                     }
                     else{
                         Toast.makeText(MainActivity.this, "Unable to turn right", Toast.LENGTH_SHORT).show();
@@ -274,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         yAxisTextView = findViewById(R.id.yAxisTextView);
         directionAxisTextView = findViewById(R.id.directionAxisTextView);
 
-        //```ControlFragment for Timer
+        //ControlFragment for Timer
         //controlFragment = new ControlFragment();
 
         // initialize ITEM_LIST and imageBearings strings
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
     public void refreshDirection(String direction) {
         gridMap.setRobotDirection(direction);
         directionAxisTextView.setText(sharedPreferences.getString("direction",""));
-        printMessage("Direction is set to " + direction);
+        //printMessage("Direction is set to " + direction);
     }
 
 

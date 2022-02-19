@@ -75,7 +75,7 @@ public class GridMap extends View {
 
     private static JSONObject receivedJsonObject = new JSONObject();
     private static JSONObject backupMapInformation;
-    private static String robotDirection = "None";
+    public static String robotDirection = "None";
     private static int[] startCoord = new int[]{-1, -1};
     private static int[] curCoord = new int[]{-1, -1};
     private static int[] oldCoord = new int[]{-1, -1};
@@ -203,6 +203,8 @@ public class GridMap extends View {
         drawObstacles(canvas);
 
         showLog("Exiting onDraw");
+
+        showLog("Robot information: " + robotDirection + " " + startCoord[0] + " " + startCoord[1]);
     }
 
     // draws obstacle cells whenever map refreshes, pos/correct item selection is here
@@ -1051,7 +1053,8 @@ public class GridMap extends View {
                     if (imageId.equals("")) {
                         mIDSpinner.setSelection(0);
                     } else {
-                        mIDSpinner.setSelection(Integer.parseInt(imageId)); //THIS IS THE ISSUE
+                        mIDSpinner.setSelection(Integer.parseInt(imageId) - 1);
+                        showLog("Current imageId is " + imageId);
                     }
                     switch (imageBearing) {
                         case "North": mBearingSpinner.setSelection(0);
@@ -1077,9 +1080,10 @@ public class GridMap extends View {
                             showLog("newID = " + newID);
                             showLog("newBearing = " + newBearing);
 
-//                            MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
-
-                            //showLog(commandMsgGenerator(CHANGE_OBSTACLE));
+                            /**
+                            MainActivity.printMessage(commandMsgGenerator(CHANGE_OBSTACLE));
+                            showLog(commandMsgGenerator(CHANGE_OBSTACLE));
+                             **/
 
                             callInvalidate();
                         }
