@@ -34,7 +34,7 @@ public class MapTabFragment extends Fragment {
 
     private PageViewModel pageViewModel;
 
-    Button resetMapBtn, updateButton;
+    Button resetMapBtn, resetTestBtn, updateButton;
     ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
     ToggleButton setStartPointToggleBtn, exploreToggleBtn, fastestToggleBtn;          //, setWaypointToggleBtn;
     //Switch manualAutoToggleBtn;
@@ -119,6 +119,7 @@ public class MapTabFragment extends Fragment {
         final DirectionFragment directionFragment = new DirectionFragment();
 
         resetMapBtn = root.findViewById(R.id.resetBtn);
+        resetTestBtn = root.findViewById(R.id.resetTestBtn);
         setStartPointToggleBtn = root.findViewById(R.id.startpointToggleBtn);
         //setWaypointToggleBtn = root.findViewById(R.id.waypointToggleBtn);
         directionChangeImageBtn = root.findViewById(R.id.changeDirectionBtn);
@@ -185,6 +186,15 @@ public class MapTabFragment extends Fragment {
                 showLog("Clicked resetMapBtn");
                 showToast("Reseting map...");
                 gridMap.resetMap();
+            }
+        });
+
+        resetTestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLog("Clicked resetTestBtn");
+                showToast("Resetting Test");
+                gridMap.resetTest();
             }
         });
 

@@ -1251,6 +1251,25 @@ public class GridMap extends View {
          **/
     }
 
+    //to reset the test configuration
+    public void resetTest(){
+        showLog("Entering resetTest");
+        TextView robotStatusTextView =  ((Activity)this.getContext())
+                .findViewById(R.id.robotStatus);
+        robotStatusTextView.setText("Ready to Move");
+
+        //set position and direction
+        setCurCoord(2,2,"up");
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
+                IMAGE_LIST.get(i)[j] = "";
+            }
+        }
+
+        showLog("Exiting resetTest");
+        this.invalidate();
+    }
+
 
     public void resetMap() {
         showLog("Entering resetMap");
