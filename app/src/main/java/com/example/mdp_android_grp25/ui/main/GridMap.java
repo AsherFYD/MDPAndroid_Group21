@@ -1258,8 +1258,10 @@ public class GridMap extends View {
                 .findViewById(R.id.robotStatus);
         robotStatusTextView.setText("Ready to Move");
 
-        //set position and direction
-        setCurCoord(2,2,"up");
+        if (GridMap.robotDirection != "None"){
+            //set position and direction
+            setCurCoord(2,2,"up");
+        }
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
                 IMAGE_LIST.get(i)[j] = "";
