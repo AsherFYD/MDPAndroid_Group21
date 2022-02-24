@@ -278,7 +278,9 @@ public class BluetoothPage extends AppCompatActivity {
         sendMsgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String sentText = sendMsgEditText.getText().toString();
+                String sentText = sendMsgEditText.getText().toString() + "\n";
+                Log.d(TAG, sentText);
+
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("message", sharedPreferences.getString("message", "") + '\n' + sentText);
                 editor.commit();

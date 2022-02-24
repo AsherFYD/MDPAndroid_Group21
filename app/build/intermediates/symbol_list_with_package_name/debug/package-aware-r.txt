@@ -1420,6 +1420,7 @@ id received_msg_text
 id received_msg_textview
 id resetBtn
 id resetMapBtn
+id resetTestBtn
 id right
 id rightBtn
 id right_icon

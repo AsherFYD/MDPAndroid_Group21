@@ -34,7 +34,7 @@ public class MapTabFragment extends Fragment {
 
     private PageViewModel pageViewModel;
 
-    Button resetMapBtn, updateButton;
+    Button resetMapBtn, resetTestBtn, updateButton;
     ImageButton directionChangeImageBtn, exploredImageBtn, obstacleImageBtn, clearImageBtn;
     ToggleButton setStartPointToggleBtn, exploreToggleBtn, fastestToggleBtn;          //, setWaypointToggleBtn;
     //Switch manualAutoToggleBtn;
@@ -119,6 +119,7 @@ public class MapTabFragment extends Fragment {
         final DirectionFragment directionFragment = new DirectionFragment();
 
         resetMapBtn = root.findViewById(R.id.resetBtn);
+        resetTestBtn = root.findViewById(R.id.resetTestBtn);
         setStartPointToggleBtn = root.findViewById(R.id.startpointToggleBtn);
         //setWaypointToggleBtn = root.findViewById(R.id.waypointToggleBtn);
         directionChangeImageBtn = root.findViewById(R.id.changeDirectionBtn);
@@ -185,6 +186,15 @@ public class MapTabFragment extends Fragment {
                 showLog("Clicked resetMapBtn");
                 showToast("Reseting map...");
                 gridMap.resetMap();
+            }
+        });
+
+        resetTestBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showLog("Clicked resetTestBtn");
+                showToast("Resetting Test");
+                gridMap.resetTest();
             }
         });
 
@@ -310,16 +320,24 @@ public class MapTabFragment extends Fragment {
                 }
                 else if (exploreToggleBtn.getText().equals("STOP")) { //press wk8 start
                     String msg = gridMap.getObstacles(); //to get the info to send to the robot
-                    MainActivity.printMessage(msg); //send obstacles to robot
+                    //MainActivity.printMessage(msg); //send obstacles to robot
                     MainActivity.stopTimerFlag = false;
                     if (msg == "No obstacles found\n") {
-                        MainActivity.printMessage("Please input robot and obstacles"); //for checklist
-                        showToast("Please input robot and obstacles");
+                        //MainActivity.printMessage("Please input obstacles"); //for checklist
+                        showToast("Please set obstacles on the map");
+                    }
+                    else if (GridMap.robotDirection == "None"){
+                        showToast("Please set robot on the map");
                     }
                     else {
-//                        MainActivity.printMessage("beginExplore"); //for checklist
+                        //MainActivity.printMessage("beginExplore"); //for checklist
                         showLog(msg);
                         showToast("Image recognition task has started");
+                        //send "obs first before sending obstacles info"
+                        MainActivity.printMessage("obs\n");
+
+                        //send obstacle info
+                        MainActivity.printMessage(msg); //send obstacles to robot only when there is robot and obstacles on map
                         robotStatusTextView.setText("Auto Movement Started");
                     }
                     long tempExplore = System.currentTimeMillis();
