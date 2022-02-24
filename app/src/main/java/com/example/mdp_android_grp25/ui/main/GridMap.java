@@ -403,10 +403,10 @@ public class GridMap extends View {
         showLog("curCoord[0] = " + curCoord[0] + ", curCoord[1] = " + curCoord[1]);
         int androidRowCoord = curCoord[1];
 
-        if ((androidRowCoord-1) < 0 || androidRowCoord > 19) {
+        if ((androidRowCoord) < 2 || androidRowCoord > 20) {
             showLog("row is out of bounds");
             return;
-        } else if ((curCoord[0] - 1) < 0 || curCoord[0] > 19) {
+        } else if ((curCoord[0]) < 2 || curCoord[0] > 20) {
             showLog("col is out of bounds");
             return;
         } else {
@@ -424,9 +424,9 @@ public class GridMap extends View {
             // vertical lines
             for (int x = curCoord[0] - 2; x <= curCoord[0]; x++) {
                 canvas.drawLine(
-                    cells[x][21 - androidRowCoord - 2].endX,
+                    cells[x][21 - androidRowCoord - 1].endX,
                     cells[x][21 - androidRowCoord].endY,
-                    cells[x][21 - androidRowCoord - 2].endX,
+                    cells[x][21 - androidRowCoord - 1].endX,
                     cells[x][21 - androidRowCoord].startY,
                     blackPaint
                 );
@@ -436,65 +436,65 @@ public class GridMap extends View {
             switch (this.getRobotDirection()) {
                 case "up":
                     canvas.drawLine(
-                        cells[curCoord[0] - 1][20 - androidRowCoord].startX,
-                        cells[curCoord[0] - 1][20 - androidRowCoord].endY,
-                        cells[curCoord[0] - 1][20 - androidRowCoord].endX,
-                        cells[curCoord[0]][20 - androidRowCoord - 1].startY,
+                        cells[curCoord[0]-1][20 - androidRowCoord].startX,
+                        cells[curCoord[0]-1][20 - androidRowCoord + 1].endY,
+                        cells[curCoord[0]-1][20 - androidRowCoord].endX,
+                        cells[curCoord[0]-1][20 - androidRowCoord].startY,
                         blackPaint
                     );
                     canvas.drawLine(
                         cells[curCoord[0]][21 - androidRowCoord].endX,
-                        cells[curCoord[0]][21 - androidRowCoord - 1].endY,
+                        cells[curCoord[0]][21 - androidRowCoord].endY,
                         cells[curCoord[0] - 1][21 - androidRowCoord].endX,
-                        cells[curCoord[0]][21 - androidRowCoord - 2].startY,
+                        cells[curCoord[0]][21 - androidRowCoord - 1].startY,
                         blackPaint
                     );
                     break;
                 case "down":
                     canvas.drawLine(
                         cells[curCoord[0]][21 - androidRowCoord].endX,
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 2].startY,
+                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].startY,
                         cells[curCoord[0] - 1][21 - androidRowCoord].endX,
-                        cells[curCoord[0]][21 - androidRowCoord].startY,
+                        cells[curCoord[0]][21 - androidRowCoord + 1].startY,
                         blackPaint
                     );
                     canvas.drawLine(
                         cells[curCoord[0] - 2][21 - androidRowCoord].endX,
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 2].startY,
+                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].startY,
                         cells[curCoord[0] - 1][21 - androidRowCoord].endX,
-                        cells[curCoord[0]][21 - androidRowCoord].startY,
+                        cells[curCoord[0]][21 - androidRowCoord + 1].startY,
                         blackPaint
                     );
                     break;
                 case "right":
                     canvas.drawLine(
                         cells[curCoord[0] - 1][21 - androidRowCoord - 2].startX,
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 2].startY,
+                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].startY,
                         cells[curCoord[0]][21 - androidRowCoord - 1].endX,
-                        cells[curCoord[0]][21 - androidRowCoord - 1].startY,
+                        cells[curCoord[0]][21 - androidRowCoord].startY,
                         blackPaint
                     );
                     canvas.drawLine(
                         cells[curCoord[0] - 1][21 - androidRowCoord - 2].startX,
-                        cells[curCoord[0] - 1][21 - androidRowCoord].startY,
+                        cells[curCoord[0] - 1][21 - androidRowCoord + 1].startY,
                         cells[curCoord[0]][21 - androidRowCoord - 1].endX,
-                        cells[curCoord[0]][21 - androidRowCoord - 1].startY,
+                        cells[curCoord[0]][21 - androidRowCoord].startY,
                         blackPaint
                     );
                     break;
                 case "left":
                     canvas.drawLine(
                         cells[curCoord[0]][21 - androidRowCoord - 1].endX,
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].endY,
+                        cells[curCoord[0] - 1][21 - androidRowCoord].endY,
                         cells[curCoord[0] - 2][21 - androidRowCoord].endX,
-                        cells[curCoord[0]][21 - androidRowCoord - 1].startY,
+                        cells[curCoord[0]][21 - androidRowCoord].startY,
                         blackPaint
                     );
                     canvas.drawLine(
                         cells[curCoord[0]][21 - androidRowCoord - 1].endX,
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 2].startY,
+                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].startY,
                         cells[curCoord[0] - 2][21 - androidRowCoord].endX,
-                        cells[curCoord[0]][21 - androidRowCoord - 1].startY,
+                        cells[curCoord[0]][21 - androidRowCoord].startY,
                         blackPaint
                     );
                     break;
@@ -619,7 +619,7 @@ public class GridMap extends View {
     public void setCurCoord(int col, int row, String direction) {
         showLog("Entering setCurCoord");
         // this 2 ifs check setstartingwaypoint
-        if (row < 1 || row > 19) {
+        if (row < 2 || row > 20) {
             showLog("y is out of bounds");
             return;
         }
@@ -627,6 +627,7 @@ public class GridMap extends View {
             showLog("x is out of bounds");
             return;
         }
+
         curCoord[0] = col;
         curCoord[1] = row;
         this.setRobotDirection(direction);
@@ -648,7 +649,6 @@ public class GridMap extends View {
         for (int x = col - 1; x <= col; x++)
             for (int y = row; y <= row + 1; y++)
                 cells[x][y].setType("robot");
-
 
         showLog("Exiting setCurCoord");
     }
@@ -1497,8 +1497,8 @@ public class GridMap extends View {
                         }
                         break;
                     case "right":
-                        if ((1 < curCoord[1] && curCoord[1] < 19)
-                                && (0 < curCoord[0] && curCoord[0] < 20)) {
+                        if ((2 <= curCoord[1] && curCoord[1] < 19)
+                                && (2 <= curCoord[0] && curCoord[0] < 19)) {
                             curCoord[1] += 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
@@ -1511,14 +1511,15 @@ public class GridMap extends View {
                         }
                         break;
                     case "back":
-                        if (curCoord[1] != 1) {
+                        if (curCoord[1] != 2) {
                             curCoord[1] -= 1;
                             validPosition = true;
                         }
                         break;
                     case "left":
-                        if ((0 < curCoord[1] && curCoord[1] < 19)
+                        if ((2 <= curCoord[1] && curCoord[1] < 19)
                                 && (2 < curCoord[0] && curCoord[0] <= 20)) {
+                            showLog("LOL");
                             curCoord[1] += 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
@@ -1539,14 +1540,14 @@ public class GridMap extends View {
             case "right":
                 switch (direction) {
                     case "forward":
-                        if (0 < curCoord[0] && curCoord[0] < 20) {
+                        if (1 < curCoord[0] && curCoord[0] < 20) {
                             curCoord[0] += 1;
                             validPosition = true;
                         }
                         break;
                     case "right":
-                        if ((1 < curCoord[1] && curCoord[1] < 20)
-                                && (0 < curCoord[0] && curCoord[0] < 20)) {
+                        if ((2 < curCoord[1] && curCoord[1] < 20)
+                                && (1 < curCoord[0] && curCoord[0] < 19)) {
                             curCoord[0] += 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
@@ -1565,8 +1566,8 @@ public class GridMap extends View {
                         }
                         break;
                     case "left":
-                        if ((0 < curCoord[1] && curCoord[1] < 19)
-                                && (0 < curCoord[0] && curCoord[0] < 20)) {
+                        if ((1 < curCoord[1] && curCoord[1] < 19)
+                                && (1 < curCoord[0] && curCoord[0] < 19)) {
                             curCoord[0] += 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
@@ -1587,14 +1588,14 @@ public class GridMap extends View {
             case "down":
                 switch (direction) {
                     case "forward":
-                        if (curCoord[1] != 1) {
+                        if (curCoord[1] != 2) {
                             curCoord[1] -= 1;
                             validPosition = true;
                         }
                         break;
                     case "right":
-                        if ((1 < curCoord[1] && curCoord[1] < 19)
-                                && (2 < curCoord[0] && curCoord[0] <= 20)) {
+                        if ((2 < curCoord[1] && curCoord[1] < 20)
+                                && (2 < curCoord[0] && curCoord[0] < 20)) {
                             curCoord[1] -= 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
@@ -1614,7 +1615,7 @@ public class GridMap extends View {
                         break;
                     case "left":
                         if ((1 < curCoord[1] && curCoord[1] < 20)
-                                && (0 < curCoord[0] && curCoord[0] <= 20)) {
+                                && (1 < curCoord[0] && curCoord[0] < 19)) {
                             curCoord[1] -= 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
                                 validPosition = false;
@@ -1684,8 +1685,7 @@ public class GridMap extends View {
         }
 
         showLog("Enter checking for obstacles in destination 2x2 grid");
-        if (getValidPosition())
-            // check obstacle for new position
+        if (getValidPosition()) {
             for (int x = curCoord[0] - 1; x <= curCoord[0]; x++) {
                 for (int y = curCoord[1] - 1; y <= curCoord[1]; y++) {
                     for (int i = 0; i < obstacleCoord.size(); i++) {
@@ -1705,9 +1705,13 @@ public class GridMap extends View {
                 if (!getValidPosition())
                     break;
             }
+        }
+            // check obstacle for new position
         showLog("Exit checking for obstacles in destination 2x2 grid");
-        if (getValidPosition())
+        if (getValidPosition()) {
+            showLog("zzz cur0: " + String.valueOf(curCoord[0]) + " cur1: " + String.valueOf(curCoord[1]));
             this.setCurCoord(curCoord[0], curCoord[1], robotDirection);
+        }
         else {
             if (direction.equals("forward") || direction.equals("back"))
                 robotDirection = backupDirection;
