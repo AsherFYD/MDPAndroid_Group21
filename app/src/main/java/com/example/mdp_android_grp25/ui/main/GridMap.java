@@ -425,10 +425,10 @@ public class GridMap extends View {
             for (int x = curCoord[0] - 2; x <= curCoord[0]; x++) {
                 canvas.drawLine(
                     cells[x][21 - androidRowCoord - 1].endX,
-                    cells[x][21 - androidRowCoord].endY,
+                    cells[x][21 - androidRowCoord - 1].startY,
                     cells[x][21 - androidRowCoord - 1].endX,
-                    cells[x][21 - androidRowCoord].startY,
-                    blackPaint
+                    cells[x][21 - androidRowCoord].endY,
+                    robotColor
                 );
             }
 
