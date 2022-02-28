@@ -14,6 +14,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private ControlFragment controlFragment;
     static TextView xAxisTextView, yAxisTextView, directionAxisTextView, commandLog;
     static TextView robotStatusTextView, bluetoothStatus, bluetoothDevice;
-    static Button upBtn, downBtn, leftBtn, rightBtn;
+    static Button upBtn, downBtn, leftBtn, rightBtn,sendK;
+    static ImageView imageIDView;
 
     BluetoothDevice mBTDevice;
     private static UUID myUUID;
@@ -119,6 +121,18 @@ public class MainActivity extends AppCompatActivity {
             showLog("Update robotstatusTextView disconnected");
             robotStatusTextView.setText("Disconnected");
         }
+
+        //For testing purposes
+        sendK = findViewById(R.id.pressK);
+        sendK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                printMessage("end\n");
+            }
+        });
+
+        imageIDView = findViewById(R.id.displayimageview);
+
 
         // Controller & on click listeners for controller
         upBtn = findViewById(R.id.upBtn);
@@ -467,6 +481,7 @@ public class MainActivity extends AppCompatActivity {
                         showLog("imageID = " + imageID);
                         gridMap.updateIDFromRpi(obstacleID, imageID);
                         commandLog.append(message + "\n");
+                        //updateImageView(imageID);
                     }
 
                     //for robot status
@@ -474,7 +489,127 @@ public class MainActivity extends AppCompatActivity {
                         showLog("Updating robot status");
                         robotStatusTextView.setText(cmd[1]);
                     }
+                    else if(cmd[0].equals("ROBOT")){
+                        showLog("MOVEMENT RECEIVED");
+                        String movement = cmd[1].trim();
+                        showLog(movement);
+                        showLog(cmd[1]);
+                        int [] curCoord = gridMap.getCurCoord();
 
+                        if(movement.equals("w")){
+                            showLog("w received");
+                            if(gridMap.getRobotDirection() == "up"){
+                                curCoord[1] += 1;
+                            }else if (gridMap.getRobotDirection() == "down"){
+                                curCoord[1] -= 1;
+                            }else if (gridMap.getRobotDirection() == "left"){
+                                curCoord[0] -= 1;
+                            }else if (gridMap.getRobotDirection() == "right"){
+                                curCoord[0] += 1;
+                            }
+
+                            gridMap.setCurCoord(curCoord[0], curCoord[1], gridMap.getRobotDirection());
+                        }else if(movement.equals("a")){
+                            showLog("a received");
+                            if(gridMap.getRobotDirection() == "up"){
+                                gridMap.setRobotDirection("left");
+                            }else if (gridMap.getRobotDirection() == "down"){
+                                gridMap.setRobotDirection("right");
+                            }else if (gridMap.getRobotDirection() == "left"){
+                                gridMap.setRobotDirection("down");
+                            }else if (gridMap.getRobotDirection() == "right"){
+                                gridMap.setRobotDirection("up");
+                            }
+                        }else if(movement.equals("s")){
+                            showLog("s received");
+                            if(gridMap.getRobotDirection() == "up"){
+                                curCoord[1] -= 1;
+                            }else if (gridMap.getRobotDirection() == "down"){
+                                curCoord[1] += 1;
+                            }else if (gridMap.getRobotDirection() == "left"){
+                                curCoord[0] += 1;
+                            }else if (gridMap.getRobotDirection() == "right"){
+                                curCoord[0] -= 1;
+                            }
+
+                            gridMap.setCurCoord(curCoord[0], curCoord[1], gridMap.getRobotDirection());
+                        }else if(movement.equals("d")){
+                            showLog("d received");
+                            if(gridMap.getRobotDirection() == "up"){
+                                gridMap.setRobotDirection("right");
+                            }else if (gridMap.getRobotDirection() == "down"){
+                                gridMap.setRobotDirection("left");
+                            }else if (gridMap.getRobotDirection() == "left"){
+                                gridMap.setRobotDirection("up");
+                            }else if (gridMap.getRobotDirection() == "right"){
+                                gridMap.setRobotDirection("down");
+                            }
+                        }
+
+                        /**
+                        switch(movement){
+                            case("w\n"):
+                                showLog("w received");
+                                if(gridMap.getRobotDirection() == "up"){
+                                    curCoord[1] += 1;
+                                }else if (gridMap.getRobotDirection() == "down"){
+                                    curCoord[1] -= 1;
+                                }else if (gridMap.getRobotDirection() == "left"){
+                                    curCoord[0] -= 1;
+                                }else if (gridMap.getRobotDirection() == "right"){
+                                    curCoord[0] += 1;
+                                }
+
+                                gridMap.setCurCoord(curCoord[0], curCoord[1], gridMap.getRobotDirection());
+                                break;
+                            case("a\n"):
+                                showLog("a received");
+                                if(gridMap.getRobotDirection() == "up"){
+                                    gridMap.setRobotDirection("left");
+                                }else if (gridMap.getRobotDirection() == "down"){
+                                    gridMap.setRobotDirection("right");
+                                }else if (gridMap.getRobotDirection() == "left"){
+                                    gridMap.setRobotDirection("down");
+                                }else if (gridMap.getRobotDirection() == "right"){
+                                    gridMap.setRobotDirection("up");
+                                }
+                                break;
+                            case("s\n"):
+                                showLog("s received");
+                                if(gridMap.getRobotDirection() == "up"){
+                                    curCoord[1] -= 1;
+                                }else if (gridMap.getRobotDirection() == "down"){
+                                    curCoord[1] += 1;
+                                }else if (gridMap.getRobotDirection() == "left"){
+                                    curCoord[0] += 1;
+                                }else if (gridMap.getRobotDirection() == "right"){
+                                    curCoord[0] -= 1;
+                                }
+
+                                gridMap.setCurCoord(curCoord[0], curCoord[1], gridMap.getRobotDirection());
+                                break;
+                            case("d\n"):
+                                showLog("d received");
+                                if(gridMap.getRobotDirection() == "up"){
+                                    gridMap.setRobotDirection("right");
+                                }else if (gridMap.getRobotDirection() == "down"){
+                                    gridMap.setRobotDirection("left");
+                                }else if (gridMap.getRobotDirection() == "left"){
+                                    gridMap.setRobotDirection("up");
+                                }else if (gridMap.getRobotDirection() == "right"){
+                                    gridMap.setRobotDirection("down");
+                                }
+                                break;
+
+                            default:
+                                showLog("invalid movement");
+                        }
+                         **/
+
+                        commandLog.append(message + "\n");
+                    }
+
+                    /**
                     else if(cmd[0].equals("ROBOT")){
                         showLog("Updating robot position");
                         int x = Integer.parseInt(cmd[1]);
@@ -484,9 +619,8 @@ public class MainActivity extends AppCompatActivity {
                         gridMap.setCurCoord(x, y, direction); //must get integer for x and y
 
                         commandLog.append(message + "\n");
-
-
                     }
+                     **/
 
                     else {
 
@@ -528,6 +662,8 @@ public class MainActivity extends AppCompatActivity {
                     ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn3);
                     ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn3);
 
+                    commandLog.append(message + "\n");
+
                     if (exploreButton.isChecked()) {
                         showLog("explorebutton is checked");
                         stopTimerFlag = true;
@@ -539,6 +675,8 @@ public class MainActivity extends AppCompatActivity {
                         fastestButton.setChecked(false);
                         robotStatusTextView.setText("Week 9 Stopped");
                     }
+
+                    //printMessage("end");
                 }
             }
         };
