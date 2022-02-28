@@ -21,6 +21,12 @@
             android:orientation="horizontal">
 
             <Button
+                android:id="@+id/pressK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="send k" />
+
+            <Button
                 android:id="@+id/bluetoothButton"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="32dp"
