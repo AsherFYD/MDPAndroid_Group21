@@ -1540,7 +1540,7 @@ public class GridMap extends View {
             case "right":
                 switch (direction) {
                     case "forward":
-                        if (1 < curCoord[0] && curCoord[0] < 20) {
+                        if (1 < curCoord[0] && curCoord[0] < 19) {
                             curCoord[0] += 1;
                             validPosition = true;
                         }
@@ -1614,7 +1614,7 @@ public class GridMap extends View {
                         }
                         break;
                     case "left":
-                        if ((1 < curCoord[1] && curCoord[1] < 20)
+                        if ((2 < curCoord[1] && curCoord[1] < 20)
                                 && (1 < curCoord[0] && curCoord[0] < 19)) {
                             curCoord[1] -= 1;
                             if (checkObstaclesRightInFront(curCoord, obstacleCoord)) {
