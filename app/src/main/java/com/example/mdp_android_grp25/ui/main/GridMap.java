@@ -468,14 +468,14 @@ public class GridMap extends View {
                     break;
                 case "right":
                     canvas.drawLine(
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 2].startX,
+                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].endX,
                         cells[curCoord[0] - 1][21 - androidRowCoord - 1].startY,
                         cells[curCoord[0]][21 - androidRowCoord - 1].endX,
                         cells[curCoord[0]][21 - androidRowCoord].startY,
                         blackPaint
                     );
                     canvas.drawLine(
-                        cells[curCoord[0] - 1][21 - androidRowCoord - 2].startX,
+                        cells[curCoord[0] - 1][21 - androidRowCoord - 1].endX,
                         cells[curCoord[0] - 1][21 - androidRowCoord + 1].startY,
                         cells[curCoord[0]][21 - androidRowCoord - 1].endX,
                         cells[curCoord[0]][21 - androidRowCoord].startY,
