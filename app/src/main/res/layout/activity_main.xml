@@ -24,7 +24,7 @@
                 android:id="@+id/pressK"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="send k" />
+                android:text="send end" />
 
             <Button
                 android:id="@+id/bluetoothButton"
@@ -135,8 +135,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="0"
                         android:scaleType="fitXY"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@mipmap/image11" />
+                        android:layout_gravity="center_horizontal" />
                 </LinearLayout>
             </LinearLayout>
 

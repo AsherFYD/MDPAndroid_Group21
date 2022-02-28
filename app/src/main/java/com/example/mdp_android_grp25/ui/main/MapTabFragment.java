@@ -334,10 +334,10 @@ public class MapTabFragment extends Fragment {
                         showLog(msg);
                         showToast("Image recognition task has started");
                         //send "obs first before sending obstacles info"
-                        MainActivity.printMessage("obs\n");
+                        //MainActivity.printMessage("obs\n");
 
                         //send obstacle info
-                        MainActivity.printMessage(msg); //send obstacles to robot only when there is robot and obstacles on map
+                        MainActivity.printMessage("obs;"+ msg); //send obstacles to robot only when there is robot and obstacles on map
                         robotStatusTextView.setText("Auto Movement Started");
                     }
                     long tempExplore = System.currentTimeMillis();

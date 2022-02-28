@@ -14,6 +14,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     static TextView xAxisTextView, yAxisTextView, directionAxisTextView, commandLog;
     static TextView robotStatusTextView, bluetoothStatus, bluetoothDevice;
     static Button upBtn, downBtn, leftBtn, rightBtn,sendK;
+    static ImageView imageIDView;
 
     BluetoothDevice mBTDevice;
     private static UUID myUUID;
@@ -125,9 +127,11 @@ public class MainActivity extends AppCompatActivity {
         sendK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                printMessage("k\n");
+                printMessage("end\n");
             }
         });
+
+        imageIDView = findViewById(R.id.displayimageview);
 
 
         // Controller & on click listeners for controller
@@ -477,6 +481,7 @@ public class MainActivity extends AppCompatActivity {
                         showLog("imageID = " + imageID);
                         gridMap.updateIDFromRpi(obstacleID, imageID);
                         commandLog.append(message + "\n");
+                        //updateImageView(imageID);
                     }
 
                     //for robot status
@@ -657,6 +662,8 @@ public class MainActivity extends AppCompatActivity {
                     ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn3);
                     ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn3);
 
+                    commandLog.append(message + "\n");
+
                     if (exploreButton.isChecked()) {
                         showLog("explorebutton is checked");
                         stopTimerFlag = true;
@@ -668,6 +675,8 @@ public class MainActivity extends AppCompatActivity {
                         fastestButton.setChecked(false);
                         robotStatusTextView.setText("Week 9 Stopped");
                     }
+
+                    //printMessage("end");
                 }
             }
         };

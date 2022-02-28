@@ -143,12 +143,12 @@ public class GridMap extends View {
         whitePaint.setTextAlign(Paint.Align.CENTER);
 
         imageIDPaint.setColor(Color.WHITE);
-        imageIDPaint.setTextSize(25);
+        imageIDPaint.setTextSize(12);
         imageIDPaint.setTextAlign(Paint.Align.CENTER);
 
 
         redPaint.setColor(Color.RED);
-        redPaint.setStrokeWidth(8);
+        redPaint.setStrokeWidth(2);
         obstacleColor.setColor(Color.BLACK);
         robotColor.setColor(Color.YELLOW);
         robotColor.setStrokeWidth(2);
