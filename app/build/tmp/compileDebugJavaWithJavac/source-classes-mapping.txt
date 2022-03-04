@@ -3,43 +3,15 @@ com/example/mdp_android_grp25/BuildConfig.java
 com/example/mdp_android_grp25/ui/main/PageViewModel.java
  com.example.mdp_android_grp25.ui.main.PageViewModel
  com.example.mdp_android_grp25.ui.main.PageViewModel$1
-com/example/mdp_android_grp25/Constants.java
- com.example.mdp_android_grp25.Constants
-com/example/mdp_android_grp25/ui/main/SectionsPagerAdapter.java
- com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter
-com/example/mdp_android_grp25/ui/main/Bluetooth/DeviceListAdapter.java
- com.example.mdp_android_grp25.ui.main.Bluetooth.DeviceListAdapter
 com/example/mdp_android_grp25/ui/main/PlaceholderFragment.java
  com.example.mdp_android_grp25.ui.main.PlaceholderFragment
  com.example.mdp_android_grp25.ui.main.PlaceholderFragment$1
-com/example/mdp_android_grp25/ui/main/DirectionFragment.java
- com.example.mdp_android_grp25.ui.main.DirectionFragment
- com.example.mdp_android_grp25.ui.main.DirectionFragment$1
- com.example.mdp_android_grp25.ui.main.DirectionFragment$2
-com/example/mdp_android_grp25/ui/main/Bluetooth/BluetoothPage.java
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$1
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$10
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$11
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$12
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$13
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$14
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$2
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$3
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$4
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$5
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$6
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$7
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$8
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$9
-com/example/mdp_android_grp25/ui/main/Bluetooth/BluetoothConnectionService.java
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$AcceptThread
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectThread
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectThread$1
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectedThread
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectedThread$1
- com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectedThread$2
+com/example/mdp_android_grp25/Constants.java
+ com.example.mdp_android_grp25.Constants
+com/example/mdp_android_grp25/ui/main/Bluetooth/DeviceListAdapter.java
+ com.example.mdp_android_grp25.ui.main.Bluetooth.DeviceListAdapter
+com/example/mdp_android_grp25/ui/main/SectionsPagerAdapter.java
+ com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter
 com/example/mdp_android_grp25/ui/main/GridMap.java
  com.example.mdp_android_grp25.ui.main.GridMap
  com.example.mdp_android_grp25.ui.main.GridMap$1
@@ -151,6 +123,30 @@ com/example/mdp_android_grp25/ui/main/MapTabFragment.java
  com.example.mdp_android_grp25.ui.main.MapTabFragment$7
  com.example.mdp_android_grp25.ui.main.MapTabFragment$8
  com.example.mdp_android_grp25.ui.main.MapTabFragment$9
+com/example/mdp_android_grp25/ui/main/Bluetooth/BluetoothPage.java
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$1
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$10
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$11
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$12
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$13
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$14
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$2
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$3
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$4
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$5
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$6
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$7
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$8
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage$9
+com/example/mdp_android_grp25/ui/main/Bluetooth/BluetoothConnectionService.java
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$AcceptThread
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectThread
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectThread$1
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectedThread
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectedThread$1
+ com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothConnectionService$ConnectedThread$2
 com/example/mdp_android_grp25/MainActivity.java
  com.example.mdp_android_grp25.MainActivity
  com.example.mdp_android_grp25.MainActivity$1
@@ -162,3 +158,7 @@ com/example/mdp_android_grp25/MainActivity.java
  com.example.mdp_android_grp25.MainActivity$7
  com.example.mdp_android_grp25.MainActivity$8
  com.example.mdp_android_grp25.MainActivity$9
+com/example/mdp_android_grp25/ui/main/DirectionFragment.java
+ com.example.mdp_android_grp25.ui.main.DirectionFragment
+ com.example.mdp_android_grp25.ui.main.DirectionFragment$1
+ com.example.mdp_android_grp25.ui.main.DirectionFragment$2
