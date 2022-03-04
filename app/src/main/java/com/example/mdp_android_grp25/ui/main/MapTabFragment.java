@@ -184,7 +184,7 @@ public class MapTabFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 showLog("Clicked resetMapBtn");
-                showToast("Reseting map...");
+                showToast("Resetting Map");
                 gridMap.resetMap();
             }
         });
@@ -217,9 +217,6 @@ public class MapTabFragment extends Fragment {
             }
         });
 
-
-
-
         // switch for changing obstacle
         changeObstacleSwitch.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -237,8 +234,6 @@ public class MapTabFragment extends Fragment {
 
             }
         });
-
-
 
         setStartPointToggleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -302,7 +297,6 @@ public class MapTabFragment extends Fragment {
             }
         });
 
-
         //on Click listener for explore button
         exploreToggleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -334,8 +328,6 @@ public class MapTabFragment extends Fragment {
                         showLog(msg);
                         showToast("Image recognition task has started");
                         //send "obs first before sending obstacles info"
-                        //MainActivity.printMessage("obs\n");
-
                         //send obstacle info
                         MainActivity.printMessage("obs;"+ msg); //send obstacles to robot only when there is robot and obstacles on map
                         robotStatusTextView.setText("Auto Movement Started");
@@ -359,7 +351,7 @@ public class MapTabFragment extends Fragment {
                 showLog("Clicked exploreResetBtn");
                 showToast("Resetting exploration time...");
                 exploreTimeTextView.setText("00:00");
-                robotStatusTextView.setText("Not Available");
+                robotStatusTextView.setText("Ready To Move");
                 exploreTimer = 0;
                 exploreTimerLastStopped = 0;
                 timerHandler.removeCallbacks(timerRunnableExplore);
@@ -373,7 +365,7 @@ public class MapTabFragment extends Fragment {
                 showLog("Clicked fastestResetBtn");
                 showToast("Resetting fastest time...");
                 fastestTimeTextView.setText("00:00");
-                robotStatusTextView.setText("Not Available");
+                robotStatusTextView.setText("Ready To Move");
                 fastestTimer = 0;
                 fastestTimerLastStopped = 0;
                 timerHandler.removeCallbacks(timerRunnableFastest);

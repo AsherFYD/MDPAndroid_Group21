@@ -112,7 +112,6 @@ public class MainActivity extends AppCompatActivity {
         bluetoothDevice = findViewById(R.id.bluetoothConnectedDevice);
 
         //Command Log
-
         commandLog = findViewById(R.id.commandlog_textview);
         commandLog.setMovementMethod(new ScrollingMovementMethod()); //to make it scrollable
 
@@ -247,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 showLog("Right Button pressed");
                 //printMessage("tr");
 
-                if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()) {
+                if (gridMap.getCanDrawRobot() && !gridMap.getAutoUpdate()){
                     gridMap.moveRobot("right");
                     refreshLabel();
                     if (gridMap.getValidPosition()){
@@ -463,29 +462,8 @@ public class MainActivity extends AppCompatActivity {
                     String[] cmd = message.split(",");
                     showLog(cmd.toString()); //to get the received message
 
-                    // Not in use
-                    if (cmd[0].equals("ALG") || cmd[0].equals("RPI")) {
-                        showLog("cmd[0] is ALG or RPI");
-                        if (obstacleID.equals(""))
-                            obstacleID = cmd[0].equals("ALG") ? cmd[1] : "";
-                        if (imageID.equals(""))
-                            imageID = cmd[0].equals("RPI") ? cmd[1] : "";
-
-                        showLog("obstacleID = " + obstacleID);
-                        showLog("imageID = " + imageID);
-
-                        // call update fn only when both IDs are obtained
-                        if (!(obstacleID.equals("") || imageID.equals(""))) {
-                            showLog("imageID and obstacleID not empty");
-                            gridMap.updateIDFromRpi(obstacleID, imageID);
-                            obstacleID = ""; //reset it to empty after updating
-                            imageID = ""; //reset it to empty after updating
-                        }
-
-                        commandLog.append(cmd.toString() + "\n");
-                    }
                     //For checklist C9
-                    else if(cmd[0].trim().equals("TARGET")){
+                    if(cmd[0].trim().equals("TARGET")){
                         showLog("cmd[0] is Target");
                         obstacleID = cmd[1].trim();
                         imageID = cmd[2].trim();
@@ -518,10 +496,9 @@ public class MainActivity extends AppCompatActivity {
                             }else if (gridMap.getRobotDirection() == "right"){
                                 curCoord[0] += 1;
                             }
-
                             robotStatusTextView.setText("Moving Forward");
-
                             gridMap.setCurCoord(curCoord[0], curCoord[1], gridMap.getRobotDirection());
+
                         }else if(movement.equals("a")){
                             showLog("a received");
                             if(gridMap.getRobotDirection() == "up"){
@@ -533,8 +510,8 @@ public class MainActivity extends AppCompatActivity {
                             }else if (gridMap.getRobotDirection() == "right"){
                                 gridMap.setRobotDirection("up");
                             }
-
                             robotStatusTextView.setText("Turning Left");
+
                         }else if(movement.equals("s")){
                             showLog("s received");
                             if(gridMap.getRobotDirection() == "up"){
@@ -546,9 +523,7 @@ public class MainActivity extends AppCompatActivity {
                             }else if (gridMap.getRobotDirection() == "right"){
                                 curCoord[0] -= 1;
                             }
-
                             robotStatusTextView.setText("Moving Backwards");
-
                             gridMap.setCurCoord(curCoord[0], curCoord[1], gridMap.getRobotDirection());
                         }else if(movement.equals("d")){
                             showLog("d received");
@@ -561,12 +536,66 @@ public class MainActivity extends AppCompatActivity {
                             }else if (gridMap.getRobotDirection() == "right"){
                                 gridMap.setRobotDirection("down");
                             }
-
                             robotStatusTextView.setText("Turning Right");
                         }
-
                         commandLog.append(message + "\n");
                     }
+                }else if (message.equals("END")) {
+                    // if wk 8 btn is checked, means running wk 8 challenge and likewise for wk 9
+                    // end the corresponding timer
+                    ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn3);
+                    ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn3);
+
+                    showLog(message + " received");
+                    commandLog.append(message + "\n");
+                    showLog(message + " appended");
+
+                    if (exploreButton.isChecked()) {
+                        showLog("explorebutton is checked");
+                        stopTimerFlag = true;
+                        showLog("stopTimerFlag set to true");
+                        exploreButton.setChecked(true);
+                        showLog("explorebutton set to true");
+
+                        //THIS SHIT CAUSES APP TO CRASH
+                        //exploreResetBtn.setEnabled(true);
+                        //showLog("exploreresetbtn set to true");
+
+                        robotStatusTextView.setText("Image Rec End");
+                        showLog("robotstatustextview set text to auto movement");
+                    } else if (fastestButton.isChecked()) {
+                        showLog("fastestbutton is checked");
+                        stopTimerFlag = true;
+                        fastestButton.setChecked(true);
+                        showLog("fastestbutton set to true");
+
+                        //THIS SHIT CAUSES APP TO CRASH
+                        //fastestResetBtn.setEnabled(true);
+                        robotStatusTextView.setText("Fastest Path End");
+                    }
+                }
+                    //NOT IN USE
+                    /**
+                     else if (cmd[0].equals("ALG") || cmd[0].equals("RPI")) {
+                     showLog("cmd[0] is ALG or RPI");
+                     if (obstacleID.equals(""))
+                     obstacleID = cmd[0].equals("ALG") ? cmd[1] : "";
+                     if (imageID.equals(""))
+                     imageID = cmd[0].equals("RPI") ? cmd[1] : "";
+
+                     showLog("obstacleID = " + obstacleID);
+                     showLog("imageID = " + imageID);
+
+                     // call update fn only when both IDs are obtained
+                     if (!(obstacleID.equals("") || imageID.equals(""))) {
+                     showLog("imageID and obstacleID not empty");
+                     gridMap.updateIDFromRpi(obstacleID, imageID);
+                     obstacleID = ""; //reset it to empty after updating
+                     imageID = ""; //reset it to empty after updating
+                     }
+                     commandLog.append(cmd.toString() + "\n");
+                     }
+                     **/
 
                     /**
                     else if(cmd[0].equals("ROBOT")){
@@ -574,15 +603,12 @@ public class MainActivity extends AppCompatActivity {
                         int x = Integer.parseInt(cmd[1]);
                         int y = Integer.parseInt(cmd[2]);
                         String direction = cmd[3];
-
                         gridMap.setCurCoord(x, y, direction); //must get integer for x and y
-
                         commandLog.append(message + "\n");
                     }
                      **/
                     /**
                     else {
-
                         // alg sends in cm and float e.g. 100,100,N
                         float x = Integer.parseInt(cmd[1]);
                         float y = Integer.parseInt(cmd[2]);
@@ -594,7 +620,6 @@ public class MainActivity extends AppCompatActivity {
                         b = (b / 10) + 1;
 
                         String direction = cmd[3];
-
                         // allow robot to show up on grid if its on the very boundary
                         if (a == 1) a++;
                         if (b == 20) b--;
@@ -616,40 +641,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                      **/
-
-                } else if (message.equals("END")) {
-                    // if wk 8 btn is checked, means running wk 8 challenge and likewise for wk 9
-                    // end the corresponding timer
-                    ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn3);
-                    ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn3);
-
-                    showLog(message + " received");
-                    commandLog.append(message + "\n");
-                    showLog(message + " appended");
-
-                    if (exploreButton.isChecked()) {
-                        showLog("explorebutton is checked");
-                        stopTimerFlag = true;
-                        showLog("stopTimerFlag set to true");
-                        exploreButton.setChecked(false);
-                        showLog("explorebutton set to false");
-
-                        //THIS SHIT CAUSES APP TO CRASH
-                        //exploreResetBtn.setEnabled(true);
-                        //showLog("exploreresetbtn set to true");
-
-                        robotStatusTextView.setText("Image Rec End");
-                        showLog("robotstatustextview set text to auto movement");
-                    } else if (fastestButton.isChecked()) {
-                        showLog("fastestbutton is checked");
-                        stopTimerFlag = true;
-                        fastestButton.setChecked(false);
-
-                        //THIS SHIT CAUSES APP TO CRASH
-                        //fastestResetBtn.setEnabled(true);
-                        robotStatusTextView.setText("Fastest Path End");
-                    }
-                }
             }
         };
     }
