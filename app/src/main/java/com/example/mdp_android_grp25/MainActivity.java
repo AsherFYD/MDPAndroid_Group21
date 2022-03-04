@@ -14,6 +14,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +30,7 @@ import com.example.mdp_android_grp25.ui.main.Bluetooth.BluetoothPage;
 import com.example.mdp_android_grp25.ui.main.ControlFragment;
 import com.example.mdp_android_grp25.ui.main.GridMap;
 import com.example.mdp_android_grp25.ui.main.SectionsPagerAdapter;
+import com.example.mdp_android_grp25.ui.main.MapTabFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import org.json.JSONException;
@@ -51,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     static TextView robotStatusTextView, bluetoothStatus, bluetoothDevice;
     static Button upBtn, downBtn, leftBtn, rightBtn,sendK;
     static ImageView imageIDView;
+    private static MapTabFragment mapTabFragment;
+
+    ImageButton exploreResetBtn;
+    ImageButton fastestResetBtn;
 
     BluetoothDevice mBTDevice;
     private static UUID myUUID;
@@ -133,12 +139,13 @@ public class MainActivity extends AppCompatActivity {
 
         imageIDView = findViewById(R.id.displayimageview);
 
-
         // Controller & on click listeners for controller
         upBtn = findViewById(R.id.upBtn);
         downBtn = findViewById(R.id.downBtn);
         leftBtn = findViewById(R.id.leftBtn);
         rightBtn = findViewById(R.id.rightBtn);
+        exploreResetBtn = (ImageButton) findViewById(R.id.exploreResetBtn); //Button to start image rec
+        fastestResetBtn = (ImageButton) findViewById(R.id.fastestResetBtn); //Button to start image rec
 
         //if robot is not on map --> notify user to put robot on map --> don't send message
         //if movement will make robot out of bound --> notify user that robot is unable to make the movement --> don't send message
@@ -444,7 +451,7 @@ public class MainActivity extends AppCompatActivity {
         messageReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                String message = intent.getStringExtra("receivedMessage");
+                String message = intent.getStringExtra("receivedMessage").trim();
                 showLog("receivedMessage: message --- " + message);
 
                 if (message.contains(",")) {
@@ -481,7 +488,7 @@ public class MainActivity extends AppCompatActivity {
                         showLog("imageID = " + imageID);
                         gridMap.updateIDFromRpi(obstacleID, imageID);
                         commandLog.append(message + "\n");
-                        //updateImageView(imageID);
+                        updateImageView(imageID);
                     }
 
                     //for robot status
@@ -662,24 +669,169 @@ public class MainActivity extends AppCompatActivity {
                     ToggleButton exploreButton = findViewById(R.id.exploreToggleBtn3);
                     ToggleButton fastestButton = findViewById(R.id.fastestToggleBtn3);
 
+                    showLog(message + " received");
+
                     commandLog.append(message + "\n");
+
+                    showLog(message + " appended");
 
                     if (exploreButton.isChecked()) {
                         showLog("explorebutton is checked");
+
                         stopTimerFlag = true;
+                        showLog("stopTimerFlag set to true");
+
                         exploreButton.setChecked(false);
+                        showLog("explorebutton set to false");
+
+                        //THIS SHIT CAUSES APP TO CRASH
+                        //exploreResetBtn.setEnabled(true);
+                        //showLog("exploreresetbtn set to true");
+
                         robotStatusTextView.setText("Auto Movement/ImageRecog Stopped");
+                        showLog("robotstatustextview set text to auto movement");
                     } else if (fastestButton.isChecked()) {
                         showLog("fastestbutton is checked");
                         stopTimerFlag = true;
                         fastestButton.setChecked(false);
+
+                        //THIS SHIT CAUSES APP TO CRASH
+                        //fastestResetBtn.setEnabled(true);
                         robotStatusTextView.setText("Week 9 Stopped");
                     }
-
-                    //printMessage("end");
                 }
             }
         };
+    }
+
+    private void updateImageView(String imageID) {
+        showLog("inside method");
+        showLog("imageid is: " + imageID);
+        switch (imageID.trim()) {
+            case ("11"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image11);
+                break;
+            case ("12"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image12);
+                break;
+            case ("13"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image13);
+                break;
+            case ("14"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image14);
+                break;
+            case ("15"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image15);
+                break;
+            case ("16"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image16);
+                break;
+            case ("17"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image17);
+                break;
+            case ("18"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image18);
+                break;
+            case ("19"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image19);
+                break;
+            case ("20"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image20);
+                break;
+            case ("21"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image21);
+                break;
+            case ("22"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image22);
+                break;
+            case ("23"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image23);
+                break;
+            case ("24"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image24);
+                break;
+            case ("25"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image25);
+                break;
+            case ("26"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image26);
+                break;
+            case ("27"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image27);
+                break;
+            case ("28"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image28);
+                break;
+            case ("29"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image29);
+                break;
+            case ("30"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image30);
+                break;
+            case ("31"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image31);
+                break;
+            case ("32"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image32);
+                break;
+            case ("33"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image33);
+                break;
+            case ("34"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image34);
+                break;
+            case ("35"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image35);
+                break;
+            case ("36"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image36);
+                break;
+            case ("37"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image37);
+                break;
+            case ("38"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image38);
+                break;
+            case ("39"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image39);
+                break;
+            case ("40"):
+                showLog("changing imageView");
+                imageIDView.setBackgroundResource(R.drawable.image40);
+                break;
+            default:
+                imageIDView.setBackgroundResource(0);
+                showLog("Invalid imageID");
+        }
     }
 
 
