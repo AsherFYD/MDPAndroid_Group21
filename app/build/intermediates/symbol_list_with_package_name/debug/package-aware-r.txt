@@ -1443,7 +1443,7 @@ id parentPanel
 id parent_matrix
 id percent
 id pin
-id pressK
+id pressEnd
 id progress_circular
 id progress_horizontal
 id radio
@@ -1485,6 +1485,7 @@ id search_voice_btn
 id section_label
 id select_dialog_listview
 id selected
+id sendK
 id send_msg_btn
 id setStartPointToggleBtn
 id setWaypointToggleBtn
