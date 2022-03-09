@@ -21,10 +21,27 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/pressK"
+                android:id="@+id/pressEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="send end" />
+                android:layout_marginBottom="2dp"
+                android:text="send end"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/sendK"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:text="send K"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/pressEnd"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/bluetoothButton"
@@ -44,16 +61,16 @@
                 android:id="@+id/bluetoothConnection"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginStart="119dp"
-                android:layout_marginLeft="119dp"
+                android:layout_marginStart="180dp"
+                android:layout_marginLeft="180dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginBottom="9dp"
                 android:background="@color/colorWhite"
                 android:gravity="center"
                 android:text="Bluetooth Status:"
-                android:textStyle="bold"
                 android:textAlignment="center"
                 android:textColor="@color/colorBlack"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
