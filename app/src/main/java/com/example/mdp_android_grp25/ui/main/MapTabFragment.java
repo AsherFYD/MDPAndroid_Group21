@@ -392,7 +392,7 @@ public class MapTabFragment extends Fragment {
                 else if (fastestToggleBtn.getText().equals("STOP")) { //press start wk 9
                     showToast("Fastest car timer start!");
                     try {
-                        MainActivity.printMessage("Fastest path start"); //send message for fastest path
+                        MainActivity.printMessage("fastest\n"); //send message for fastest path
                     } catch (Exception e) {
                         showLog(e.getMessage());
                     }

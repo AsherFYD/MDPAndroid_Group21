@@ -565,7 +565,7 @@ public class MainActivity extends AppCompatActivity {
                         showLog("robotstatustextview set text to auto movement");
                     } else if (fastestButton.isChecked()) {
                         showLog("fastestbutton is checked");
-                        stopTimerFlag = true;
+                        stopWk9TimerFlag = true;
                         fastestButton.setChecked(true);
                         showLog("fastestbutton set to true");
 
