@@ -58,6 +58,8 @@ public class MapTabFragment extends Fragment {
     // Timer
     public static Handler timerHandler = new Handler();
 
+    MainActivity mainActivity;
+
     public Runnable timerRunnableExplore = new Runnable() {
         @Override
         public void run() {
@@ -186,6 +188,7 @@ public class MapTabFragment extends Fragment {
                 showLog("Clicked resetMapBtn");
                 showToast("Resetting Map");
                 gridMap.resetMap();
+                MainActivity.imageIDView.setBackgroundResource(0);
             }
         });
 
@@ -195,6 +198,7 @@ public class MapTabFragment extends Fragment {
                 showLog("Clicked resetTestBtn");
                 showToast("Resetting Test");
                 gridMap.resetTest();
+                MainActivity.imageIDView.setBackgroundResource(0);
             }
         });
 

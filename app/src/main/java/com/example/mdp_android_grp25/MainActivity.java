@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     static TextView xAxisTextView, yAxisTextView, directionAxisTextView, commandLog;
     static TextView robotStatusTextView, bluetoothStatus, bluetoothDevice;
     static Button upBtn, downBtn, leftBtn, rightBtn, sendEnd, sendK;
-    static ImageView imageIDView;
+    public static ImageView imageIDView;
     private static MapTabFragment mapTabFragment;
 
     ImageButton exploreResetBtn;
@@ -645,7 +645,7 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    private void updateImageView(String imageID) {
+    public void updateImageView(String imageID) {
         showLog("inside method");
         showLog("imageid is: " + imageID);
         switch (imageID.trim()) {
